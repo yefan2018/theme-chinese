@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file.menu">
+    <label>File</label>
+
+      <actionItem id="open">
+        <label>Open...</label>
+	<value>vdCommand</value>
+      </actionItem>
+
+      <actionItem id="quit">
+        <label>Quit</label>
+	<value>vdCommand</value>
+      </actionItem>
+    </subMenu>
+
+    <!-- ======================== Display Menu =========================== -->
+    <subMenu id="display.menu">
+    <label>Display</label>
+ 
+    <toggleItem id="autohome">
+	<label>Auto-home</label>
+	<value>autoHome</value>
+    </toggleItem>
+    
+    <actionItem id="display_info">
+	<label>Geometry Info</label>
+	<value>vdCommand</value>
+    </actionItem>
+    
+    <actionItem id="display_ssheet">
+	<label>Geometry Spreadsheet</label>
+	<value>vdCommand</value>
+    </actionItem>
+    
+    <actionItem id="flipbook">
+	<label>Flipbook</label>
+	<value>vdCommand</value>
+    </actionItem>
+
+    <actionItem id="display_prefs">
+	<label>Preferences</label>
+	<value>vdCommand</value>
+    </actionItem>
+    
+    </subMenu>
+    
+    <!-- ======================== Geometry Menu =========================== -->
+    <subMenu id="geometry.menu">
+    <label>Geometry</label>
+	<actionItem id="unpack">
+	    <label>Unpack Geometry</label>
+	    <value>vdCommand</value>
+	</actionItem>
+	<menuStripDynamic id="geo_strip">
+	    <value>detailMenu</value>
+	</menuStripDynamic>
+    </subMenu>
+    
+  </menuBar>
+</mainMenu>

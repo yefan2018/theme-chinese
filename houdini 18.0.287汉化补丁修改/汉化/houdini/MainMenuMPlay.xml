@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file_menu">
+    <label>文件</label>
+
+      <subMenu id="file_new_viewer">
+      <label>新建</label>
+
+        <actionItem id="mplay.newviewer">
+          <label>2D 视图</label>
+        </actionItem>
+
+        <actionItem id="mplay.newtimeline">
+          <label>时间表</label>
+        </actionItem>
+
+        <actionItem id="mplay.newgraph">
+          <label>直方图</label>
+        </actionItem>
+      </subMenu>
+
+      <actionItem id="mplay.openframe" platform="mbsd">
+        <label>打开单个文件...</label>
+      </actionItem>
+
+      <!-- Note, this menu item is modified on an mbsd platform at the 
+           end of this file. Look for mplay.open id in this file. -->
+      <actionItem id="mplay.open">
+        <label>打开...</label>
+      </actionItem>
+
+      <actionItem id="mplay.openstereo">
+        <label>打开立体声对...</label>
+      </actionItem>
+
+      <actionItem id="mplay.merge">
+        <label>合并...</label>
+      </actionItem>
+
+      <actionItem id="mplay.insertbefore">
+        <label>预置序列...</label>
+      </actionItem>
+
+      <actionItem id="mplay.append">
+        <label>追加序列...</label>
+      </actionItem>
+
+      <separatorItem/>
+      <subMenu id="file_recent_files">
+      <label>近期文件</label>
+         <menuStripDynamic>
+           <value>recentfiles.menu</value>
+         </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.saveframe">
+        <label>将帧另存为...</label>
+      </actionItem>
+
+      <actionItem id="mplay.saveseq">
+        <label>将序列另存为...</label>
+      </actionItem>
+
+      <actionItem id="mplay.savepreview">
+        <label>正在保存预览...</label>
+      </actionItem>
+
+      <separatorItem/>
+
+      <subMenu id="export_movie">
+      <label>导出</label>
+         <menuStripDynamic>
+           <value>exportmovie.menu</value>
+         </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.loadbg">
+        <label>加载背景...</label>
+      </actionItem>
+
+      <actionItem id="mplay.unloadbg">
+        <label>卸载背景</label>
+      </actionItem>
+
+      <separatorItem id="file_menu_sep_quit"/>
+
+      <actionItem id="mplay.quit">
+        <label>退出应用程序</label>
+      </actionItem>
+
+    </subMenu>
+
+    <!-- ======================== View Menu =========================== -->
+    <subMenu id="view_menu">
+    <label>视图</label>
+
+      <menuStripRadio id = "view_editor">
+	 <value>editor.val</value>
+	 <radioItem id="editor_2d"><label>2D 视图</label></radioItem>
+	 <radioItem id="editor_time"><label>时间表</label></radioItem>
+	 <radioItem id="editor_graph"><label>直方图</label></radioItem>
+      </menuStripRadio>
+
+      <separatorItem/>
+ 
+      <subMenu id = "view_plane">
+         <label>飞机</label>
+         <menuStripDynamicRadio id = "view_plane_strip">
+	    <value>planeMenuIndex</value>
+	 </menuStripDynamicRadio>
+      </subMenu>
+
+      <subMenu id = "view_zoom">
+         <label>缩放</label>
+
+         <actionItem id="h.pane.imgui.zoomin">
+            <label>拉近、放大</label>
+	    <value>zoomin.val</value>
+         </actionItem>
+	 
+         <actionItem id="h.pane.imgui.zoomout">
+            <label>拉远、缩小</label>
+	    <value>zoomout.val</value>
+         </actionItem>
+
+         <separatorItem/>
+
+         <actionItem id="h.pane.imgui.home">
+            <label>主页</label>
+	    <value>home.val</value>
+         </actionItem>
+
+         <actionItem id="mplay.fitviewer">
+            <label>使窗口适合图像</label>
+         </actionItem>
+
+         <actionItem id="h.pane.imgui.homefull">
+            <label>使图像适合窗口</label>
+         </actionItem>
+       </subMenu>
+
+      <subMenu id = "view_layout">
+         <label>布置</label>
+	 <menuStripRadio id = "view_layout_cols">
+	    <value>gridc.val</value>
+	    <radioItem id="layout_1col"><label>1 列</label></radioItem>
+	    <radioItem id="layout_2col"><label>2 列</label></radioItem>
+	    <radioItem id="layout_3col"><label>3 列</label></radioItem>
+	    <radioItem id="layout_4col"><label>4 列</label></radioItem>
+	 </menuStripRadio>
+	 <separatorItem/>
+	 <menuStripRadio id = "view_layout_rows">
+	    <value>gridr.val</value>
+	    <radioItem id="layout_1row"><label>1 行</label></radioItem>
+	    <radioItem id="layout_2row"><label>2 行</label></radioItem>
+	    <radioItem id="layout_3row"><label>3 行</label></radioItem>
+	    <radioItem id="layout_4row"><label>4 行</label></radioItem>
+	 </menuStripRadio>
+	 <toggleItem id = "view_layout_hide_blank">
+	    <label>隐藏空白视口</label>
+	    <value>hideblank.val</value>
+	 </toggleItem>
+      </subMenu>
+      
+      <subMenu id = "view_ui">
+         <label>用户界面</label>
+	 
+         <toggleItem id="mplay.fullscreen">
+           <label>全屏</label>
+	   <value>mplay.fullscreen</value>
+         </toggleItem>
+
+	 <toggleItem id="mplay.hideui">
+	    <label>隐藏额外 UI</label>
+	    <value>mplay.toggleui</value>
+	 </toggleItem>
+
+	 <separatorItem/>
+
+	 <toggleItem id="menubar">
+	   <label>菜单栏</label>
+	   <value>menubarValue</value>
+	 </toggleItem>
+	 <toggleItem id="mainbar">
+	    <label>主菜单栏</label>
+	    <value>mainbarValue</value>
+	 </toggleItem>
+	 <toggleItem id="displaybar">
+	    <label>显示栏</label>
+	    <value>displaybarValue</value>
+         </toggleItem>
+	 <toggleItem id="imagecontrols">
+	    <label>图像控件</label>
+	    <value>controlbarValue</value>
+	 </toggleItem>
+	 <toggleItem id="audiobar">
+	    <label>音频栏</label>
+	    <value>audiobarValue</value>
+	 </toggleItem>
+	 <toggleItem id="playbar">
+	   <label>播放栏</label>
+	   <value>playbarValue</value>
+	 </toggleItem>
+   
+	 <toggleItem id="mplay.toggletopmost">
+	    <label>始终位于顶部</label>
+	    <value>mplay.toggletopmost</value>
+	 </toggleItem>
+
+	 <separatorItem/>
+
+	 <toggleItem id="mplay.togglehelp">
+	    <label>帮助提示</label>
+	    <value>mplay.togglehelp</value>
+	 </toggleItem>
+	 
+      </subMenu>
+
+      <separatorItem/>
+
+      <toggleItem id = "h.pane.imgui.split.linkall">
+         <label>将更改应用于所有视图</label>
+         <value>linkViews</value>
+      </toggleItem>
+
+      <toggleItem id = "h.pane.imgui.split.linkscroll">
+         <label>连接视图滚动</label>
+         <value>linkScroll</value>
+      </toggleItem>
+
+      <toggleItem id = "h.pane.imgui.split.zoomport">
+         <label>最大化当前视图</label>
+         <value>zoomPort</value>
+      </toggleItem>
+      
+     <separatorItem platform="mbsd" />
+     
+     <actionItem id="mplay.halfsize" platform="mbsd">
+       <label>一半窗口尺寸</label>
+     </actionItem>
+     
+     <actionItem id="mplay.doublesize" platform="mbsd">
+       <label>双倍窗口尺寸</label>
+     </actionItem>
+
+    </subMenu>
+
+    <!-- ======================== Render Menu =========================== -->
+    <subMenu id = "render_menu">
+    <label>渲染</label>
+
+	<menuStripRadio id="render_source">
+	  <value>render.source</value>
+
+	  <radioItem id="disconnected"><label>断开</label>
+	  </radioItem>
+	  <radioItem id="listenrender"><label>侦听渲染</label>
+	  </radioItem>
+	  <radioItem id="listenflipbook"><label>侦听图像序列视图</label>
+	  </radioItem>
+
+	</menuStripRadio>
+
+	<separatorItem/>
+
+	<actionItem id="mplay.newsequence">
+	   <label>新建序列</label>
+	   <value>newsequence.key</value>
+        </actionItem>
+
+        <actionItem id="mplay.killrender">
+           <label>停止当前渲染</label>
+	   <value>killrender.key</value>
+        </actionItem>
+
+        <actionItem id="mplay.killallrenders">
+           <label>停止所有渲染</label>
+	   <value>killrender.key</value>
+        </actionItem>
+
+	<actionItem id="mplay.disconnect">
+	   <label>断开</label>
+	   <value>disconnect.key</value>
+        </actionItem>
+    </subMenu>
+
+    <!-- ======================== Anim Menu =========================== -->
+    <subMenu id="anim_menu">
+    <label>阿尼姆</label>
+
+      <actionItem id="h.play_fwd">
+        <label>播放</label>
+      </actionItem>
+
+      <actionItem id="mplay.stopplay">
+        <label>停止</label>
+      </actionItem>
+
+      <actionItem id="h.range_start">
+        <label>转到第一帧</label>
+      </actionItem>
+
+      <actionItem id="h.prev_key">
+        <label>转到上一个现有帧</label>
+      </actionItem>
+
+      <actionItem id="h.next_key">
+        <label>转到下一个现有帧</label>
+      </actionItem>
+
+      <separatorItem/>
+
+       <toggleItem id = "mplay.realtime">
+           <label>实时</label>
+           <value>realtime.val</value>
+       </toggleItem>
+
+       <subMenu id ="anim_loopmode">
+         <label>播放模式</label>
+
+         <menuStripRadio id = "anim_loop">
+	   <value>loop.val</value>
+	   <radioItem id = "loop">  <label>环</label></radioItem>
+	   <radioItem id = "once">  <label>播放一次</label></radioItem>
+	   <radioItem id = "zigzag"><label>曲折</label></radioItem>
+         </menuStripRadio>
+      </subMenu>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.sethoudiniframe">
+        <label>集成到胡迪尼帧</label>
+      </actionItem>
+
+      <actionItem id="mplay.exportblocking">
+        <label>导出限制</label>
+      </actionItem>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.loadaudio">
+        <label>加载音频...</label>
+      </actionItem>
+
+      <actionItem id="mplay.unloadaudio">
+        <label>卸载音频</label>
+      </actionItem>
+
+    </subMenu>
+
+    <!-- ======================== Images Menu =========================== -->
+    <subMenu id = "image_menu">
+    <label>图像</label>
+
+      <menuStripDynamicRadio id="image_sources">
+        <value>seq.val</value>
+      </menuStripDynamicRadio> 
+
+      <separatorItem/>
+
+      <actionItem id="mplay.reloadseq">
+        <label>重新加载序列</label>
+      </actionItem>
+    
+      <separatorItem/>
+
+      <actionItem id="mplay.removeseq">
+        <label>删除序列</label>
+      </actionItem>
+    
+      <actionItem id="mplay.removeframe">
+        <label>删除帧</label>
+      </actionItem>
+    
+      <separatorItem/>
+
+      <subMenu>
+         <label>图像像素缩放</label>
+         <menuStripRadio id = "view_zoom_factor">
+	   <value>zoomfactor.menu</value>
+
+	   <radioItem id = "zoom12.5"><label>12.5%</label></radioItem>
+	   <radioItem id = "zoom25"><label>25%</label></radioItem>
+	   <radioItem id = "zoom33"><label>33%</label></radioItem>
+	   <radioItem id = "zoom50"><label>50%</label></radioItem>
+	   <radioItem id = "zoom66"><label>66%</label></radioItem>
+	   <radioItem id = "zoom75"><label>75%</label></radioItem>
+	   <radioItem id = "zoom100"><label>100%</label></radioItem>
+	   <radioItem id = "zoom133"><label>133%</label></radioItem>
+	   <radioItem id = "zoom150"><label>150%</label></radioItem>
+	   <radioItem id = "zoom200"><label>200%</label></radioItem>
+	   <radioItem id = "zoom300"><label>300%</label></radioItem>
+	   <radioItem id = "zoom400"><label>400%</label></radioItem>
+	   <radioItem id = "zoom800"><label>800%</label></radioItem>
+         </menuStripRadio>
+      </subMenu>
+
+      <separatorItem/>
+
+      <toggleItem id="h.pane.imgui.enablelut">
+        <label>启用 LUT</label>
+	<value>lut.enable</value>
+      </toggleItem>
+
+      <actionItem id="h.pane.imgui.loadlut">
+        <label>加载 LUT...</label>
+	<value>lut.browse</value>
+      </actionItem>
+
+      <separatorItem/>
+
+      <toggleItem id="diff">
+        <label>比较图像</label>
+	<value>diffbarValue</value>
+      </toggleItem>
+
+      <toggleItem id="inspect">
+        <label>检查图像</label>
+	<value>inspectbarValue</value>
+      </toggleItem>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.clearcache">
+        <label>清除缓存</label>
+      </actionItem>
+
+      <actionItem id="mplay.cacheall">
+        <label>全部缓存</label>
+      </actionItem>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.addcomment">
+        <label>添加帧注释...</label>
+      </actionItem>
+
+    </subMenu>
+    
+    <!-- ======================== Windows Menu =========================== -->
+    <subMenu id="windows_menu">
+    <label>窗口</label>
+
+      <actionItem id="mplay.settings">
+        <label>偏好</label>
+      </actionItem>
+
+      <actionItem id="mplay.profiles">
+        <label>配置文件</label>
+      </actionItem>
+
+      <actionItem id="mplay.displayoptions">
+        <label>显示选项</label>
+      </actionItem>
+
+      <actionItem id="mplay.sequencelist">
+        <label>序列列表</label>
+      </actionItem>
+
+      <actionItem id="mplay.textport">
+        <label>文本端口</label>
+      </actionItem>
+
+    </subMenu>
+  </menuBar>
+
+  <!-- =============== platform-spcific tweaking =========================== -->
+
+  <!-- on mbsd, make it explicit that this item opens a sequence of files -->
+  <modifyItem id="mplay.open" platform="mbsd">
+    <label>打开序列...</label>
+  </modifyItem>
+</mainMenu>

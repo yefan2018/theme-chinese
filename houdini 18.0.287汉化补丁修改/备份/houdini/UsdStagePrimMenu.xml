@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items when right-clicking on primitive in the
+    scene graph view.
+
+    Additoinal files named UsdStagePrimMenu.xml can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    Please see ExampleMenu.xml for examples that customise the main menu.
+    Please see menu.xsd for the menu validation schema.
+
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with 'scenegraph.' when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'primaryprimpath' : Path of the primitive on which the menu was invoked
+	'primpaths' :	Paths of all primitives that should be affected
+	'toolname' :	The menu item's hotkey id
+	'altclick' :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick' :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick' :	True if the Shift key was also pressed, False otherwise
+	'cmdclick' :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is
+         implicitly "root_menu"
+      -->
+    <menu>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.hide">
+	    <label>Hide</label>
+	    <context>
+		<expression><![CDATA[
+from pxr import UsdGeom
+stage = kwargs['node'].stage()
+prim = UsdGeom.Imageable(stage.GetPrimAtPath(kwargs['primaryprimpath']))
+if prim and prim.ComputeVisibility(kwargs['timecode']) != 'invisible':
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setVisible(sel, False)
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.show">
+	    <label>Show</label>
+	    <context>
+		<expression><![CDATA[
+from pxr import UsdGeom
+stage = kwargs['node'].stage()
+prim = UsdGeom.Imageable(stage.GetPrimAtPath(kwargs['primaryprimpath']))
+if prim and prim.ComputeVisibility(kwargs['timecode']) == 'invisible':
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setVisible(sel, True)
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.deactivate">
+	    <label>Deactivate</label>
+	    <context>
+		<expression><![CDATA[
+stage = kwargs['node'].stage()
+prim = stage.GetPrimAtPath(kwargs['primaryprimpath'])
+if prim and prim.IsActive():
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setActive(sel, False)
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.activate">
+	    <label>Activate</label>
+	    <context>
+		<expression><![CDATA[
+stage = kwargs['node'].stage()
+prim = stage.GetPrimAtPath(kwargs['primaryprimpath'])
+if prim and not prim.IsActive():
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setActive(sel, True)
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.sololights">
+	    <label>Solo Lights</label>
+	    <context>
+		<expression><![CDATA[
+from pxr import UsdLux
+stage = kwargs['node'].stage()
+prim = UsdLux.Light(stage.GetPrimAtPath(kwargs['primaryprimpath']))
+if prim:
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setSoloLights(sel)
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.sologeometry">
+	    <label>Solo Geometry</label>
+	    <context>
+		<expression><![CDATA[
+from pxr import UsdGeom
+stage = kwargs['node'].stage()
+prim = UsdGeom.Imageable(stage.GetPrimAtPath(kwargs['primaryprimpath']))
+if prim:
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setSoloGeometry(sel)
+]]></scriptCode>
+	</scriptItem>
+
+	<!-- Draw mode submenu. -->
+	<subMenu id="h.pane.scenegraphtree.menu.drawmode_menu">
+	    <label>Set draw mode</label>
+	    <context>
+		<expression><![CDATA[
+from pxr import UsdGeom
+stage = kwargs['node'].stage()
+prim = stage.GetPrimAtPath(kwargs['primaryprimpath'])
+if prim and prim.IsModel():
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptItem id="h.pane.scenegraphtree.menu.drawmode_fullgeometry">
+		<label>Full Geometry</label>
+		<scriptCode>
+		    <![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setDrawMode(sel, 'default')
+]]></scriptCode>
+	    </scriptItem>
+	    <scriptItem id="h.pane.scenegraphtree.menu.drawmode_origin">
+		<label>Origin Axes</label>
+		<scriptCode>
+		    <![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setDrawMode(sel, 'origin')
+]]></scriptCode>
+	    </scriptItem>
+	    <scriptItem id="h.pane.scenegraphtree.menu.drawmode_boundingbox">
+		<label>Bounding Box</label>
+		<scriptCode>
+		    <![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setDrawMode(sel, 'bounds')
+]]></scriptCode>
+	    </scriptItem>
+	    <scriptItem id="h.pane.scenegraphtree.menu.drawmode_cards">
+		<label>Textured Cards</label>
+		<scriptCode>
+		    <![CDATA[
+sel = hou.LopSelectionRule()
+sel.setPathPattern(' '.join(kwargs['primpaths']))
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    overrides.setDrawMode(sel, 'cards')
+]]></scriptCode>
+	    </scriptItem>
+	</subMenu>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.clear_overrides">
+	    <label>Clear Overrides on This Branch</label>
+	    <scriptCode><![CDATA[
+with kwargs['node'].network().viewportOverrides(kwargs['node']) as overrides:
+    for primpath in kwargs['primpaths']:
+	overrides.clear(from_prim = primpath)
+]]></scriptCode>
+	</scriptItem>
+
+	<separatorItem/>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.loadpayload">
+	    <label>Load Payloads</label>
+	    <context>
+		<expression><![CDATA[
+from husd import primwrapper
+prim = primwrapper.Prim(kwargs['node'], kwargs['primaryprimpath'])
+return prim.canPayloadBeLoaded()
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+from husd import primwrapper
+primset = primwrapper.PrimSet(kwargs['node'], kwargs['primpaths'])
+primset.loadPayloads()
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.unloadpayload">
+	    <label>Unload Payloads</label>
+	    <context>
+		<expression><![CDATA[
+from husd import primwrapper
+prim = primwrapper.Prim(kwargs['node'], kwargs['primaryprimpath'])
+return prim.canPayloadBeUnloaded()
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+from husd import primwrapper
+primset = primwrapper.PrimSet(kwargs['node'], kwargs['primpaths'])
+primset.unloadPayloads()
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.setpopulatedprims">
+	    <label>Set Populated Primitives</label>
+	    <context>
+		<expression><![CDATA[
+from husd import primwrapper
+prim = primwrapper.Prim(kwargs['node'], kwargs['primaryprimpath'])
+return prim.canPopulate() or prim.canDepopulate()
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+from husd import primwrapper
+primset = primwrapper.PrimSet(kwargs['node'], kwargs['primpaths'])
+primset.setPopulatePaths()
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.addpopulatedprims">
+	    <label>Add to Populated Primitives</label>
+	    <context>
+		<expression><![CDATA[
+from husd import primwrapper
+prim = primwrapper.Prim(kwargs['node'], kwargs['primaryprimpath'])
+return prim.canPopulate()
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+from husd import primwrapper
+primset = primwrapper.PrimSet(kwargs['node'], kwargs['primpaths'])
+primset.addPopulatePaths()
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.removepopulatedprims">
+	    <label>Remove From Populated Primitives</label>
+	    <context>
+		<expression><![CDATA[
+from husd import primwrapper
+prim = primwrapper.Prim(kwargs['node'], kwargs['primaryprimpath'])
+return prim.canDepopulate()
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+from husd import primwrapper
+primset = primwrapper.PrimSet(kwargs['node'], kwargs['primpaths'])
+primset.removePopulatePaths()
+]]></scriptCode>
+	</scriptItem>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.clear_loadmasks">
+	    <label>Clear Load Masks on This Branch</label>
+	    <context>
+		<expression><![CDATA[
+loadmasks = kwargs['node'].network().viewportLoadMasks()
+return (not loadmasks.populateAll()) or (not loadmasks.loadAll())
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+from husd import primwrapper
+primset = primwrapper.PrimSet(kwargs['node'], kwargs['primpaths'])
+primset.clearBranchLoadMasks()
+]]></scriptCode>
+	</scriptItem>
+
+	<separatorItem/>
+
+	<scriptItem id="h.pane.scenegraphtree.menu.lookthrough">
+	    <label>Look Through Camera/Light</label>
+	    <context>
+		<expression><![CDATA[
+from pxr import UsdGeom, UsdLux
+stage = kwargs['node'].stage()
+prim = stage.GetPrimAtPath(kwargs['primaryprimpath'])
+if UsdGeom.Camera(prim) or UsdLux.Light(prim):
+    return True
+return False
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+import toolutils
+viewer = toolutils.sceneViewer()
+if viewer and kwargs['primpaths']:
+    viewer.curViewport().setCamera(kwargs['primpaths'][0])
+]]></scriptCode>
+	</scriptItem>
+
+	<subMenu id="h.pane.scenegraphtree.menu.select_primitive">
+	    <label>Select Primitive</label>
+	    <context>
+		<expression><![CDATA[
+import loputils
+return loputils.hasRelatedPrims(kwargs['node'], kwargs['primaryprimpath'])
+]]></expression>
+	    </context>
+	    <scriptMenuStripDynamic id="h.pane.scenegraphtree.menu.jump_to_prims_dynamic">
+		<contentsScriptCode><![CDATA[
+import loputils
+return loputils.generateJumpToMenuItems(
+    kwargs['node'], kwargs['primaryprimpath'])
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import loputils
+loputils.executeJumpToMenuItem(kwargs['node'], kwargs['selectedtoken'])
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="h.pane.scenegraphtree.menu.edit_primitive">
+	    <label>Edit Primitive</label>
+	    <scriptMenuStripDynamic id="h.pane.scenegraphtree.menu.edit_prims_dynamic">
+		<contentsScriptCode><![CDATA[
+import loputils
+return loputils.generateEditMenuItems(
+    kwargs['node'], kwargs['primaryprimpath'])
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import loputils
+loputils.executeEditMenuItem(kwargs['node'], kwargs['selectedtoken'], kwargs['primpaths'])
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<scriptItem id="h.copy">
+	    <label>Copy Paths</label>
+	    <scriptCode><![CDATA[
+hou.ui.copyTextToClipboard(' '.join(kwargs['primpaths']))
+]]></scriptCode>
+	</scriptItem>
+
+    </menu>
+</menuDocument>

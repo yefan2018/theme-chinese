@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<AppCfg Default="true" xmlns="" CfgFormatVersion="1.2" ThisFileVersion="1.0">
+  <AppInfo>
+    <Signature>
+      <Name>胡迪尼</Name>
+      <ExecutableName>houdini.exe</ExecutableName>
+      <ExecutableName>hindie.exe</ExecutableName>
+      <ExecutableName>hindie.exe</ExecutableName>
+      <Transport>S80</Transport>
+    </Signature>
+    <Options>
+      <IgnoreMouseWheelInertia>true</IgnoreMouseWheelInertia>
+      <SendDeviceChangeEvent>false</SendDeviceChangeEvent>
+    </Options>
+  </AppInfo>
+  <Settings>
+    <ResponseCurve>1.7</ResponseCurve>
+    <ScaleX>3.00</ScaleX>
+    <ScaleY>3.00</ScaleY>
+    <ScaleZ>3.00</ScaleZ>
+    <ScaleRx>3.00</ScaleRx>
+    <ScaleRy>3.00</ScaleRy>
+    <ScaleRz>3.00</ScaleRz>
+  </Settings>
+  <ButtonActions xmlns:driver_images="./images/3DxService/">
+    <!-- Application commands-->
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:object_cam</ID>
+      <Name>相机</Name>
+      <AppCmdID>tool:object_cam</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:object_arealight</ID>
+      <Name>区域灯</Name>
+      <AppCmdID>tool:object_arealight</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:anim_flipbook</ID>
+      <Name>图像序列视图</Name>
+      <AppCmdID>tool:anim_flipbook</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:anim_prevkey</ID>
+      <Name>上一个键值</Name>
+      <AppCmdID>tool:anim_prevkey</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:anim_nextkey</ID>
+      <Name>下一个键值</Name>
+      <AppCmdID>tool:anim_nextkey</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:anim_play</ID>
+      <Name>播放</Name>
+      <AppCmdID>tool:anim_play</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:object_parent</ID>
+      <Name>关系</Name>
+      <AppCmdID>tool:object_parent</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:object_null</ID>
+      <Name>空</Name>
+      <AppCmdID>tool:object_null</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:object_pose</ID>
+      <Name>姿势</Name>
+      <AppCmdID>tool:object_pose</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:geometry_file</ID>
+      <Name>文件</Name>
+      <AppCmdID>tool:geometry_file</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:object_renderregion</ID>
+      <Name>渲染区域</Name>
+      <AppCmdID>tool:object_renderregion</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_polyextrude</ID>
+      <Name>多重挤压</Name>
+      <AppCmdID>tool:sop_polyextrude::2.0</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_polybevel</ID>
+      <Name>多重斜面</Name>
+      <AppCmdID>tool:sop_polybevel::2.0</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_polybridge</ID>
+      <Name>多重链接</Name>
+      <AppCmdID>tool:sop_polybridge</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_polyfill</ID>
+      <Name>多重填充</Name>
+      <AppCmdID>tool:sop_polyfill</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_polysplit</ID>
+      <Name>多重拆分</Name>
+      <AppCmdID>tool:sop_polysplit::2.0</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_edgeloop</ID>
+      <Name>边缘循环</Name>
+      <AppCmdID>tool:sop_edgeloop</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_knife</ID>
+      <Name>刀</Name>
+      <AppCmdID>tool:sop_knife</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:sop_clip</ID>
+      <Name>剪辑</Name>
+      <AppCmdID>tool:sop_clip</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:geometry_intersect</ID>
+      <Name>相交</Name>
+      <AppCmdID>tool:geometry_intersect</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:geometry_union</ID>
+      <Name>合并</Name>
+      <AppCmdID>tool:geometry_union</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:geometry_subtract</ID>
+      <Name>减去</Name>
+      <AppCmdID>tool:geometry_subtract</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dynamics_rbdobjects</ID>
+      <Name>RBD 对象</Name>
+      <AppCmdID>tool:dynamics_rbdobjects</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dynamics_popgrains</ID>
+      <Name>干沙</Name>
+      <AppCmdID>tool:dynamics_popgrains</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dynamics_makeflip</ID>
+      <Name>来自对象的 FLIP 流体</Name>
+      <AppCmdID>tool:dynamics_makeflip</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dynamics_wavetank</ID>
+      <Name>波浪水槽</Name>
+      <AppCmdID>tool:dynamics_wavetank</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dop_clothobject</ID>
+      <Name>布料对象</Name>
+      <AppCmdID>tool:dop_clothobject</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dop_groundplane</ID>
+      <Name>地面平面</Name>
+      <AppCmdID>tool:dop_groundplane</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dynamics_staticobject</ID>
+      <Name>静态对象</Name>
+      <AppCmdID>tool:dynamics_staticobject</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dop_deformingobject</ID>
+      <Name>变形对象</Name>
+      <AppCmdID>tool:dop_deformingobject</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:pyro_explosion</ID>
+      <Name>爆炸</Name>
+      <AppCmdID>tool:pyro_explosion</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:pyro_billowysmoke</ID>
+      <Name>庞大的烟雾</Name>
+      <AppCmdID>tool:pyro_billowysmoke</AppCmdID>
+    </ButtonAction>
+    <ButtonAction Type="AppCommand">
+      <ID>AppCommand_tool:dop_organicmass</ID>
+      <Name>有机质量</Name>
+      <AppCmdID>tool:dop_organicmass</AppCmdID>
+    </ButtonAction>
+  </ButtonActions>
+  <Devices>
+    <Device>
+      <Name>标准 3D 鼠标</Name>
+      <VendorID>0</VendorID>
+      <ProductID>0</ProductID>
+      <AxisFilter>None</AxisFilter>
+      <CurrentButtonBank>Default</CurrentButtonBank>
+      <ButtonBank Default="true">
+        <Name>STR_DEFAULT_BUTTONBANK</Name>
+        <ID>Default</ID>
+        <Button>
+          <Input><ActionID>V3DK_MENU</ActionID></Input>
+          <Output><ActionID>Driver_ShowDriverGUI</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_FIT</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_FIT</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_TOP</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_TOP</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_LEFT</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_LEFT</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_RIGHT</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_RIGHT</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_FRONT</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_FRONT</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_BOTTOM</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_BOTTOM</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_BACK</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_BACK</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_ROLL_CW</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_ROLLCW</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_ROLL_CCW</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_ROLLCCW</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_ISO1</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_ISO1</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_ISO2</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_ISO2</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_1</ActionID></Input>
+          <Output><ActionID>Driver_Toggle_3DxNumPad</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_2</ActionID></Input>
+          <Output><ActionID>Driver_Toggle_3DxNumPad</ActionID></Output>
+        </Button>
+      </ButtonBank>
+      <ButtonBank>
+        <Name>现场</Name>
+        <ID>Object</ID>
+        <Button>
+          <Input><ActionID>V3DK_2</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:object_cam</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_3</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:object_arealight</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_4</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:object_renderregion</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_5</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:object_parent</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_6</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:object_null</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_7</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:anim_prevkey</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_8</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:anim_nextkey</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_9</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:anim_play</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_10</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:anim_flipbook</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_11</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:object_pose</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_12</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:geometry_file</ActionID></Output>
+        </Button>
+      </ButtonBank>
+      <ButtonBank>
+        <Name>几何体</Name>
+        <ID>Sop</ID>
+        <Button>
+          <Input><ActionID>V3DK_2</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_polyextrude</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_3</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_polybevel</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_4</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_polybridge</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_5</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_polyfill</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_6</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_polysplit</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_7</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_edgeloop</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_8</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_knife</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_9</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:sop_clip</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_10</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:geometry_intersect</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_11</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:geometry_union</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_12</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:geometry_subtract</ActionID></Output>
+        </Button>
+      </ButtonBank>
+      <ButtonBank>
+        <Name>动力学</Name>
+        <ID>Dop</ID>
+        <Button>
+          <Input><ActionID>V3DK_2</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dynamics_rbdobjects</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_3</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dynamics_popgrains</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_4</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dynamics_makeflip</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_5</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dynamics_wavetank</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_6</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dop_clothobject</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_7</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dop_groundplane</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_8</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dynamics_staticobject</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_9</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dop_deformingobject</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_10</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:pyro_explosion</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_11</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:pyro_billowysmoke</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V3DK_12</ActionID></Input>
+          <Output><ActionID>AppCommand_tool:dop_organicmass</ActionID></Output>
+        </Button>
+      </ButtonBank>
+    </Device>
+    <Device>
+      <Name>标准 2D 鼠标</Name>
+      <VendorID>0</VendorID>
+      <ProductID>0</ProductID>
+      <CurrentButtonBank>Default</CurrentButtonBank>
+      <ButtonBank Default="true">
+        <Name>STR_DEFAULT_BUTTONBANK</Name>
+        <ID>Default</ID>
+        <Button>
+          <Input><ActionID>V2DK_FORWARD</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_QZ_IN</ActionID></Output>
+        </Button>
+        <Button>
+          <Input><ActionID>V2DK_BACKWARD</ActionID></Input>
+          <Output><ActionID>V3DCMD_VIEW_QZ_OUT</ActionID></Output>
+        </Button>
+      </ButtonBank>
+    </Device>
+  </Devices>
+  <UI>
+    <ButtonFlyouts>
+      <Category Sort="false">
+        <ID>UI_3Dx</ID>
+        <Name>STR_UI_3DX</Name>
+        <ButtonAction><ID>V3DCMD_VIEW_QZ_IN</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_QZ_OUT</ID></ButtonAction>
+      </Category>
+      <Category Sort="false">
+        <ID>UI_Views</ID><Name>STR_UI_VIEWS</Name>
+        <ButtonAction><ID>V3DCMD_VIEW_FIT</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_1</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_2</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_3</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_SAVE_VIEW_1</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_SAVE_VIEW_2</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_SAVE_VIEW_3</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_TOP</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_LEFT</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_RIGHT</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_FRONT</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_BOTTOM</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_BACK</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_ROLLCW</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_ROLLCCW</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_ISO1</ID></ButtonAction>
+        <ButtonAction><ID>V3DCMD_VIEW_ISO2</ID></ButtonAction>
+      </Category>
+    </ButtonFlyouts>
+  </UI>
+</AppCfg>

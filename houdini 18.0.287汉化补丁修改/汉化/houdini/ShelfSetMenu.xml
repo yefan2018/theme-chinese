@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the entries in the menu that appears on a mouse
+    right-button click over a shelf tool in Houdini's shelving area.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the 
+    flolowing values:
+	'ownername' :   The name of the shelf set that popped up the menu.
+   
+    plus the standard script menu item kwargs:
+	'toolname'  :	The menu item's hotkey id 
+			(ie. the element's id prefixed with h.shelf.menu.)
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick' :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick':	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+    
+    For the <context> block, the <ownerMask> refers to the name of the shelf
+    set, and the <expression> is given kwargs similar to the script item.
+
+
+    For example:
+    <scriptItem id="my_action">
+      <label>我的操作</label>
+      <context>
+	<ownerMask>shelf_set_1</ownerMask>
+      </context>
+      <scriptCode><![CDATA[
+arguments = '\n  '.join(['%s = %s' % (k,w) for (k,w) in kwargs.items()])
+hou.ui.displayMessage('My Action with kwargs:\n  ' + arguments)
+]]></scriptCode>
+    </scriptItem>
+
+-->
+
+<menuDocument>
+  <menu>
+
+    <actionItem id="new_shelfset">
+      <label>新建工具架集...</label>
+    </actionItem>
+
+    <actionItem id="edit_shelfset">
+      <label>编辑工具架集...</label>
+    </actionItem>
+
+    <separatorItem id="separator_1"/>
+
+    <actionItem id="new_shelf">
+      <label>新建工具架...</label>
+    </actionItem>
+
+    <separatorItem id="separator_2"/>
+
+    <actionItem id="save_shelfset">
+      <label>将工具架集另存为...</label>
+    </actionItem>
+
+    <subMenu id="shelf_list_submenu">
+      <label>工具架集</label>
+      <menuStripDynamic id="shelf_list_strip">
+        <value>dock_shelf_list.val</value>
+      </menuStripDynamic>
+    </subMenu>
+
+    <separatorItem id="separator_3"/>
+
+    <actionItem id="remove_shelfset">
+      <label>从停靠区移除工具架集</label>
+    </actionItem>
+
+    <actionItem id="delete_shelfset">
+      <label>删除工具架集</label>
+    </actionItem>
+
+    <separatorItem id="separator_4"/>
+
+    <subMenu id="tool_appearance_submenu">
+      <label>显示工具作为</label>
+      <menuStripDynamicRadio id="tool_appearance_strip">
+        <value>dock_tools_appearance.val</value>
+      </menuStripDynamicRadio>
+    </subMenu>
+
+  </menu>
+</menuDocument>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    This file defines the menu items when clicking over the playbar
+    keying mode in Houdini.
+
+    Files named the same (ie. KeyframesMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+<!-- menuDocument can only contain 1 menu element, whose id is 
+     implicitly "root_menu"
+  -->
+<menu>
+
+<actionItem id="h.pane.chedit.keycurrent">
+    <label>把当前时间集成到关键帧</label>
+</actionItem>
+
+<actionItem id="h.pane.chedit.samplecurrent">
+    <label>把当前时间转为示例值</label>
+</actionItem>
+
+<actionItem id="h.pane.chedit.pastesample">
+    <label>把当前时间插入采样值</label>
+</actionItem>
+
+<separatorItem id="dope_context_sep_1"/>
+
+<actionItem id="h.pane.chedit.dope.clearsel">
+    <label>取消选择全部</label>
+</actionItem>
+
+<subMenu id="edit_adjust_sel_menu">
+    <label>调整选择</label>
+    <actionItem id="h.pane.chedit.dope.growcol">
+        <label>选择整列</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.growrow">
+        <label>选择整行</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.snap">
+        <label>将当前选择捕捉到键值</label>
+    </actionItem>
+</subMenu>
+
+<separatorItem id="dope_context_sep_2"/>
+
+<actionItem id="h.pane.chedit.dope.addkey">
+    <label>键值选择</label>
+</actionItem>
+<actionItem id="h.pane.chedit.del">
+    <label>删除键值</label>
+</actionItem>
+<actionItem id="h.pane.chedit.dope.disable">
+    <label>禁用键值</label>
+</actionItem>
+<actionItem id="h.pane.chedit.dope.enable">
+    <label>启用键值</label>
+</actionItem>
+
+<separatorItem id="dope_context_sep_3"/>
+<actionItem id="h.cut">
+    <label>剪切</label>
+</actionItem>
+<actionItem id="h.copy">
+    <label>复制</label>
+</actionItem>
+<actionItem id="h.paste">
+    <label>粘贴</label>
+</actionItem>
+<actionItem id="h.pane.chedit.dope.sreplace">
+    <label>替换</label>
+</actionItem>
+
+<subMenu id="edit_paste_special_menu">
+    <label>粘贴特殊</label>
+    <actionItem id="h.pane.chedit.dope.vpaste">
+        <label>视觉粘贴</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.vreplace">
+        <label>视觉替换</label>
+    </actionItem>
+    <separatorItem id="dope_context_sep_4"/>
+    <actionItem id="h.pane.chedit.dope.vstretch">
+        <label>视觉拉伸</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.vcycle">
+        <label>视觉循环</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.vcycleoffset">
+        <label>带偏移的视觉循环</label>
+    </actionItem>
+    <separatorItem id="dope_context_sep_5"/>
+    <actionItem id="h.pane.chedit.dope.sstretch">
+        <label>在区域选择处拉伸</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.scycle">
+        <label>区域选择循环</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.scycleoffset">
+        <label>区域选择时带偏移的循环</label>
+    </actionItem>
+</subMenu>
+<separatorItem id="dope_context_sep_6"/>
+<actionItem id="h.pane.chedit.dope.snapmarks">
+    <label>将所选键值对齐到近期的帧</label>
+</actionItem>
+</menu>
+</menuDocument>
+
+

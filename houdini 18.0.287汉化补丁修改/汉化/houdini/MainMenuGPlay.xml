@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file.menu">
+    <label>文件</label>
+
+      <actionItem id="open">
+        <label>打开...</label>
+	<value>vdCommand</value>
+      </actionItem>
+
+      <actionItem id="quit">
+        <label>退出</label>
+	<value>vdCommand</value>
+      </actionItem>
+    </subMenu>
+
+    <!-- ======================== Display Menu =========================== -->
+    <subMenu id="display.menu">
+    <label>显示</label>
+ 
+    <toggleItem id="autohome">
+	<label>自动返回</label>
+	<value>autoHome</value>
+    </toggleItem>
+    
+    <actionItem id="display_info">
+	<label>几何体信息</label>
+	<value>vdCommand</value>
+    </actionItem>
+    
+    <actionItem id="display_ssheet">
+	<label>几何体电子表格</label>
+	<value>vdCommand</value>
+    </actionItem>
+    
+    <actionItem id="flipbook">
+	<label>图像序列视图</label>
+	<value>vdCommand</value>
+    </actionItem>
+
+    <actionItem id="display_prefs">
+	<label>偏好</label>
+	<value>vdCommand</value>
+    </actionItem>
+    
+    </subMenu>
+    
+    <!-- ======================== Geometry Menu =========================== -->
+    <subMenu id="geometry.menu">
+    <label>几何体</label>
+	<actionItem id="unpack">
+	    <label>卸载几何体</label>
+	    <value>vdCommand</value>
+	</actionItem>
+	<menuStripDynamic id="geo_strip">
+	    <value>detailMenu</value>
+	</menuStripDynamic>
+    </subMenu>
+    
+  </menuBar>
+</mainMenu>

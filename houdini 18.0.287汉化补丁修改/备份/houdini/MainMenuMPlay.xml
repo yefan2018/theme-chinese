@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file_menu">
+    <label>File</label>
+
+      <subMenu id="file_new_viewer">
+      <label>New</label>
+
+        <actionItem id="mplay.newviewer">
+          <label>2D View</label>
+        </actionItem>
+
+        <actionItem id="mplay.newtimeline">
+          <label>Timeline</label>
+        </actionItem>
+
+        <actionItem id="mplay.newgraph">
+          <label>Histogram</label>
+        </actionItem>
+      </subMenu>
+
+      <actionItem id="mplay.openframe" platform="mbsd">
+        <label>Open Single File...</label>
+      </actionItem>
+
+      <!-- Note, this menu item is modified on an mbsd platform at the 
+           end of this file. Look for mplay.open id in this file. -->
+      <actionItem id="mplay.open">
+        <label>Open...</label>
+      </actionItem>
+
+      <actionItem id="mplay.openstereo">
+        <label>Open Stereo Pair...</label>
+      </actionItem>
+
+      <actionItem id="mplay.merge">
+        <label>Merge...</label>
+      </actionItem>
+
+      <actionItem id="mplay.insertbefore">
+        <label>Prepend Sequence...</label>
+      </actionItem>
+
+      <actionItem id="mplay.append">
+        <label>Append Sequence...</label>
+      </actionItem>
+
+      <separatorItem/>
+      <subMenu id="file_recent_files">
+      <label>Recent Files</label>
+         <menuStripDynamic>
+           <value>recentfiles.menu</value>
+         </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.saveframe">
+        <label>Save Frame As...</label>
+      </actionItem>
+
+      <actionItem id="mplay.saveseq">
+        <label>Save Sequence As...</label>
+      </actionItem>
+
+      <actionItem id="mplay.savepreview">
+        <label>Save Preview...</label>
+      </actionItem>
+
+      <separatorItem/>
+
+      <subMenu id="export_movie">
+      <label>Export</label>
+         <menuStripDynamic>
+           <value>exportmovie.menu</value>
+         </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.loadbg">
+        <label>Load Background...</label>
+      </actionItem>
+
+      <actionItem id="mplay.unloadbg">
+        <label>Unload Background</label>
+      </actionItem>
+
+      <separatorItem id="file_menu_sep_quit"/>
+
+      <actionItem id="mplay.quit">
+        <label>Quit Application</label>
+      </actionItem>
+
+    </subMenu>
+
+    <!-- ======================== View Menu =========================== -->
+    <subMenu id="view_menu">
+    <label>View</label>
+
+      <menuStripRadio id = "view_editor">
+	 <value>editor.val</value>
+	 <radioItem id="editor_2d"><label>2D View</label></radioItem>
+	 <radioItem id="editor_time"><label>Timeline</label></radioItem>
+	 <radioItem id="editor_graph"><label>Histogram</label></radioItem>
+      </menuStripRadio>
+
+      <separatorItem/>
+ 
+      <subMenu id = "view_plane">
+         <label>Plane</label>
+         <menuStripDynamicRadio id = "view_plane_strip">
+	    <value>planeMenuIndex</value>
+	 </menuStripDynamicRadio>
+      </subMenu>
+
+      <subMenu id = "view_zoom">
+         <label>Zoom</label>
+
+         <actionItem id="h.pane.imgui.zoomin">
+            <label>Zoom In</label>
+	    <value>zoomin.val</value>
+         </actionItem>
+	 
+         <actionItem id="h.pane.imgui.zoomout">
+            <label>Zoom Out</label>
+	    <value>zoomout.val</value>
+         </actionItem>
+
+         <separatorItem/>
+
+         <actionItem id="h.pane.imgui.home">
+            <label>Home</label>
+	    <value>home.val</value>
+         </actionItem>
+
+         <actionItem id="mplay.fitviewer">
+            <label>Fit Window to Image</label>
+         </actionItem>
+
+         <actionItem id="h.pane.imgui.homefull">
+            <label>Fit Image to Window</label>
+         </actionItem>
+       </subMenu>
+
+      <subMenu id = "view_layout">
+         <label>Layout</label>
+	 <menuStripRadio id = "view_layout_cols">
+	    <value>gridc.val</value>
+	    <radioItem id="layout_1col"><label>1 Column</label></radioItem>
+	    <radioItem id="layout_2col"><label>2 Columns</label></radioItem>
+	    <radioItem id="layout_3col"><label>3 Columns</label></radioItem>
+	    <radioItem id="layout_4col"><label>4 Columns</label></radioItem>
+	 </menuStripRadio>
+	 <separatorItem/>
+	 <menuStripRadio id = "view_layout_rows">
+	    <value>gridr.val</value>
+	    <radioItem id="layout_1row"><label>1 Row</label></radioItem>
+	    <radioItem id="layout_2row"><label>2 Rows</label></radioItem>
+	    <radioItem id="layout_3row"><label>3 Rows</label></radioItem>
+	    <radioItem id="layout_4row"><label>4 Rows</label></radioItem>
+	 </menuStripRadio>
+	 <toggleItem id = "view_layout_hide_blank">
+	    <label>Hide Blank Viewports</label>
+	    <value>hideblank.val</value>
+	 </toggleItem>
+      </subMenu>
+      
+      <subMenu id = "view_ui">
+         <label>User Interface</label>
+	 
+         <toggleItem id="mplay.fullscreen">
+           <label>Fullscreen</label>
+	   <value>mplay.fullscreen</value>
+         </toggleItem>
+
+	 <toggleItem id="mplay.hideui">
+	    <label>Hide Extra UI</label>
+	    <value>mplay.toggleui</value>
+	 </toggleItem>
+
+	 <separatorItem/>
+
+	 <toggleItem id="menubar">
+	   <label>Menubar</label>
+	   <value>menubarValue</value>
+	 </toggleItem>
+	 <toggleItem id="mainbar">
+	    <label>Main bar</label>
+	    <value>mainbarValue</value>
+	 </toggleItem>
+	 <toggleItem id="displaybar">
+	    <label>Display bar</label>
+	    <value>displaybarValue</value>
+         </toggleItem>
+	 <toggleItem id="imagecontrols">
+	    <label>Image Controls</label>
+	    <value>controlbarValue</value>
+	 </toggleItem>
+	 <toggleItem id="audiobar">
+	    <label>Audio bar</label>
+	    <value>audiobarValue</value>
+	 </toggleItem>
+	 <toggleItem id="playbar">
+	   <label>Playbar</label>
+	   <value>playbarValue</value>
+	 </toggleItem>
+   
+	 <toggleItem id="mplay.toggletopmost">
+	    <label>Always on Top</label>
+	    <value>mplay.toggletopmost</value>
+	 </toggleItem>
+
+	 <separatorItem/>
+
+	 <toggleItem id="mplay.togglehelp">
+	    <label>Help Tips</label>
+	    <value>mplay.togglehelp</value>
+	 </toggleItem>
+	 
+      </subMenu>
+
+      <separatorItem/>
+
+      <toggleItem id = "h.pane.imgui.split.linkall">
+         <label>Apply changes to all views</label>
+         <value>linkViews</value>
+      </toggleItem>
+
+      <toggleItem id = "h.pane.imgui.split.linkscroll">
+         <label>Link Viewport Scrolling</label>
+         <value>linkScroll</value>
+      </toggleItem>
+
+      <toggleItem id = "h.pane.imgui.split.zoomport">
+         <label>Maximize Current Viewport</label>
+         <value>zoomPort</value>
+      </toggleItem>
+      
+     <separatorItem platform="mbsd" />
+     
+     <actionItem id="mplay.halfsize" platform="mbsd">
+       <label>Halve Window Size</label>
+     </actionItem>
+     
+     <actionItem id="mplay.doublesize" platform="mbsd">
+       <label>Double Window Size</label>
+     </actionItem>
+
+    </subMenu>
+
+    <!-- ======================== Render Menu =========================== -->
+    <subMenu id = "render_menu">
+    <label>Render</label>
+
+	<menuStripRadio id="render_source">
+	  <value>render.source</value>
+
+	  <radioItem id="disconnected"><label>Disconnected</label>
+	  </radioItem>
+	  <radioItem id="listenrender"><label>Listen for Renders</label>
+	  </radioItem>
+	  <radioItem id="listenflipbook"><label>Listen for Flipbooks</label>
+	  </radioItem>
+
+	</menuStripRadio>
+
+	<separatorItem/>
+
+	<actionItem id="mplay.newsequence">
+	   <label>New Sequence</label>
+	   <value>newsequence.key</value>
+        </actionItem>
+
+        <actionItem id="mplay.killrender">
+           <label>Halt Current Render</label>
+	   <value>killrender.key</value>
+        </actionItem>
+
+        <actionItem id="mplay.killallrenders">
+           <label>Halt All Renders</label>
+	   <value>killrender.key</value>
+        </actionItem>
+
+	<actionItem id="mplay.disconnect">
+	   <label>Disconnect</label>
+	   <value>disconnect.key</value>
+        </actionItem>
+    </subMenu>
+
+    <!-- ======================== Anim Menu =========================== -->
+    <subMenu id="anim_menu">
+    <label>Anim</label>
+
+      <actionItem id="h.play_fwd">
+        <label>Play</label>
+      </actionItem>
+
+      <actionItem id="mplay.stopplay">
+        <label>Stop</label>
+      </actionItem>
+
+      <actionItem id="h.range_start">
+        <label>Go to First Frame</label>
+      </actionItem>
+
+      <actionItem id="h.prev_key">
+        <label>Go to Previous Existing Frame</label>
+      </actionItem>
+
+      <actionItem id="h.next_key">
+        <label>Go to Next Existing Frame</label>
+      </actionItem>
+
+      <separatorItem/>
+
+       <toggleItem id = "mplay.realtime">
+           <label>Realtime</label>
+           <value>realtime.val</value>
+       </toggleItem>
+
+       <subMenu id ="anim_loopmode">
+         <label>Play Mode</label>
+
+         <menuStripRadio id = "anim_loop">
+	   <value>loop.val</value>
+	   <radioItem id = "loop">  <label>Loop</label></radioItem>
+	   <radioItem id = "once">  <label>Play Once</label></radioItem>
+	   <radioItem id = "zigzag"><label>Zig-Zag</label></radioItem>
+         </menuStripRadio>
+      </subMenu>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.sethoudiniframe">
+        <label>Set Houdini Frame</label>
+      </actionItem>
+
+      <actionItem id="mplay.exportblocking">
+        <label>Export Blocking</label>
+      </actionItem>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.loadaudio">
+        <label>Load Audio...</label>
+      </actionItem>
+
+      <actionItem id="mplay.unloadaudio">
+        <label>Unload Audio</label>
+      </actionItem>
+
+    </subMenu>
+
+    <!-- ======================== Images Menu =========================== -->
+    <subMenu id = "image_menu">
+    <label>Image</label>
+
+      <menuStripDynamicRadio id="image_sources">
+        <value>seq.val</value>
+      </menuStripDynamicRadio> 
+
+      <separatorItem/>
+
+      <actionItem id="mplay.reloadseq">
+        <label>Reload Sequence</label>
+      </actionItem>
+    
+      <separatorItem/>
+
+      <actionItem id="mplay.removeseq">
+        <label>Remove Sequence</label>
+      </actionItem>
+    
+      <actionItem id="mplay.removeframe">
+        <label>Remove Frame</label>
+      </actionItem>
+    
+      <separatorItem/>
+
+      <subMenu>
+         <label>Image Pixel Scale</label>
+         <menuStripRadio id = "view_zoom_factor">
+	   <value>zoomfactor.menu</value>
+
+	   <radioItem id = "zoom12.5"><label>12.5%</label></radioItem>
+	   <radioItem id = "zoom25"><label>25%</label></radioItem>
+	   <radioItem id = "zoom33"><label>33%</label></radioItem>
+	   <radioItem id = "zoom50"><label>50%</label></radioItem>
+	   <radioItem id = "zoom66"><label>66%</label></radioItem>
+	   <radioItem id = "zoom75"><label>75%</label></radioItem>
+	   <radioItem id = "zoom100"><label>100%</label></radioItem>
+	   <radioItem id = "zoom133"><label>133%</label></radioItem>
+	   <radioItem id = "zoom150"><label>150%</label></radioItem>
+	   <radioItem id = "zoom200"><label>200%</label></radioItem>
+	   <radioItem id = "zoom300"><label>300%</label></radioItem>
+	   <radioItem id = "zoom400"><label>400%</label></radioItem>
+	   <radioItem id = "zoom800"><label>800%</label></radioItem>
+         </menuStripRadio>
+      </subMenu>
+
+      <separatorItem/>
+
+      <toggleItem id="h.pane.imgui.enablelut">
+        <label>Enable LUT</label>
+	<value>lut.enable</value>
+      </toggleItem>
+
+      <actionItem id="h.pane.imgui.loadlut">
+        <label>Load LUT...</label>
+	<value>lut.browse</value>
+      </actionItem>
+
+      <separatorItem/>
+
+      <toggleItem id="diff">
+        <label>Compare Images</label>
+	<value>diffbarValue</value>
+      </toggleItem>
+
+      <toggleItem id="inspect">
+        <label>Inspect Image</label>
+	<value>inspectbarValue</value>
+      </toggleItem>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.clearcache">
+        <label>Clear Cache</label>
+      </actionItem>
+
+      <actionItem id="mplay.cacheall">
+        <label>Cache All</label>
+      </actionItem>
+
+      <separatorItem/>
+
+      <actionItem id="mplay.addcomment">
+        <label>Add Frame Comment...</label>
+      </actionItem>
+
+    </subMenu>
+    
+    <!-- ======================== Windows Menu =========================== -->
+    <subMenu id="windows_menu">
+    <label>Windows</label>
+
+      <actionItem id="mplay.settings">
+        <label>Preferences</label>
+      </actionItem>
+
+      <actionItem id="mplay.profiles">
+        <label>Profiles</label>
+      </actionItem>
+
+      <actionItem id="mplay.displayoptions">
+        <label>Display Options</label>
+      </actionItem>
+
+      <actionItem id="mplay.sequencelist">
+        <label>Sequence List</label>
+      </actionItem>
+
+      <actionItem id="mplay.textport">
+        <label>Textport</label>
+      </actionItem>
+
+    </subMenu>
+  </menuBar>
+
+  <!-- =============== platform-spcific tweaking =========================== -->
+
+  <!-- on mbsd, make it explicit that this item opens a sequence of files -->
+  <modifyItem id="mplay.open" platform="mbsd">
+    <label>Open Sequence...</label>
+  </modifyItem>
+</mainMenu>

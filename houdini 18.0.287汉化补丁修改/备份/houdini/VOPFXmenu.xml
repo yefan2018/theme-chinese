@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items when left-clicking over an export button
+    next to each parameter in Houdini.
+
+    Files named the same (ie. PARMmenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Another difference here is that most menu items in this file have no labels
+    because they are dynamically created by Houdini. If labels are supplied to
+    the items which currently have no labels in this file, they will be
+    ignored.
+
+    Note that the id's correspond to their hotkeys with the h.pane.parms.
+    prefix (where available). For example, the item with id,
+    "create_ramp", refers to the action in the hotkeys manager as
+    "h.pane.parms.vopeffects.create_ramp".
+    
+    Also note that you can specify which context a particular menu item shows
+    up in. To do this, add a context property:
+	<context>
+	    <parentNetworkType>vopsurface</parentNetworkType>
+	</context>
+    Or, for multiple contexts, a comma-separated list:
+	<context>
+	    <parentNetworkType>vopsurface, voppop</parentNetworkType>
+	</context>
+    Or use an expression to determine if the menu item appears in the current
+    context.  For example, to make the menu item appear only if the parent node
+    is a VOP HDA node:
+	<context>
+	    <expression>kwargs.get("parentoptable", "") == "vop" and kwargs.get("isparenthda", False)</expression>
+	</context>
+    For expression elements, a 'kwargs' Python dictionary is provided with the
+    following values:
+	'isparenthda'	:   True if the parent network is an instance of an Houdini Digital Asset (HDA).
+	'parentopname'	:   The operator name of the parent network.
+	'parentoptable'	:   The operator table name of the parent network (i.e. Vop, Sop, etc.).
+    Separators can also be hidden:
+	<separatorItem>
+	    <context>
+		<parentNetworkType>vopsurface, voppop</parentNetworkType>
+	    </context>
+	</separatorItem>
+    By default, an entry shows up in all VOP contexts.
+    The context type token is the operator type of the parent network 
+    in which the node resides. For example, for a VOP surface shader the token
+    is vopsurface, for a VOP SOP node it is vopsop, etc.
+    
+    When adding custom menu items, it is advisable to put them in a separate 
+    instead of modifying voptoolutils.py directly. This is accomplished by
+    implementing a callback to actually create needed nodes, and passing
+    an instance of the corresponding object to the parmVopEffect() function.
+    An example menu script can be found below:
+    
+    import voptoolutils
+    import vopcallbacks
+
+    customCallbacks = vopcallbacks.MyShaderFxCallbacks()
+    effect = voptoolutils.parmVopEffect(kwargs, 'Anything', None, None, customCallbacks)
+    
+    MyShaderFxCallbacks callbacks is defined in vopcallbacks, which also 
+    describes each parameter a callback gets and has an example implementation.
+    
+    For scriptItem elements, a 'kwargs' Python dictionary is provided with the
+    following values:
+	'parm'	    :	The name of the parameter affected.
+	'node'		:	A full path to the node on which the affected parameter 
+				resides.
+	'input'		:	An integer representing the index of an input which 
+				corresponds to the affected parameter.
+	'toolname'  :	The menu item's hotkey id (ie. the element's id
+			prefixed with h.pane.parms.)
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+	 implicitly "root_menu"
+      -->
+    <menu>
+	<actionItem id="create_parm"/>
+	<actionItem id="create_subnet_input"/>
+	<actionItem id="create_const"/>
+
+	<separatorItem/>
+
+	<subMenu id="vopfx_bsdf_nodes">
+	    <label>BSDF Components</label>
+	    <scriptMenuStripDynamic id="vopfx_bsdf_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'bsdf_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'bsdf_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="vopfx_combine_nodes">
+	    <label>Combine</label>
+	    <scriptMenuStripDynamic id="vopfx_combine_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'combine_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'combine_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="vopfx_filter_nodes">
+	    <label>Filter</label>
+	    <scriptMenuStripDynamic id="vopfx_filter_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'filter_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'filter_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="vopfx_noise_nodes">
+	    <label>Noise</label>
+	    <scriptMenuStripDynamic id="vopfx_noise_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'noise_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'noise_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="vopfx_pattern_nodes">
+	    <label>Patterns</label>
+	    <scriptMenuStripDynamic id="vopfx_pattern_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'pattern_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'pattern_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="vopfx_shader_nodes">
+	    <label>Shaders</label>
+	    <scriptMenuStripDynamic id="vopfx_shader_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'shader_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'shader_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="vopfx_layer_nodes">
+	    <label>Layers</label>
+	    <scriptMenuStripDynamic id="vopfx_layer_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'layer_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'layer_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<subMenu id="vopfx_shading_nodes">
+	    <label>Texture/Geometry</label>
+	    <scriptMenuStripDynamic id="vopfx_shading_nodes_dynamic">
+		<contentsScriptCode><![CDATA[
+import vopfxmenu
+return vopfxmenu.generateMenuItems(kwargs, 'shading_nodes')
+]]></contentsScriptCode>
+		<scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.executeMenuAction(kwargs, 'shading_nodes')
+]]></scriptCode>
+	    </scriptMenuStripDynamic>
+	</subMenu>
+
+	<separatorItem/>
+
+<!--
+	<scriptToggleItem id="myvar_toggle_script">
+	    <label>Promote Parameters of Created Nodes</label>
+	    <variableName>VOPFX_CREATE_PARMVOPS</variableName>
+	    <scriptCode><![CDATA[
+print 'old', hou.expandString('$VOPFX_CREATE_PARMVOPS')
+hou.hscript("""
+if( $VOPFX_CREATE_PARMVOPS ) then
+set -g VOPFX_CREATE_PARMVOPS = 0;
+else
+set -g VOPFX_CREATE_PARMVOPS = 1;
+endif
+""")
+hou.hscript('varchange VOPFX_CREATE_PARMVOPS')
+]]></scriptCode>
+	</scriptToggleItem>
+        <scriptMenuStripRadio>
+            <variableName>VOPFX_PARMMODE</variableName>
+            <scriptRadioItem id="h.vopfx_parmmode_none">
+                 <label>No Parm Promotion</label>
+                 <variableValue>none</variableValue>
+            </scriptRadioItem>
+            <scriptRadioItem id="h.vopfx_parmmode_shader">
+                 <label>Promote As Parameter</label>
+                 <variableValue>shader</variableValue>
+            </scriptRadioItem>
+            <scriptRadioItem id="h.vopfx_parmmode_subnet">
+                 <label>Promote As Subnet Input</label>
+                 <variableValue>subnetinput</variableValue>
+            </scriptRadioItem>
+        </scriptMenuStripRadio>
+
+	<separatorItem/>
+-->
+
+	<actionItem id="toggle_input_expose"/>
+	<scriptItem id="jump_to_node">
+			<label>Jump to Input Node</label>
+	<scriptCode><![CDATA[
+import voptoolutils
+
+effect = voptoolutils.jumpToNode(kwargs, 'checker')
+
+]]></scriptCode>
+	</scriptItem>
+
+	<separatorItem/>
+
+	<scriptItem id="delete_inputs">
+	    <label>Delete Inputs</label>
+	    <context>
+		<expression><![CDATA[
+import voptoolutils
+# target_node = hou.node(kwargs['node'])
+# input_idx = int(kwargs['input'])
+# return voptoolutils.getInputNode(target_node, input_idx) is not None
+return True
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+import vopfxmenu
+vopfxmenu.deleteInputNodes(kwargs)
+]]></scriptCode>
+	</scriptItem>
+
+	<separatorItem/>
+
+	<actionItem id="toggle_input_visibility"/>
+    </menu>
+</menuDocument>

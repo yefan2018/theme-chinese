@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items when right-clicking over the playbar in
+    Houdini.
+
+    Files named the same (ie. PlaybarMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+         implicitly "root_menu"
+      -->
+    <menu>
+	<actionItem id="pane.chedit.dope.addkey">
+	    <label>Add Keys</label>
+	</actionItem>
+	<actionItem id="pane.chedit.del">
+	    <label>Delete Keys</label>
+	</actionItem>
+	<actionItem id="cut">
+	    <label>Cut</label>
+	</actionItem>
+	<actionItem id="copy">
+	    <label>Copy</label>
+	</actionItem>
+
+	<actionItem id="pane.chedit.dope.spaste">
+	    <label>Paste</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.sstretch">
+	    <label>Stretch/Paste</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.srepeat">
+	    <label>Repeat/Paste</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.scycle">
+	    <label>Cycle/Paste</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.sreplace">
+	    <label>Replace</label>
+	</actionItem>
+
+	<actionItem id="pane.chedit.dope.vpaste">
+	    <label>Visual Paste</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.vstretch">
+	    <label>Visual Stretch/Paste</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.vrepeat">
+	    <label>Visual Repeat/Paste</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.vcycle">
+	    <label>Visual Cycle/Paste</label>
+	</actionItem>
+    <actionItem id="h.pane.chedit.dope.vcycleoffset">
+        <label>Visual Cycle with Offset/Paste</label>
+    </actionItem>
+	<actionItem id="pane.chedit.dope.vreplace">
+	    <label>Visual Replace</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.dope.disable">
+	    <label>Disable Keys</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.enable">
+	    <label>Enable Keys</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.dope.snap">
+	    <label>Snap Selection to Keys</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.growrow">
+	    <label>Select Entire Row</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.clearsel">
+	    <label>Clear Selection</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.handle">
+	    <label>Toggle Handle</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.home">
+	    <label>Home Selection</label>
+	</actionItem>
+
+	<actionItem id="pane.chedit.home_all">
+	    <label>Home All</label>
+	</actionItem>
+	<actionItem id="pane.chedit.home_all_range">
+	    <label>Home Frame Range</label>
+	</actionItem>
+
+	<separatorItem/>
+	<subMenu id="motion_effects_menu"><label>Motion FX</label>
+	    <!-- The contents of this menu is read in from MotionEffectsMenu.xml -->
+	</subMenu>
+	<separatorItem/>
+    
+	<toggleItem id="playbar.show_range">
+	    <label>Show Range Slider</label>
+	    <value>showRange</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_ticks">
+	    <label>Show Ticks</label>
+	    <value>showTicks</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_audio">
+	    <label>Show Audio</label>
+	    <value>showAudio</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_keys">
+	    <label>Show Keys</label>
+	    <value>showKeys</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_simcache">
+	    <label>Show Simulation Cache</label>
+	    <value>showSimCache</value>
+	</toggleItem>
+    </menu>
+</menuDocument>

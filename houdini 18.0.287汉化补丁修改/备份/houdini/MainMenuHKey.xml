@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file.menu">
+    <label>File</label>
+
+      <actionItem id="show_log_in">
+        <label>Install Licenses</label>
+	<value>show_log_in_redeem_window</value>
+      </actionItem>
+      
+      <actionItem id="show_key_entry">
+        <label>Manually Enter Keys...</label>
+	<value>show_key_entry</value>
+      </actionItem>
+
+      <actionItem id="show_key_return">
+        <label>Return Selected License</label>
+	<value>license_rmb_menu_return_license</value>
+      </actionItem>
+      
+      <separatorItem />
+
+      <actionItem id="changeserv">
+	<label>Change License Server...</label>
+	<value>show_change_server_window</value>
+      </actionItem>
+      
+      <actionItem id="prefs">
+	<label>Preferences...</label>
+	<value>show_preferences_window</value>
+      </actionItem>
+      
+      <separatorItem id="file_menu_sep_quit"/>
+      
+      <actionItem id="quit">
+	<label>Exit</label>
+	<value>quitplease</value>
+      </actionItem>
+      
+    </subMenu>
+
+    <!-- ======================== View Menu =========================== -->
+    <subMenu id="view.menu">
+    <label>View</label>
+ 
+    <toggleItem id="showexpired">
+	<label>Show Expired Licenses</label>
+	<value>showexpired</value>
+    </toggleItem>
+    
+    <toggleItem id="showunknown">
+	<label>Show Licenses From All Servers</label>
+	<value>showlicswithunknownsrvs</value>
+    </toggleItem>
+    
+    <separatorItem />
+    
+    <actionItem id="show_license_users">
+	<label>List Users of Selected License</label>
+	<value>license_rmb_menu_list_users</value>
+    </actionItem>
+    
+    <actionItem id="view_diagnostic_info">
+	<label>Diagnostic Information</label>
+	<value>view_diagnostic_info</value>
+    </actionItem>
+    
+    <actionItem id="updateinfo">
+	<label>Refresh</label>
+	<value>updateinfo</value>
+    </actionItem>
+    
+    </subMenu>
+
+    <!-- ======================== Help Menu =========================== -->
+    <subMenu id="help.menu">
+    <label>Help</label>
+
+    <actionItem id="help">
+	<label>Help</label>
+	<value>popup_help</value>
+    </actionItem>
+    <actionItem id="licensing_online_help">
+	<label>Online Licensing Help</label>
+	<value>launch_online_help</value>
+    </actionItem>
+    <actionItem id="faq_online_help">
+	<label>Online Houdini FAQs</label>
+	<value>launch_online_faqs</value>
+    </actionItem>
+
+    <titleItem>
+       <label>Top FAQs</label>
+    </titleItem>
+    <actionItem id="faq_transfer_license">
+	<label>How to Transfer a License to Another Computer</label>
+	<value>popup_faq_transfer_license</value>
+    </actionItem>
+    <actionItem id="faq_reinstall_license">
+	<label>How to Reinstall a License</label>
+	<value>popup_faq_reinstall_license</value>
+    </actionItem>
+    <actionItem id="faq_reinstall_server">
+	<label>How to Fix Invalid SERVER key</label>
+	<value>popup_faq_reinstall_server</value>
+    </actionItem>
+
+    </subMenu>
+        
+  </menuBar>
+</mainMenu>

@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the menu items in the Houdini Network View pane.
+
+    Files named the same (ie. NetworkViewMenu.xml) can exist in
+    $HOME/houdiniX.Y/ directory and will supplement the original definitions
+    found in $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster.
+    See the comments in that file for more advanced customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<mainMenu>
+    <menuBar>
+
+        <subMenu id="create_menu">
+            <label> 添加 </label>
+            <actionItem id="pane.wsheet.add_op">
+                <label>节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.addfileop">
+                <label>文件节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.create_netbox">
+                <label>网格框</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.add_postit">
+                <label>粘滞说明</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.add_image">
+                <label>背景图像</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="create_menu_sep_1"/>
+
+            <actionItem id="pane.wsheet.add_bundle">
+                <label>节点簇</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.add_group">
+                <label>节点组</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="edit_menu">
+            <label> 编辑(&E) </label>
+            <actionItem id="pane.wsheet.select">
+                <label>选择全部</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_2"/>
+
+            <actionItem id="cut">
+                <label>剪切</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="copy">
+                <label>复制</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="paste">
+                <label>粘贴</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.delete">
+                <label>删除</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.del_netbox_and_contents">
+                <label>对网格框内容进行删除</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_1"/>
+
+            <actionItem id="pane.wsheet.find">
+                <label>查找节点...</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.find_next">
+                <label>下一个匹配节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.find_prev">
+                <label>上一个匹配节点</label>
+                <value>menuAction</value>
+            </actionItem>
+			<!--
+			<actionItem id="rename_selected_nodes">
+				<label>重命名选定的节点...</label>
+			</actionItem>
+			-->
+            <actionItem id="pane.wsheet.batch_rename">
+                <label>重命名节点...</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_4"/>
+
+            <actionItem id="pane.wsheet.disconnect_inputs">
+                <label>断开输入</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.disconnect_outputs">
+                <label>断开输出</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.SubnetIndirectInput)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.disconnect_all">
+                <label>断开输入和输出</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.SubnetIndirectInput)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.reconnect_around">
+                <label>以所选状态重新连接</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.SubnetIndirectInput)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.swap_inputs">
+                <label>轮换输入连接</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_5"/>
+
+            <actionItem id="pane.wsheet.scope_chans">
+                <label>将所有通道添加到通道列表</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.delete_chans">
+                <label>删除通道</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.create_channel_groups">
+                <label>创建嵌套通道组</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_6"/>
+
+            <actionItem id="pane.wsheet.collapse">
+                <label>将所选折叠到子网络中</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.collapse_to_material">
+                <label>将所选折叠到材质中</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0 and kwargs['editor'].pwd().type().isManager(True) and kwargs['editor'].pwd().childTypeCategory() == hou.vopNodeTypeCategory()</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_7"/>
+
+            <actionItem id="pane.wsheet.expose">
+                <label>全部取消隐藏</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="go_menu">
+            <label> 转到 </label>
+
+            <actionItem id="pane.wsheet.updir">
+                <label>上移至关系网络</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.jump">
+                <label>进入所选网络</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="go_menu_sep_2"/>
+
+            <actionItem id="pane.wsheet.up">
+                <label>向上移动当前节点</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="pane.wsheet.down">
+                <label>向下移动当前节点</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="pane.wsheet.left">
+                <label>向左移动当前节点</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="pane.wsheet.right">
+                <label>向右移动当前节点</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="go_menu_sep_3"/>
+
+            <subMenu id="go_menu_setquickmark">
+                <label>集成到快速标记</label>
+                <actionItem id="pane.wsheet.set_mark_1">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(0)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_2">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(1)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_3">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(2)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_4">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(3)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_5">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(4)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+            </subMenu>
+
+            <subMenu id="go_menu_jumpquickmark">
+                <label>跳转到快速标记</label>
+                <actionItem id="pane.wsheet.jump_mark_1">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(0)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_2">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(1)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_3">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(2)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_4">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(3)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_5">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(4)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+            </subMenu>
+
+            <actionItem id="pane.wsheet.jump_mark_undo">
+                <label>最后一个视图</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="view_menu">
+            <label> 视图(&V) </label>
+            <actionItem id="pane.wsheet.zoom_in">
+                <label>拉近、放大</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.zoom_out">
+                <label>拉远、缩小</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.home">
+                <label>缩放以显示全部</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.home_selected">
+                <label>缩放以显示所选</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="view_menu_sep_2"/>
+
+            <toggleItem id="pane.wsheet.shownodetypes">
+                <label>显示节点类型</label>
+                <value>shownodetypes</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.shownodeshapes">
+                <label>显示自定义节点形状</label>
+                <value>shownodeshapes</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.showpreviews">
+                <label>显示节点预览</label>
+                <value>showpreviews</value>
+            </toggleItem>
+
+            <separatorItem id="view_menu_sep_2a"/>
+
+
+
+            <separatorItem id="view_menu_sep_1"/>
+
+            <titleItem id="dependency_title">
+                <label>依赖项连接</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>showdep</value>
+                <radioItem id="pane.wsheet.showdepnone">
+                    <label>隐藏</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.showdepselected">
+                    <label>显示所选节点</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.showdepall">
+                    <label>显示所有节点</label>
+                </radioItem>
+            </menuStripRadio>
+
+            <toggleItem id="pane.wsheet.showchilddep">
+                <label>显示子节点的依赖项连接</label>
+                <value>showchilddep</value>
+            </toggleItem>
+
+            <separatorItem id="view_menu_sep_4"/>
+
+            <actionItem id="pane.wsheet.change_wire_style">
+                <label>更改网格布线样式</label>
+                <value>menuAction</value>
+            </actionItem>
+            <toggleItem id="pane.wsheet.display_perfstat">
+                <label>显示性能数据</label>
+                <value>showperfstats</value>
+            </toggleItem>
+            <subMenu id="view_menu_perfstatname">
+                <label>要显示的性能数据</label>
+                <menuStripDynamicRadio id="pane.wsheet.perfstatname">
+                    <value>perfstatname</value>
+                </menuStripDynamicRadio>
+            </subMenu>
+
+            <separatorItem id="view_menu_sep_5"/>
+
+            <toggleItem id="pane.wsheet.showprompttext">
+                <label>显示帮助消息</label>
+                <value>showprompttext</value>
+            </toggleItem>
+            <actionItem id="pane.wsheet.open_display_options">
+                <label>显示选项</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="tools_menu">
+            <label> 工具 </label>
+            <toggleItem id="pane.wsheet.mode_switch">
+                <label>列表模式</label>
+                <value>listmode</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.opparms">
+                <label>显示参数对话框</label>
+                <value>showparmdialog</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.opparms_max">
+                <label>最大化时显示参数对话框</label>
+                <value>showparmdialogmax</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.open_treeview">
+                <label>显示运算符树</label>
+                <value>showtree</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.open_groups">
+                <label>显示组</label>
+                <value>showgrouplist</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.open_sidebar">
+                <label>显示工具调色板</label>
+                <value>showtypesidebar</value>
+            </toggleItem>
+
+            <separatorItem id="tools_menu_sep_1"/>
+
+            <titleItem id="overview_title">
+                <label>显示概述</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>overviewmode</value>
+                <radioItem id="pane.wsheet.overview_auto">
+                    <label>需要时</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.overview_on">
+                    <label>总是</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.overview_off">
+                    <label>从来没有</label>
+                </radioItem>
+            </menuStripRadio>
+
+            <separatorItem id="tools_menu_sep_2"/>
+
+            <titleItem id="grid_title">
+                <label>显示网格</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>gridmode</value>
+                <radioItem id="pane.wsheet.grid_off">
+                    <label>无网格</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.grid_points">
+                    <label>网格点</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.grid_lines">
+                    <label>网格线</label>
+                </radioItem>
+            </menuStripRadio>
+            <toggleItem id="pane.wsheet.gridsnapping">
+                <label>捕捉到网格</label>
+                <value>gridsnapping</value>
+            </toggleItem>
+
+            <separatorItem id="tools_menu_sep_3"/>
+
+            <titleItem id="palette_title">
+                <label>显示调色板</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>palettemode</value>
+                <radioItem id="pane.wsheet.no_palette">
+                    <label>没有</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.color_palette">
+                    <label>颜色</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.shape_palette">
+                    <label>形状</label>
+                </radioItem>
+            </menuStripRadio>
+
+            <separatorItem id="tools_menu_sep_4"/>
+
+            <toggleItem id="pane.wsheet.edit_images">
+                <label>编辑背景图片</label>
+                <value>backgroundimageediting</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.dosnapping">
+                <label>捕捉到可见节点</label>
+                <value>dosnapping</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.allowdroponwire">
+                <label>连线上允许掉落节点</label>
+                <value>allowdroponwire</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.doautomovenodes">
+                <label>为新节点腾出空间</label>
+                <value>doautomovenodes</value>
+            </toggleItem>
+        </subMenu>
+
+        <subMenu id="layout_menu">
+            <label> 布置 </label>
+            <actionItem id="pane.wsheet.layout_all">
+                <label>移出全部</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout">
+                <label>移出已选定</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_1"/>
+
+            <actionItem id="pane.wsheet.layout_up">
+                <label>向上布置节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout_down">
+                <label>向下布置节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout_left">
+                <label>向左布置节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout_right">
+                <label>向右布置节点</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_2"/>
+
+            <actionItem id="pane.wsheet.align_vertical">
+                <label>垂直对齐节点</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.align_horizontal">
+                <label>水平对齐节点</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.distribute_vertical">
+                <label>垂直分布节点</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.distribute_horizontal">
+                <label>水平分布节点</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_3"/>
+
+            <actionItem id="pane.wsheet.minimize">
+                <label>最小化所选</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.minimize_adjust">
+                <label>最小化和调整网格</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.maximize">
+                <label>恢复所选</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.maximize_adjust">
+                <label>恢复和调整网格</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.snap_netbox_bounds">
+                <label>调整网格框尺寸以适应</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_4"/>
+
+            <actionItem id="pane.wsheet.space_vertical">
+                <label>垂直空间节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.space_horizontal">
+                <label>水平空间节点</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.correct_vop_pos">
+                <label>更正 VOP 节点位置</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="help_menu">
+            <label> 帮助 </label>
+
+            <actionItem id="h.pane.wsheet.help_shortcuts">
+                <label>快捷方式</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_general">
+                <label>常规</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_navigation">
+                <label>导航</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_wiring">
+                <label>布线</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_flags">
+                <label>标志</label>
+                <value>menuAction</value>
+            </actionItem>
+	    
+            <actionItem id="h.pane.wsheet.help_badges">
+                <label>印章</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_organization">
+                <label>组织</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_dependencies">
+                <label>依赖</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_menus">
+                <label>菜单</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_options">
+                <label>选项</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+    </menuBar>
+</mainMenu>
+

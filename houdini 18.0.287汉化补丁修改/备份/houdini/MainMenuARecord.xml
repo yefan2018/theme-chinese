@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file.menu">
+    <label>File</label>
+
+      <actionItem id="arecord.save">
+        <label>Save</label>
+	<value>save</value>
+      </actionItem>
+
+      <actionItem id="arecord.quit">
+        <label>Quit</label>
+	<value>AP_QuitRequested</value>
+      </actionItem>
+    </subMenu>
+
+    <!-- ======================== Edit Menu =========================== -->
+    <subMenu id="edit.menu">
+    <label>Edit</label>
+ 
+    <actionItem id="arecord.play">
+	<label>Play</label>
+	<value>play</value>
+    </actionItem>
+    
+    <actionItem id="arecord.record">
+	<label>Record</label>
+	<value>record</value>
+    </actionItem>
+    </subMenu>
+    
+    <!-- ======================== Source Menu =========================== -->
+    
+    <subMenu id="src.menu">
+    <label>Source</label>
+    
+    <menuStripRadio id = "source">
+	<value>source</value>
+	<radioItem><label>Microphone</label></radioItem>
+	<radioItem><label>Line In</label></radioItem>
+	<radioItem><label>Digital In</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+    
+    <!-- ======================== Bits Menu =========================== -->
+    
+    <subMenu id="bps.menu">
+    <label>Bits</label>
+    
+    <menuStripRadio id="bps">
+	<value>bps</value>
+	<radioItem><label>8 bps</label></radioItem>
+	<radioItem><label>16 bps</label></radioItem>
+	<radioItem><label>24 bps</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+    
+    <!-- ======================== Rate Menu =========================== -->
+    
+    <subMenu id="rate.menu">
+    <label>Rate</label>
+    
+    <menuStripRadio id="rate">
+	<value>rate</value>
+	<radioItem><label>8 kHz</label></radioItem>
+	<radioItem><label>11 kHz</label></radioItem>
+	<radioItem><label>22 kHz</label></radioItem>
+	<radioItem><label>32 kHz</label></radioItem>
+	<radioItem><label>44.1 kHz (CD)</label></radioItem>
+	<radioItem><label>48 kHz (DAT)</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+
+    <!-- ======================== Mode Menu =========================== -->
+    
+    <subMenu id="mode.menu">
+    <label>Mode</label>
+    
+    <menuStripRadio id="stereo">
+	<value>stereo</value>
+	<radioItem><label>Mono</label></radioItem>
+	<radioItem><label>Stereo</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+
+  </menuBar>
+</mainMenu>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+         implicitly "root_menu"
+      -->
+    <menu>
+        <!-- ========================= Window Menu ========================= -->
+        <!--
+        <subMenu id="desktop_submenu">
+                <label>Desktop</label>-->
+
+                <menuStripDynamicRadio id="desktop_strip">
+                    <value>desktop.val</value>
+                </menuStripDynamicRadio>
+
+                <separatorItem id="desktop_submenu_sep_1"/>
+
+                <actionItem id="h.add_desktop">
+                    <label>New Desktop</label>
+                </actionItem>
+
+                <actionItem id="h.save_desktop">
+                    <label>Save Current Desktop</label>
+                </actionItem>
+
+                <actionItem id="h.saveas_desktop">
+                    <label>Save Current Desktop As...</label>
+                </actionItem>
+
+                <actionItem id="h.save_desktops">
+                    <label>Save All Desktops</label>
+                </actionItem>
+
+                <actionItem id="h.reload_desktop">
+                    <label>Reload Current Desktop</label>
+                </actionItem>
+
+                <separatorItem id="desktop_submenu_sep_2"/>
+
+                <actionItem id="h.desktop_mgr">
+                    <label>Desktops Manager...</label>
+                </actionItem>
+
+                <separatorItem id="desktop_submenu_sep_3"/>
+
+                <actionItem id="h.reset_menubar" platform="windows linux">
+                    <label>Reset Main Menu to Top</label>
+                    <value>mainmenubar</value>
+                </actionItem>
+
+                <actionItem id="h.reset_shelf">
+                    <label>Reset Shelf to Top</label>
+                    <value>shelf</value>
+                </actionItem>
+
+                <actionItem id="h.reset_playbar">
+                    <label>Reset Playbar to Bottom</label>
+                    <value>playbar</value>
+                </actionItem>
+
+                <actionItem id="h.reset_statusbar" platform="windows linux">
+                    <label>Reset Status Bar to Bottom</label>
+                    <value>statusbar</value>
+                </actionItem>
+        <!--
+            </subMenu>-->
+
+    </menu>
+</menuDocument>

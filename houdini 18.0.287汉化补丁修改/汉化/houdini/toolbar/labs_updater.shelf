@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <tool name="update_toolset" label="更新工具集" icon="CHOP_joystick">
+    <helpURL>tool:update_toolset</helpURL>
+    <script scriptType="python"><![CDATA[import os
+import shutil
+import contextlib
+import json
+import zipfile
+import platform
+import hou
+import urllib2
+import ssl
+import glob
+
+
+from hutil.Qt.QtCore import *
+from hutil.Qt.QtGui import *
+from hutil.Qt.QtWidgets import *
+
+########################################################################################################################
+# GLOBAL VARIABLES #####################################################################################################
+
+REPO_URL = 'https://api.github.com/repos/sideeffects/SideFXLabs'
+
+# store the major and minor version of Houdini (aka XX.YY)
+APP_VERSION = ".".join(map(str, hou.applicationVersion()[:2]))
+
+SETTINGS_FILE = os.path.join(os.getenv("HOUDINI_USER_PREF_DIR"), "packages", "SideFXLabs.json")
+HOUDINI_ENV = os.path.join(os.getenv("HOUDINI_USER_PREF_DIR"), "houdini.env")
+
+LOCAL_ZIPS = glob.glob(os.path.normpath(os.path.join(hou.getenv("HH"), "public", "SideFX_Labs_Houdini_*.zip")))
+LOCAL_TOOLSET_ZIP = LOCAL_ZIPS[0] if LOCAL_ZIPS else None
+LOCAL_TOOLSET_VERSION = LOCAL_TOOLSET_ZIP.split('_')[-1][-7:-4] + " (local)" if LOCAL_TOOLSET_ZIP else None
+
+HOU_TEMP_PATH = os.path.normpath(os.path.join(os.getenv("HOUDINI_USER_PREF_DIR"), "SideFXLabs"))
+ONLINE_ZIP_DICT = {}
+
+
+# UPDATE DIALOG ########################################################################################################
+class UpdateDialog(QDialog):
+    def __init__(self, parent, updater_object):
+        super(UpdateDialog, self).__init__(parent)
+        self.setWindowTitle("SideFX Labs")
+        self.updater_object = updater_object
+
+        self.current_version = None
+
+        if self.updater_object.current_version:
+            self.current_version = self.updater_object.current_version
+
+        self.build_ui()
+
+    def build_ui(self):
+        installed_group = QGroupBox("Installed Version")
+        change_group = QGroupBox("Change To")
+        spacer = QLabel("")
+
+        # Current Version
+        current_version_layout = QHBoxLayout()
+        current_version_lbl = QLabel("Release: ")
+        current_version = self.current_version
+        if not current_version:
+            current_version = "None"
+
+        current_version_value_lbl = QLabel(current_version)
+
+        current_version_layout.addWidget(current_version_lbl)
+        current_version_layout.addWidget(current_version_value_lbl)
+
+        installedgroup_layout = QVBoxLayout(installed_group)
+
+        installedgroup_layout.addLayout(current_version_layout)
+
+        # Update
+        version_layout = QHBoxLayout()
+        update_version_label = QLabel("Release:")
+
+        self.version_combo = QComboBox(self)
+        for release in self.updater_object.production_releases[:10]:
+            self.version_combo.addItem(release)
+
+        self.production_builds_check = QCheckBox("Production Builds Only")
+        self.production_builds_check.setChecked(True)
+        self.production_builds_check.stateChanged.connect(self.on_production_check)
+
+        version_layout.addWidget(update_version_label)
+        version_layout.addWidget(self.version_combo)
+        version_layout.addWidget(self.production_builds_check)
+
+        changedgroup_layout = QVBoxLayout(change_group)
+
+        changedgroup_layout.addLayout(version_layout)
+
+        self.button = QPushButton("Update")
+        self.uninstallButton = QPushButton("Uninstall")
+
+        self.button.clicked.connect(self.on_updatebtn_press)
+        self.uninstallButton.clicked.connect(self.on_uninstallbtn_press)
+        layout = QVBoxLayout()
+
+        layout.addWidget(installed_group)
+        layout.addWidget(change_group)
+
+        layout.addWidget(spacer)
+        layout.addWidget(self.button)
+        layout.addWidget(self.uninstallButton)
+        self.setLayout(layout)
+
+    def on_production_check(self, state=None):
+        self.version_combo.clear()
+        if self.production_builds_check.isChecked():
+            for release in self.updater_object.production_releases[:10]:
+                self.version_combo.addItem(release)
+        else:
+            for release in self.updater_object.releases[:10]:
+                self.version_combo.addItem(release)
+
+    def on_updatebtn_press(self):
+        version = self.version_combo.currentText()
+        if version != "":
+            if LOCAL_TOOLSET_VERSION != version:
+                self.updater_object.on_dialog_close(version, "change")
+            else:
+                self.updater_object.on_dialog_close(LOCAL_TOOLSET_VERSION, "change", local_zip=1)
+        self.close()
+
+    def on_uninstallbtn_press(self):
+        version = self.current_version
+        if version != None:
+            self.updater_object.on_dialog_close(version, "uninstall")
+        self.close()
+
+
+# UPDATER ##############################################################################################################
+class SideFXLabsUpdater(object):
+    """
+        Main updater object, gets called with the shelf button press
+
+
+    """
+
+    def __init__(self):
+
+        # Store Releases and Production Releases
+        self.releases = []
+        self.production_releases = []
+
+        self.desired_version = None
+
+        # bail if not allowed in pipelines
+        disabling_message = os.getenv("SIDEFXLABS_NOINSTALL_MESSAGE")
+        if disabling_message:
+            hou.ui.displayMessage(disabling_message)
+            return
+
+        
+        self.load_settings()
+        self.get_releases()   
+        self.show_dialog()
+
+        self.clean_old_installs()
+
+
+    def clean_old_installs(self):
+        if not os.path.isdir(HOU_TEMP_PATH):
+            return
+        for item in os.listdir(HOU_TEMP_PATH):
+            if os.path.isdir(os.path.join(HOU_TEMP_PATH, item)):
+                if item != self.current_version:
+                    shutil.rmtree(os.path.join(HOU_TEMP_PATH, item), ignore_errors=True)
+
+
+    def get_releases(self):
+
+        # Attempt to download things from github
+        try:
+            with contextlib.closing(urllib2.urlopen(urllib2.Request(REPO_URL + "/releases"), context=ssl._create_unverified_context())) as response:
+                data = response.read()
+                if data == "":
+                    raise ValueError("Unable to get the release list")
+        except:
+            if LOCAL_TOOLSET_VERSION != None:
+                self.production_releases.append(LOCAL_TOOLSET_VERSION)
+                self.releases.append(LOCAL_TOOLSET_VERSION)
+            return
+
+        if LOCAL_TOOLSET_VERSION != None:
+            self.production_releases.append(LOCAL_TOOLSET_VERSION)
+
+
+        # Parse the data and filter out versions we don't care about
+        j_data = json.loads(data.decode('utf-8'))
+        for release in j_data:
+
+            contained_assets = release["assets"]
+            for asset in contained_assets:
+
+                build_version = asset["name"][20:-4]
+
+                if build_version[:4] == str(APP_VERSION) and self.current_version != build_version[-3:]:
+
+                    if release["prerelease"]:
+                        self.releases.append(build_version[-3:])
+                    else:
+                        self.production_releases.append(build_version[-3:])
+
+                    ONLINE_ZIP_DICT[build_version[-3:]] = asset["browser_download_url"]
+        
+
+    def show_dialog(self):
+        dialog = UpdateDialog(hou.ui.mainQtWindow(), self)
+        dialog.show()
+
+    def download_url(self, url):
+        """
+            Download the zip file from github
+        :param url:
+        :return:
+        """
+
+        filename = os.path.basename(url)
+        local_path = os.path.join(HOU_TEMP_PATH, filename)
+
+        if not os.path.exists(os.path.dirname(local_path)):
+            os.makedirs(os.path.dirname(local_path))
+
+        try:
+            zipfile = urllib2.urlopen(url, context=ssl._create_unverified_context())
+            with open(local_path, 'wb') as output:
+                output.write(zipfile.read())
+        except:
+            raise ValueError("Unable to download the package file :" + url)
+            return
+
+        return local_path
+
+    def unzip_file(self, zip_file, destination_path):
+        zipf = zipfile.ZipFile(zip_file, 'r', zipfile.ZIP_DEFLATED)
+        zipf.extractall(destination_path)
+
+    def load_settings(self):
+        try:
+            with open(SETTINGS_FILE, 'r') as fp:
+                settings = json.load(fp)
+                self.current_version = settings["env"][0]["sidefxlabs_current_version"]
+        except:
+            self.current_version = None
+
+
+    def show_success_dialog(self, mode):        
+        message = ""
+        
+        if mode == "change":
+            message = "SideFX Labs updated successfully"
+            message += "\nPlease Restart Houdini to load all of the new tools"
+        
+        elif mode == "uninstall":
+            message = "SideFX Labs uninstalled successfully"
+            message += "\nPlease restart Houdini for changes to take effect"
+        
+        elif mode == "localbuild":
+            message = "SideFX Labs installed successfully"
+            message += "\nA local copy has been installed. If you wish to update to a newer (online) version, update again"
+            message += "\nPlease restart Houdini to load all of the new tools"
+
+        hou.ui.displayMessage(message, title="Success")
+        
+    def on_dialog_close(self, version, mode, local_zip=0):
+        """ Call back from the Updater Dialog """
+        self.desired_version = version
+
+        # Create Packages Folder if non-existent
+        packages_dir = os.path.join(os.getenv("HOUDINI_USER_PREF_DIR"), "packages")
+        if not os.path.exists(packages_dir):
+            os.makedirs(packages_dir)
+
+        
+        if mode == "change":
+
+            if local_zip == 0:
+                download_url = ONLINE_ZIP_DICT[version]
+                local_path = self.download_url(download_url)
+            else:
+                local_path = LOCAL_TOOLSET_ZIP
+
+            self.unzip_file(local_path, os.path.join(HOU_TEMP_PATH, version))
+
+            if local_zip == 0:
+                os.remove(local_path)
+
+            SIDEFXLABSJSON = {}
+            SIDEFXLABSJSON['path'] = os.path.join(HOU_TEMP_PATH, version).replace("\\", "/")
+            SIDEFXLABSJSON['env'] = [ {'sidefxlabs_current_version' : version },
+                                   {
+                                        "PATH" : {
+                                            "value" : [os.path.join(HOU_TEMP_PATH, version, "bin").replace("\\", "/")],
+                                            "method" : "prepend"
+                                        }
+                                   }
+                                 ]
+
+            JSON = json.dumps(SIDEFXLABSJSON, indent=4)
+            f = open(SETTINGS_FILE,"w")
+            f.write(JSON)
+            f.close()
+
+            if local_zip == 0:
+                self.show_success_dialog("change")
+            else:
+                self.show_success_dialog("localbuild")
+            self.current_version = version
+
+        elif mode == "uninstall":
+
+            # Delete Installed Files
+            removedir = os.path.join(HOU_TEMP_PATH, version)
+            if os.path.exists(removedir):
+                shutil.rmtree(removedir, ignore_errors=True)
+
+            if os.path.isfile(SETTINGS_FILE):
+                os.remove(SETTINGS_FILE)
+
+            self.show_success_dialog("uninstall")
+
+SideFXLabsUpdater()]]></script>
+  </tool>
+</shelfDocument>

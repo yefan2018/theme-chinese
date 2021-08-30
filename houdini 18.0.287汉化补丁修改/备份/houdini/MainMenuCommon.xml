@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Please see ExampleMenu.xml for examples that customise the main menu -->
+<!-- Please see menu.xsd for the menu validation schema. -->
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file_menu">
+    <label>File</label>
+
+      <actionItem id="h.new">
+        <label>New</label>
+      </actionItem>
+
+      <actionItem id="h.open">
+        <label>Open...</label>
+      </actionItem>
+
+      <subMenu id="recent_files">
+      <label>Open Recent Files</label>
+        <menuStripDynamic id="file_history_strip">
+          <value>file.history.menu</value>
+        </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem id="file_menu_sep_1"/>
+
+      <actionItem id="h.save">
+        <label>Save</label>
+      </actionItem>
+
+      <actionItem id="h.save_as">
+        <label>Save As...</label>
+      </actionItem>
+
+      <menuStripDynamic id="saveastype_strip">
+        <value>saveastype.menu</value>
+      </menuStripDynamic>
+
+      <separatorItem id="file_menu_sep_2"/>
+
+      <actionItem id="h.new_project">
+        <label>New Project...</label>
+      </actionItem>
+
+      <actionItem id="h.set_project">
+        <label>Set Project...</label>
+      </actionItem>
+
+      <subMenu id="recent_projects">
+      <label>Set Recent Projects</label>
+        <menuStripDynamic id="project_history_strip">
+          <value>project.history.menu</value>
+        </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem id="file_menu_sep_3"/>
+
+      <actionItem id="h.merge">
+        <label>Merge...</label>
+      </actionItem>
+
+      <actionItem id="h.compare">
+        <label>Show Changes...</label>
+      </actionItem>
+
+      <separatorItem id="file_menu_sep_4"/>
+
+      <actionItem id="h.newotl">
+        <label>New Asset...</label>
+      </actionItem>
+      <separatorItem id="file_menu_sep_5"/>
+
+      <subMenu id="import_files">
+      <label>Import</label>
+
+        <scriptItem id="h.import_geo">
+          <label>Geometry...</label>
+	  <scriptCode><![CDATA[import soptoolutils
+
+soptoolutils.chooseAndOpenGeoFile({}, False)]]></scriptCode>
+        </scriptItem>
+
+        <scriptItem id="h.import_img">
+          <label>Image...</label>
+	  <scriptCode><![CDATA[import cop2toolutils
+
+cop2toolutils.chooseAndOpenImageFile({}, False)]]></scriptCode>
+        </scriptItem>				
+
+        <actionItem id="h.import">
+          <label>Collada...</label>
+        </actionItem>
+
+        <actionItem id="h.import_fbx">
+          <label>Filmbox FBX...</label>
+        </actionItem>
+
+        <actionItem id="h.import_alembic">
+          <label>Alembic Scene...</label>
+        </actionItem>
+
+        <actionItem id="h.import_gltf">
+          <label>GLTF Scene...</label>
+        </actionItem>
+
+        <scriptItem id="h.import_soundtrack">
+          <label>Soundtrack...</label>
+	  <scriptCode><![CDATA[import shelfutils
+
+shelfutils.chooseAndOpenAudioFile()]]></scriptCode>
+        </scriptItem>
+
+        <actionItem id="h.import_otl">
+          <label>Houdini Digital Asset...</label>
+        </actionItem>
+
+      </subMenu>
+
+      <subMenu id="export_files">
+      <label>Export</label>
+
+        <actionItem id="h.export_alembic">
+          <label>Alembic...</label>
+        </actionItem>
+        <actionItem id="h.export_fbx">
+          <label>Filmbox FBX...</label>
+        </actionItem>
+      <actionItem id="h.export_gltf">
+          <label>GLTF...</label>
+        </actionItem>
+      </subMenu>
+
+      <separatorItem id="file_menu_sep_6"/>
+
+      <actionItem id="h.source">
+        <label>Run Script...</label>
+      </actionItem>
+
+      <separatorItem id="file_menu_sep_quit"/>
+
+      <actionItem id="h.quit">
+        <label>Quit Application</label>
+      </actionItem>
+    </subMenu>
+
+    <!-- ============================ EditMenu =========================== -->
+    <subMenu id="edit_menu">
+    <label>Edit</label>
+
+      <menuStripDynamic id="undo_strip">
+        <value>undo.menu</value>
+      </menuStripDynamic>
+
+      <actionItem id="h.undo_mgr">
+        <label>Undo History...</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_1"/>
+
+      <actionItem id="h.cut">
+        <label>Cut</label>
+      </actionItem>
+
+      <actionItem id="h.copy">
+        <label>Copy</label>
+      </actionItem>
+
+      <actionItem id="h.paste">
+        <label>Paste</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_2"/>
+
+      <subMenu id="preferences_submenu">
+      <label>Preferences</label>
+
+        <actionItem id="h.prefs_ui">
+          <label>General User Interface</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_network">
+          <label>Network Editor, Nodes and Trees</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_viewports">
+          <label>3D Viewports</label>
+        </actionItem>
+
+	<separatorItem id="pref_submenu_sep_1"/>
+
+        <actionItem id="h.prefs_shelves">
+          <label>Shelves and TAB Menu</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_takes">
+          <label>Takes</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_animation">
+          <label>Animation</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_lighting">
+          <label>Lighting</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_rendering">
+          <label>Rendering</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_handles">
+          <label>Handles</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_states">
+          <label>Interactive Tools</label>
+        </actionItem>
+
+	<separatorItem id="pref_submenu_sep_2"/>
+
+        <actionItem id="h.prefs_obj">
+          <label>Objects and Geometry</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_chop">
+          <label>Motion and Audio</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_cop">
+          <label>Compositing</label>
+        </actionItem>
+
+	<actionItem id="h.prefs_scripting">
+	    <label>Scripting</label>
+	</actionItem>
+
+	<separatorItem id="pref_submenu_sep_3"/>
+
+        <actionItem id="h.prefs_desks">
+          <label>Desktops and Toolbars</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_persistence">
+          <label>Save and Load Options</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_hip">
+          <label>Hip File Options</label>
+        </actionItem>
+
+	<separatorItem id="pref_submenu_sep_4"/>
+
+        <actionItem id="h.prefs_dialogs">
+          <label>Warning Dialogs</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_notify">
+          <label>Notifications</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_perfmon">
+          <label>Performance Monitor</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_exttools">
+          <label>External Tools</label>
+        </actionItem>
+
+        <actionItem id="h.prefs_misc">
+          <label>Miscellaneous</label>
+        </actionItem>
+
+      </subMenu>
+
+      <actionItem id="h.hotkey_mgr">
+        <label>Hotkeys...</label>
+      </actionItem>
+
+      <actionItem id="h.colorsettings">
+        <label>Color Settings...</label>
+      </actionItem>
+
+      <actionItem id="h.aliases">
+        <label>Aliases and Variables...</label>
+      </actionItem>
+
+      <scriptItem id="h.context_options_editor">
+        <label>Context Options...</label>
+        <scriptCode><![CDATA[
+import contextoptions
+window = contextoptions.OptionsEditor(hou.qt.mainWindow(), as_window=True)
+window.show()
+]]></scriptCode>
+      </scriptItem>
+
+      <separatorItem id="edit_menu_sep_3"/>
+
+      <actionItem id="h.comp_project_manager">
+        <label>Compositing Settings...</label>
+      </actionItem>
+
+      <actionItem id="h.clear_cop_caches">
+        <label>Clear Compositing Cache</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_4"/>
+
+      <actionItem id="h.add_key">
+        <label>Set Keyframe</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_5"/>
+
+      <subMenu id="objects_submenu">
+      <label>Objects</label>
+
+	<toggleItem id="h.highlightobjselection">
+	  <label>Always Highlight Object Selection in Viewer</label>
+	  <value>objects.highlight.val</value>
+	</toggleItem>
+
+	<titleItem id="kin_strip_title">
+	   <label>Bone Kinematic Override</label>
+	</titleItem>
+
+	<menuStripRadio id="kin_strip">
+	  <value>objects.kinoverride.val</value>
+	  <radioItem id="h.kin_none">
+	    <label>None</label>
+	  </radioItem>
+	  <radioItem id="h.kin_rest">
+	    <label>IK Rest Pose</label>
+	  </radioItem>
+	  <radioItem id="h.kin_capt">
+	    <label>Capture Pose</label>
+	  </radioItem>
+	</menuStripRadio>
+
+	<titleItem id="object_position_title">
+	   <label>Keep Position When Parenting</label>
+	</titleItem>
+
+	<menuStripRadio id="object_position">
+	  <value>objects.keepPos.val</value>
+	  <radioItem id="h.keeppos_never">
+	    <label>Never</label>
+	  </radioItem>
+	  <radioItem id="h.keeppos_always">
+	    <label>Always</label>
+	  </radioItem>
+	  <radioItem id="h.keeppos_useflag">
+	    <label>Use Object Flag</label>
+	  </radioItem>
+	</menuStripRadio>
+
+	<titleItem id="object_position_moving_title">
+           <label>Child Compensation</label>
+        </titleItem>
+
+        <menuStripRadio id="object_position_moving">
+          <value>objects.keepPosMoving.val</value>
+          <radioItem id="h.keeppos_moving_never">
+            <label>Never</label>
+          </radioItem>
+          <radioItem id="h.keeppos_moving_always">
+            <label>Always</label>
+          </radioItem>
+          <radioItem id="h.keeppos_moving_useflag">
+            <label>Use Object Flag</label>
+          </radioItem>
+        </menuStripRadio>
+
+
+      </subMenu>
+
+      <subMenu id="eye_variable">
+      <label>Stereo Eye</label>
+        <scriptMenuStripRadio>
+	  <variableName>EYE</variableName>
+
+          <scriptRadioItem id="h.eye_stereo">
+            <label>Stereo</label>
+	    <variableValue>stereo</variableValue> 
+          </scriptRadioItem>
+          <scriptRadioItem id="h.eye_left">
+            <label>Left</label>
+	    <variableValue>left</variableValue> 
+          </scriptRadioItem>
+          <scriptRadioItem id="h.eye_right">
+            <label>Right</label>
+	    <variableValue>right</variableValue> 
+          </scriptRadioItem>
+          <scriptRadioItem id="h.eye_center">
+            <label>Center</label>
+	    <variableValue>center</variableValue> 
+          </scriptRadioItem>
+
+        </scriptMenuStripRadio>
+      </subMenu>
+
+      <separatorItem id="edit_menu_sep_6"/>
+
+      <toggleItem id="h.live_updates">
+        <label>Live Parameter Display during Playback</label>
+	<value>liveUpdates</value>
+      </toggleItem>
+
+      <toggleItem id="h.intercept_mode">
+        <label>Intercept Mode</label>
+	<value>interceptMode</value>
+      </toggleItem>
+
+      <toggleItem id="h.auto_take_mode">
+        <label>Automatically Add Parameter to Current Take</label>
+	<value>autoTakeMode</value>
+      </toggleItem>
+
+      <toggleItem id="h.auto_save">
+        <label>Auto Save</label>
+	<value>autoSave</value>
+      </toggleItem>
+
+    </subMenu>
+
+
+    <!-- ======================== Render Menu ========================= -->
+    <subMenu id="render_menu">
+    <label>Render</label>
+
+      <subMenu id="render_create_submenu">
+      <label>Create Render Node</label>
+
+        <scriptItem id="h.create_mantra">
+          <label>Mantra</label>
+	  <scriptCode><![CDATA[import roptoolutils
+
+roptoolutils.createRenderNode('ifd')]]></scriptCode>
+        </scriptItem>
+
+        <scriptItem id="h.create_mantra_pbr">
+          <label>Mantra - PBR</label>
+	  <scriptCode><![CDATA[import roptoolutils
+
+node = roptoolutils.createRenderNode('ifd')
+node.parm("vm_renderengine").set("pbrraytrace")
+node.parm("vm_diffuselimit").set(1)]]></scriptCode>
+        </scriptItem>
+
+	<separatorItem id="render_create_submenu_sep_1"/>
+
+        <scriptItem id="h.create_rman">
+          <label>RenderMan</label>
+	  <scriptCode><![CDATA[import roptoolutils
+
+roptoolutils.createRenderNode('rib')]]></scriptCode>
+        </scriptItem>
+
+        <scriptItem id="h.create_rman_ris">
+          <label>RenderMan - RIS</label>
+	  <scriptCode><![CDATA[import roptoolutils
+
+roptoolutils.createRenderNode('ris')]]></scriptCode>
+        </scriptItem>
+
+	<separatorItem id="render_create_submenu_sep_2"/>
+
+	<subMenu id = "render_crete_subsubmenu">
+	<label>Other Output Nodes</label>
+
+          <scriptItem id="h.create_composite">
+            <label>Composite</label>
+	    <scriptCode><![CDATA[import roptoolutils
+
+roptoolutils.createRenderNode('comp')]]></scriptCode>
+          </scriptItem>
+
+          <scriptItem id="h.create_geometry">
+            <label>Geometry</label>
+	    <scriptCode><![CDATA[import roptoolutils
+
+roptoolutils.createRenderNode('geometry')]]></scriptCode>
+          </scriptItem>
+
+          <scriptItem id="h.create_channel">
+            <label>Channel</label>
+	    <scriptCode><![CDATA[import roptoolutils
+
+roptoolutils.createRenderNode('channel')]]></scriptCode>
+          </scriptItem>
+
+          <scriptItem id="h.create_dynamics">
+            <label>Dynamics</label>
+	    <scriptCode><![CDATA[import roptoolutils
+
+roptoolutils.createRenderNode('dop')]]></scriptCode>
+          </scriptItem>
+
+	</subMenu>
+
+      </subMenu>
+
+      <subMenu id="render_edit_submenu">
+      <label>Edit Render Node</label>
+        <menuStripDynamic id="render_edit_strip">
+          <value>render.edit.menu</value>
+        </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem id="render_menu_sep_1"/>
+
+      <subMenu id="render_start_submenu">
+      <label>Render</label>
+        <menuStripDynamic id="render_start_strip">
+          <value>render.start.menu</value>
+        </menuStripDynamic>
+      </subMenu>
+
+      <subMenu id="preview_render_submenu">
+      <label>Preview in MPlay</label>
+        <menuStripDynamic id="preview_render_strip">
+          <value>render.preview.menu</value>
+        </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem id="render_menu_sep_2"/>
+
+      <actionItem id="h.render_mgr">
+        <label>Scheduler...</label>
+      </actionItem>
+
+      <actionItem id="h.update_textures">
+        <label>Update Textures</label>
+      </actionItem>
+
+      <separatorItem id="render_menu_sep_3"/>
+
+      <scriptItem id="render_set_up_cloud">
+        <label>Cloud Properties...</label>
+	<scriptCode><![CDATA[import cloud
+
+cloud.showSetUpCloudDialogWithPassphrasePrompt()]]></scriptCode>
+      </scriptItem>
+
+      <scriptItem id="render_pre_flight">
+        <label>Pre-Flight Scene...</label>
+	<scriptCode><![CDATA[import cloud
+
+cloud.preFlightScene()]]></scriptCode>
+      </scriptItem>
+
+      <separatorItem id="render_menu_sep_4"/>
+
+      <scriptItem id="nvidia_optix_denoiser_download">
+        <label>Download NVIDIA OptiX Denoiser</label>
+	<context>
+	    <expression>__import__("sys").platform != "darwin"</expression>
+	</context>
+	<scriptCode><![CDATA[import optixdownload
+
+optixdownload.download()]]></scriptCode>
+      </scriptItem>
+
+      <separatorItem id="render_menu_sep_5"/>
+
+      <subMenu id="mplay_submenu">
+      <label>MPlay</label>
+        <actionItem id="h.mplay_file">
+        <label>Load Disk Files...</label>
+        </actionItem>
+
+        <actionItem id="h.mplay_render">
+        <label>Listen for Renders...</label>
+        </actionItem>
+
+        <actionItem id="h.mplay_flipbook">
+        <label>Listen for Flipbooks...</label>
+        </actionItem>
+      </subMenu>
+
+    </subMenu>
+
+
+    <!-- ========================= Takes Menu ========================= -->
+    <subMenu id="takes_menu_mm" platform="mbsd">
+    <label>Takes</label>
+
+      <actionItem id="h.create_take">
+        <label>New Take</label>
+	<value>takecreate.val</value>
+      </actionItem>
+
+      <separatorItem />
+
+      <toggleItem id="h.auto_take">
+        <label>Auto Takes</label>
+	<value>autoTakeMode</value>
+      </toggleItem>
+
+      <separatorItem />
+
+      <menuStripDynamicRadio id="h.takemenu">
+        <value>takemenu.val</value>
+      </menuStripDynamicRadio>
+
+    </subMenu>
+
+    <!-- ============================ Assets Menu =========================== -->
+    <subMenu id = "assets_menu">
+    <label>Assets</label>
+
+    <actionItem id="h.createotl">
+      <label>New Digital Asset From Selection...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_1"/>
+
+    <subMenu id="unlock_asset">
+      <label>Unlock Asset</label>
+        <menuStripDynamic id="unlock_asset_strip">
+          <value>unlock.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="lock_asset">
+      <label>Lock Asset</label>
+        <menuStripDynamic id="lock_asset_strip">
+          <value>lock.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="save_asset">
+      <label>Save Asset</label>
+        <menuStripDynamic id="save_asset_strip">
+          <value>save.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="edit_asset">
+      <label>Edit Asset Properties...</label>
+        <menuStripDynamic id="edit_asset_strip">
+          <value>edit.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <separatorItem id="assets_menu_sep_2"/>
+    
+    <actionItem id="h.openotl">
+      <label>Install Asset Library...</label>
+    </actionItem>
+
+    <actionItem id="h.manageotl">
+      <label>Asset Manager...</label>
+    </actionItem>
+
+    <actionItem id="h.refreshotl">
+      <label>Refresh Asset Libraries</label>
+    </actionItem>
+
+    <actionItem id="h.blackboxotl">
+      <label>Create Black Boxed Asset from Selection...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_3"/>
+    
+    <actionItem id="h.help_orbolt">
+      <label>Orbolt Asset Store...</label>
+    </actionItem>
+
+    <actionItem id="h.asset_browser">
+      <label>Orbolt Asset Browser...</label>
+    </actionItem>
+
+    <actionItem id="h.uploadotl">
+      <label>Upload to Orbolt Asset Store...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_4"/>
+
+    <subMenu id="other_asset_tools_submenu">
+    <label>Other Asset Tools</label>
+      <actionItem id="h.encapsulate_asset">
+        <label>Encapsulate Asset</label>
+      </actionItem>
+
+      <actionItem id="h.compile_embed_material">
+        <label>Compile and Embed Material</label>
+      </actionItem>
+
+      <actionItem id="h.embed_internal_assets">
+        <label>Embed Internal Assets</label>
+      </actionItem>
+    </subMenu>
+
+    </subMenu>
+
+
+    <!-- ========================= Desktops Menu ========================= -->
+
+    <subMenu id="desktop_submenu" platform="mbsd">
+      <label>Desktop</label>
+
+        <menuStripDynamicRadio id="desktop_strip">
+	  <value>desktop.val</value>
+        </menuStripDynamicRadio>
+
+        <separatorItem id="desktop_submenu_sep_1"/>
+
+        <actionItem id="h.add_desktop">
+          <label>New Desktop</label>
+        </actionItem>
+
+        <actionItem id="h.save_desktop">
+          <label>Save Current Desktop</label>
+        </actionItem>
+
+        <actionItem id="h.saveas_desktop">
+          <label>Save Current Desktop As...</label>
+        </actionItem>
+
+        <actionItem id="h.save_desktops">
+          <label>Save All Desktops</label>
+        </actionItem>
+
+        <actionItem id="h.reload_desktop">
+          <label>Reload Current Desktop</label>
+        </actionItem>
+
+        <separatorItem id="desktop_submenu_sep_2"/>
+
+        <actionItem id="h.desktop_mgr">
+          <label>Desktops Manager...</label>
+        </actionItem>
+
+        <separatorItem id="desktop_submenu_sep_3"/>
+
+        <actionItem id="h.reset_menubar" platform="windows linux">
+          <label>Reset Main Menu to Top</label>
+	  <value>mainmenubar</value>
+        </actionItem>
+
+        <actionItem id="h.reset_shelf">
+          <label>Reset Shelf to Top</label>
+	  <value>shelf</value>
+        </actionItem>
+
+        <actionItem id="h.reset_playbar">
+          <label>Reset Playbar to Bottom</label>
+	  <value>playbar</value>
+        </actionItem>
+
+        <actionItem id="h.reset_statusbar" platform="windows linux">
+          <label>Reset Status Bar to Bottom</label>
+	  <value>statusbar</value>
+        </actionItem>
+    </subMenu>
+
+    <!-- ========================= Radials Menu ========================= -->
+
+    <subMenu id="radial_submenu" platform="mbsd">
+      <label>Radial</label>
+
+        <menuStripDynamicRadio id="radial_strip">
+	  <value>radialmenu.val</value>
+        </menuStripDynamicRadio>
+
+        <separatorItem id="radial_submenu_sep_1"/>
+
+        <actionItem id="h.radialui_create">
+          <label>Create New</label>
+        </actionItem>
+
+        <actionItem id="h.radialui_edit">
+          <label>Edit Current</label>
+        </actionItem>
+
+        <separatorItem id="radial_submenu_sep_2"/>
+
+        <toggleItem id="h.radialui_pin">
+          <label>Pin Radial Menu</label>
+	  <value>radial_pin.val</value>
+        </toggleItem>
+      </subMenu>
+
+    <!-- ========================= Window Menu ========================= -->
+
+    <subMenu id="windows_menu">
+    <label>Windows</label>
+      <separatorItem id="windows_menu_sep_0"/>
+
+      <toggleItem id="h.keep_float_windows_on_top" platform="mbsd">
+        <label>Keep Floating Windows on Top</label>
+	<value>keepFloatWindowsOnTop</value>
+      </toggleItem>
+
+      <separatorItem id="windows_menu_sep_1" platform="mbsd"/>
+
+      <actionItem id="h.floatpanel">
+        <label>New Floating Panel</label>
+      </actionItem>
+
+      <actionItem id="h.channeleditor">
+        <label>Animation Editor</label>
+      </actionItem>
+
+      <actionItem id="h.textport">
+        <label>Hscript Textport</label>
+      </actionItem>
+
+      <actionItem id="h.python_shell">
+        <label>Python Shell</label>
+      </actionItem>
+
+      <actionItem id="h.python_source_editor">
+        <label>Python Source Editor</label>
+      </actionItem>
+
+      <actionItem id="h.python_panel_editor">
+	<label>Python Panel Editor</label>
+      </actionItem>
+
+      <actionItem id="h.open_bundlelist">
+        <label>Bundle List</label>
+      </actionItem>
+
+      <actionItem id="h.open_takemanager">
+        <label>Take List</label>
+      </actionItem>
+
+      <actionItem id="h.open_parmspreadsheet">
+        <label>Parameter Spreadsheet</label>
+      </actionItem>
+
+      <actionItem id="h.open_treeview">
+        <label>Tree View</label>
+      </actionItem>
+      
+      <actionItem id="h.engine_debugger">
+        <label>Houdini Engine Debugger</label>
+      </actionItem>
+
+      <separatorItem id="windows_menu_sep_2"/>
+
+      <actionItem id="h.optype_mgr">
+        <label>Asset Manager</label>
+      </actionItem>
+
+      <actionItem id="h.gallery_mgr">
+        <label>Gallery Manager</label>
+      </actionItem>
+
+      <actionItem id="h.handleeditor">
+        <label>Persistent Handle Editor</label>
+      </actionItem>
+
+      <actionItem id="h.mat_palette">
+        <label>Material Palette</label>
+      </actionItem>
+
+      <separatorItem id="windows_menu_sep_3"/>
+
+      <actionItem id="h.view_code">
+        <label>Code Viewer</label>
+      </actionItem>
+
+      <actionItem id="h.perf_monitor">
+        <label>Performance Monitor</label>
+      </actionItem>
+
+      <scriptItem id="h.taskgraphtable_py">
+        <label>Task Graph Table</label>
+        <scriptCode><![CDATA[
+panetab = hou.ui.curDesktop().createFloatingPaneTab(
+    hou.paneTabType.PythonPanel,
+    position=(),
+    size=(),
+)
+panetab.setLinkGroup(hou.paneLinkType.FollowSelection)
+panetab.setActiveInterface(hou.pypanel.interfaces()["taskgraphtable"])
+        ]]>
+        </scriptCode>
+      </scriptItem>
+
+      <actionItem id="h.audio_panel">
+        <label>Audio Panel</label>
+      </actionItem>
+
+      <actionItem id="h.global_animation_options">
+        <label>Global Animation Options</label>
+      </actionItem>
+
+      <actionItem id="h.cache_manager">
+        <label>Cache Manager</label>
+      </actionItem>
+
+      <actionItem id="h.shell">
+        <label>Shell</label>
+        <value>openShell</value>
+      </actionItem>
+
+      <separatorItem id="windows_menu_sep_4"/>
+
+    <scriptItem id="h.open_autorigs">
+      <label>Autorigs</label>
+      <scriptCode><![CDATA[
+import toolutils
+kwargs['pane']=None
+toolutils.createOrShowPythonPanel(kwargs, 'sesi_auto_rigs', 'Autorigs', 4)
+]]></scriptCode>
+    </scriptItem>
+
+    <scriptItem id="h.open_charpicker">
+      <label>Character Picker</label>
+      <scriptCode><![CDATA[
+import toolutils
+kwargs['pane']=None
+toolutils.createOrShowPythonPanel(kwargs, 'sesi_character_picker', 'Character Picker', 4)
+]]></scriptCode>
+    </scriptItem>
+
+    <scriptItem id="h.open_poselibrary">
+      <label>Pose Library</label>
+      <scriptCode><![CDATA[
+import toolutils
+kwargs['pane']=None
+toolutils.createOrShowPythonPanel(kwargs, 'sesi_pose_library', 'Pose Library', 4)
+]]></scriptCode>
+    </scriptItem>
+
+    <scriptItem id="h.open_posespacedeform">
+      <label>Pose-Space Deform</label>
+      <scriptCode><![CDATA[
+import toolutils
+kwargs['pane']=None
+toolutils.createOrShowPythonPanel(kwargs, 'sesi_pose_space_deform', 'Pose-Space Deform', 4)
+]]></scriptCode>
+    </scriptItem>
+
+
+    </subMenu>
+
+    <!-- ========================= HELP Menu ========================= -->
+    <subMenu id = "help_menu">
+    <label>Help</label>
+
+      <actionItem id="h.startuphelp">
+        <label>Start Here</label>
+      </actionItem>
+      
+      <actionItem id="h.helpcontents">
+        <label>Contents</label>
+      </actionItem>
+
+      <actionItem id="h.help_examples">
+        <label>Example Files</label>
+      </actionItem>
+
+      <menuStripDynamic id="side_help_strip">
+        <value>side_help.val</value>
+      </menuStripDynamic>
+
+      <separatorItem id="help_menu_sep_1"/>
+
+      <actionItem id="h.help_sesi">
+        <label>Sidefx.com</label>
+      </actionItem>
+
+      <actionItem id="h.help_tutorials_online">
+        <label>Online Tutorials</label>
+      </actionItem>
+
+      <actionItem id="h.help_forum">
+        <label>Houdini Forum</label>
+      </actionItem>
+
+      <separatorItem id="help_menu_sep_2"/>
+
+      <actionItem id="h.help_support_online">
+        <label>Online Support</label>
+      </actionItem>
+
+      <actionItem id="h.help_updates">
+        <label>Updates</label>
+      </actionItem>
+
+      <separatorItem id="help_menu_sep_3"/>
+
+      <toggleItem id="h.help_tags">
+        <label>Tooltip Help</label>
+	<value>helpTags</value>
+      </toggleItem>
+
+      <toggleItem id="h.toggle_help_on_startup">
+        <label>Open "Start Here" Pane at Startup</label>
+	<value>startupPage</value>
+      </toggleItem>
+
+      <separatorItem id="help_menu_sep_4"/>
+
+      <actionItem id="h.version">
+      <!-- TODO: bring up the splash screen in window with [OK] buton -->
+        <label>About Houdini</label>
+      </actionItem>
+
+    </subMenu>
+
+
+  </menuBar>
+</mainMenu>

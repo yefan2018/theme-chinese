@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the menu items on the Animation Editor Top Menu.
+
+    Files named the same (ie. AnimationEditorMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuCommon.xml
+
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with chedit. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<mainMenu>
+<menuBar>
+
+<subMenu id="channels_menu">
+<label>通道</label>
+
+    <actionItem id="h.pane.chedit.keycurrent">
+        <label>把当前时间集成到关键帧</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.samplecurrent">
+        <label>把当前时间转为示例值</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.pastesample">
+        <label>把当前时间插入采样值</label>
+    </actionItem>
+
+    <separatorItem id="channels_menu_sep_1"/>
+
+    <actionItem id="h.pane.chedit.load">
+        <label>导入通道...</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.save">
+        <label>导出通道...</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.displayed_channels_props">
+        <label>编辑通道属性...</label>
+    </actionItem>
+
+    <separatorItem id="channels_menu_sep_2"/>
+
+</subMenu>
+
+<subMenu id="edit_menu">
+<label>编辑</label>
+</subMenu>
+
+<subMenu id="tools_menu">
+<label>工具</label>
+
+    <toggleItem id="h.pane.chedit.toggle_list">
+        <label>左侧窗格</label>
+        <value>showChooser</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.show_groups">
+        <label>通道组</label>
+        <value>showGroups</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.show_layers">
+        <label>动画层</label>
+        <value>showLayers</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.show_parmbox">
+        <label>通道列表</label>
+        <value>showParmBox</value>
+    </toggleItem>
+
+    <separatorItem id="tools_menu_sep_1"/>
+
+</subMenu>
+
+<subMenu id="settings_menu">
+<label>设置</label>
+
+    <actionItem id="h.pane.chedit.resetsettings">
+        <label>重置通道设置</label>
+    </actionItem>
+
+</subMenu>
+
+</menuBar>
+</mainMenu>
+
+
+

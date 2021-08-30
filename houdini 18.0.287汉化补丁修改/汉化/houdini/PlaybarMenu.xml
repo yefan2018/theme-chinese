@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the menu items when right-clicking over the playbar in
+    Houdini.
+
+    Files named the same (ie. PlaybarMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+         implicitly "root_menu"
+      -->
+    <menu>
+	<actionItem id="pane.chedit.dope.addkey">
+	    <label>添加键值</label>
+	</actionItem>
+	<actionItem id="pane.chedit.del">
+	    <label>删除键值</label>
+	</actionItem>
+	<actionItem id="cut">
+	    <label>剪切</label>
+	</actionItem>
+	<actionItem id="copy">
+	    <label>复制</label>
+	</actionItem>
+
+	<actionItem id="pane.chedit.dope.spaste">
+	    <label>粘贴</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.sstretch">
+	    <label>拉伸/粘贴</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.srepeat">
+	    <label>重复/粘贴</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.scycle">
+	    <label>循环/粘贴</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.sreplace">
+	    <label>替换</label>
+	</actionItem>
+
+	<actionItem id="pane.chedit.dope.vpaste">
+	    <label>视觉粘贴</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.vstretch">
+	    <label>视觉拉伸/粘贴</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.vrepeat">
+	    <label>视觉重复/粘贴</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.vcycle">
+	    <label>视觉循环/粘贴</label>
+	</actionItem>
+    <actionItem id="h.pane.chedit.dope.vcycleoffset">
+        <label>补偿视觉循环/粘贴</label>
+    </actionItem>
+	<actionItem id="pane.chedit.dope.vreplace">
+	    <label>视觉替换</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.dope.disable">
+	    <label>禁用键值</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.enable">
+	    <label>启用键值</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.dope.snap">
+	    <label>对齐选择到键值</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.growrow">
+	    <label>选择整行</label>
+	</actionItem>
+	<actionItem id="pane.chedit.dope.clearsel">
+	    <label>清除选择</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.handle">
+	    <label>切换手柄</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="pane.chedit.home">
+	    <label>返回选择</label>
+	</actionItem>
+
+	<actionItem id="pane.chedit.home_all">
+	    <label>返回所有</label>
+	</actionItem>
+	<actionItem id="pane.chedit.home_all_range">
+	    <label>返回帧范围</label>
+	</actionItem>
+
+	<separatorItem/>
+	<subMenu id="motion_effects_menu"><label>运动 FX</label>
+	    <!-- The contents of this menu is read in from MotionEffectsMenu.xml -->
+	</subMenu>
+	<separatorItem/>
+    
+	<toggleItem id="playbar.show_range">
+	    <label>显示范围滑块</label>
+	    <value>showRange</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_ticks">
+	    <label>显示刻度</label>
+	    <value>showTicks</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_audio">
+	    <label>显示音频</label>
+	    <value>showAudio</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_keys">
+	    <label>显示键值</label>
+	    <value>showKeys</value>
+	</toggleItem>
+	<toggleItem id="playbar.show_simcache">
+	    <label>显示模拟缓存</label>
+	    <value>showSimCache</value>
+	</toggleItem>
+    </menu>
+</menuDocument>

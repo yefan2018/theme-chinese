@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the menu items in the Houdini Network View pane.
+
+    Files named the same (ie. NetworkViewMenu.xml) can exist in
+    $HOME/houdiniX.Y/ directory and will supplement the original definitions
+    found in $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster.
+    See the comments in that file for more advanced customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<mainMenu>
+    <menuBar>
+
+        <subMenu id="top_menu">
+            <label>任务</label>
+            <context>
+                <expression>False</expression>
+	          </context>
+            <scriptItem id="pane.wsheet.generate_static_tops">
+                <label>生成静态工作项</label>
+                <context>
+                    <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs["editor"].pwd()
+topui.generateStatic(node)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <scriptItem id="pane.wsheet.cook_output_node">
+                <label>规划输出节点</label>
+                <context>
+                    <expression>kwargs['editor'] is not None</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs["editor"].pwd()
+topui.cookOutputNode(node)
+]]>
+                </scriptCode>
+	          </scriptItem>
+            <scriptItem id="pane.wsheet.cook_selected_node">
+                <label>规划选定节点</label>
+                <context>
+                    <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs['editor'].currentNode()
+topui.cookNode(node)
+]]>
+                </scriptCode>
+	          </scriptItem>
+            <separatorItem id="top_menu_sep_1"/>
+            <scriptItem id="pane.wsheet.dirty_all_tops">
+                <label>浑浊所有</label>
+                <context>
+                    <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs["editor"].pwd()
+topui.dirtyAll(node, False)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <scriptItem id="pane.wsheet.delete_tops_results">
+                <label>从磁盘中删除所有结果</label>
+                <context>
+                    <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs["editor"].pwd()
+topui.dirtyAll(node, True)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <separatorItem id="top_menu_sep_2"/>
+            <scriptItem id="pane.wsheet.dirty_node">
+                <label>浑浊选定节点</label>
+                <context>
+                    <expression>kwargs['editor'] is not None</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs['editor'].currentNode()
+topui.dirtyNode(node, False)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <scriptItem id="pane.wsheet.dirty_cook_selected_node">
+                <label>浑浊和规划选定节点</label>
+                <context>
+                    <expression>kwargs['editor'] is not None</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs['editor'].currentNode()
+topui.dirtyCookNode(node)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <scriptItem id="pane.wsheet.dirty_cook_output_node">
+                <label>浑浊和规划输出节点</label>
+                <context>
+                  <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import pdg
+import nodegraphtopui as topui
+
+node  = kwargs["editor"].currentNode()
+topui.dirtyCookOutputNode(node)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <scriptItem id="pane.wsheet.dirty_clean_node">
+                <label>从磁盘中删除选定的节点结果</label>
+                <context>
+                    <expression>kwargs['editor'] is not None</expression>
+                </context>
+                <scriptCode>
+              <![CDATA[
+import nodegraphtopui as topui
+node = kwargs['editor'].currentNode()
+topui.dirtyNode(node, True)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <separatorItem id="top_menu_sep_3"/>
+            <scriptItem id="pane.wsheet.cancel_cook">
+                <label>取消当前规划</label>
+                <context>
+                    <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs["editor"].pwd()
+topui.cancelCook(node)
+]]>
+                </scriptCode>
+            </scriptItem>
+            <scriptItem id="pane.wsheet.pause_cook">
+                <label>暂停当前规划</label>
+                <context>
+                    <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode>
+<![CDATA[
+import nodegraphtopui as topui
+node = kwargs["editor"].pwd()
+topui.pauseCook(node)
+]]>
+                </scriptCode>
+            </scriptItem>
+	    <separatorItem id="top_menu_sep_4"/>
+            <toggleItem id="pane.wsheet.showtaskgraph">
+                <label>显示任务图形</label>
+                <value>showtaskgraph</value>
+            </toggleItem>
+            <scriptItem id="pane.wsheet.open_task_graph_table">
+                <label>任务图形表...</label>
+		<context>
+                    <expression>kwargs['editor'] is not None and kwargs['editor'].currentNode().type().category().name() == "Top"</expression>
+                </context>
+                <scriptCode><![CDATA[
+import nodegraphtopui as topui
+node = kwargs['editor'].currentNode()
+topui.openTaskGraphTableWindow(node)
+]]></scriptCode>
+            </scriptItem>
+            <actionItem id="pane.wsheet.open_task_graph_display_options">
+                <label>任务图形显示选项...</label>
+                <value>menuAction</value>
+	    </actionItem>
+            <separatorItem id="top_menu_sep_5"/>
+            <toggleItem id="pane.wsheet.display_taskgraphperf">
+                <label>显示任务图形性能</label>
+                <value>showtaskgraphperf</value>
+            </toggleItem>
+            <subMenu id="view_menu_taskgraphperfstatname">
+                <label>性能统计</label>
+                <menuStripDynamicRadio id="pane.wsheet.taskgraphperfstatname">
+                    <value>taskgraphperfstatname</value>
+                </menuStripDynamicRadio>
+            </subMenu>
+
+	    <separatorItem id="top_menu_sep_6"/>
+	    <actionItem id="pane.wsheet.open_service_manager_dialog">
+		<label>TOP 服务管理器</label>
+	    </actionItem>
+            
+        </subMenu>
+
+    </menuBar>
+</mainMenu>
+

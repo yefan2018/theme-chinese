@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items on the Animation Editor Table Menu.
+
+    Files named the same (ie. AnimationEditorTableMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuCommon.xml
+
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with chedit. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<mainMenu>
+<menuBar>
+
+<subMenu id="edit_menu">
+    <actionItem id="h.pane.chedit.table.addkey">
+        <label>Key Selection</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.del">
+        <label>Delete Keys</label>
+    </actionItem>
+    <separatorItem id="edit_table_sep_1"/>
+    <actionItem id="h.copy">
+        <label>Copy</label>
+    </actionItem>
+    <actionItem id="h.paste">
+        <label>Paste</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="settings_menu">
+    <toggleItem id="h.pane.chedit.table.fnames">
+        <label>Show Full Channel Path Names</label>
+        <value>tableFullNames</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.table.cnames">
+        <label>Show Channel Colors</label>
+        <value>tableColorNames</value>
+    </toggleItem>
+    <separatorItem id="settings_table_sep_1"/>
+</subMenu>
+
+</menuBar>
+
+<modifyItem id="h.pane.chedit.resetsettings">
+    <insertAfter>settings_table_sep_1</insertAfter>
+</modifyItem>
+
+</mainMenu>
+

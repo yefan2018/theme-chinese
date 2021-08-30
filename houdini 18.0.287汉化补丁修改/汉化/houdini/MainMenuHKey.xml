@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file.menu">
+    <label>文件</label>
+
+      <actionItem id="show_log_in">
+        <label>安装许可证</label>
+	<value>show_log_in_redeem_window</value>
+      </actionItem>
+      
+      <actionItem id="show_key_entry">
+        <label>手动输入键值...</label>
+	<value>show_key_entry</value>
+      </actionItem>
+
+      <actionItem id="show_key_return">
+        <label>返回所选许可证</label>
+	<value>license_rmb_menu_return_license</value>
+      </actionItem>
+      
+      <separatorItem />
+
+      <actionItem id="changeserv">
+	<label>更改许可证服务器...</label>
+	<value>show_change_server_window</value>
+      </actionItem>
+      
+      <actionItem id="prefs">
+	<label>偏好...</label>
+	<value>show_preferences_window</value>
+      </actionItem>
+      
+      <separatorItem id="file_menu_sep_quit"/>
+      
+      <actionItem id="quit">
+	<label>退出</label>
+	<value>quitplease</value>
+      </actionItem>
+      
+    </subMenu>
+
+    <!-- ======================== View Menu =========================== -->
+    <subMenu id="view.menu">
+    <label>视图</label>
+ 
+    <toggleItem id="showexpired">
+	<label>显示过期许可证</label>
+	<value>showexpired</value>
+    </toggleItem>
+    
+    <toggleItem id="showunknown">
+	<label>显示来自所有服务器的许可证</label>
+	<value>showlicswithunknownsrvs</value>
+    </toggleItem>
+    
+    <separatorItem />
+    
+    <actionItem id="show_license_users">
+	<label>列出所选许可证的用户</label>
+	<value>license_rmb_menu_list_users</value>
+    </actionItem>
+    
+    <actionItem id="view_diagnostic_info">
+	<label>诊断信息</label>
+	<value>view_diagnostic_info</value>
+    </actionItem>
+    
+    <actionItem id="updateinfo">
+	<label>刷新</label>
+	<value>updateinfo</value>
+    </actionItem>
+    
+    </subMenu>
+
+    <!-- ======================== Help Menu =========================== -->
+    <subMenu id="help.menu">
+    <label>帮助</label>
+
+    <actionItem id="help">
+	<label>帮助</label>
+	<value>popup_help</value>
+    </actionItem>
+    <actionItem id="licensing_online_help">
+	<label>在线许可帮助</label>
+	<value>launch_online_help</value>
+    </actionItem>
+    <actionItem id="faq_online_help">
+	<label>在线胡迪尼常见问题解答</label>
+	<value>launch_online_faqs</value>
+    </actionItem>
+
+    <titleItem>
+       <label>热门常见问题解答</label>
+    </titleItem>
+    <actionItem id="faq_transfer_license">
+	<label>如何将许可证转让给另一台计算机</label>
+	<value>popup_faq_transfer_license</value>
+    </actionItem>
+    <actionItem id="faq_reinstall_license">
+	<label>如何重新安装许可证</label>
+	<value>popup_faq_reinstall_license</value>
+    </actionItem>
+    <actionItem id="faq_reinstall_server">
+	<label>如何修复无效的服务器键值</label>
+	<value>popup_faq_reinstall_server</value>
+    </actionItem>
+
+    </subMenu>
+        
+  </menuBar>
+</mainMenu>

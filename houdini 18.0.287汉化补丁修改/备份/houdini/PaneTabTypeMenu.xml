@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the items that appear in the pane tab type menu.
+
+    Files named the same (ie. PaneTabTypeMenu.xml) can exist in
+    $HOME/houdiniX.Y/ directory and will supplement the original definitions
+    found in $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Another difference here is that most menu items in this file have no labels
+    because they are dynamically created by Houdini. If labels are supplied to
+    the items which currently have no labels in this file, they will be
+    ignored.
+
+    Note that the id's correspond to their hotkeys with the h.pane
+    prefix (where available). For example, the item with id,
+    "scene_view", refers to the action in the hotkeys manager as
+    "h.pane.scene_view".
+
+    Also note that you can specify which context a particular menu item shows
+    up in. To do this, add a context expression property.  For example, to make
+    the menu item appear only for translate parameters you can do:
+	<context>
+	    <expression>hou.curDesktop().name() == "Build"</expression>
+	</context>
+
+    For context expressions and menu scripts, a 'kwargs' python dictionary is
+    provided with the following values:
+	'panetab'   : The pane tab (hou.PaneTab object) that the menu was
+		      opened for.  When creating a new pane tab then `panetab`
+		      is set to None.
+
+    To insert a Python Panel interface into the menu, place an <actionItem> element
+    into the XML with the "id" set to "pythonpanel::__interface_name__" where
+    "__interface_name__" is the name of the Python Panel interface. 
+
+    For example, to insert a new "myInterface" Python Panel into the menu, you can do:
+	<actionItem id="pythonpanel::myInterface">
+	    <label>Label for My Interface</label>
+	</actionItem>
+	
+    Or to move the Autorigs (Python Panel) tool to a new location, then
+    insert into the XML:
+	<actionItem id="pythonpanel::sesi_auto_rigs">
+	    <label>Autorigs</label>
+	</actionItem>
+-->
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+         implicitly "root_menu"
+      -->
+    <menu>
+        <actionItem id="net">
+            <label>Network View</label>
+        </actionItem>
+
+        <actionItem id="parm">
+            <label>Parameters</label>
+        </actionItem>
+
+        <actionItem id="treeview">
+            <label>Tree View</label>
+        </actionItem>
+
+        <separatorItem/>
+
+        <actionItem id="python_shell">
+            <label>Python Shell</label>
+        </actionItem>
+        <actionItem id="perfmon">
+            <label>Performance Monitor</label>
+        </actionItem>
+        <actionItem id="helpbrowser">
+            <label>Help Browser</label>
+        </actionItem>
+        <actionItem id="pythonpanel">
+            <label>Python Panel</label>
+        </actionItem>
+
+        <separatorItem/>
+	
+        <subMenu id="panetype_viewers">
+            <label>Viewers</label>
+
+            <actionItem id="scene_view">
+                <label>Scene View</label>
+            </actionItem>
+            <actionItem id="cop_view">
+                <label>Composite View</label>
+            </actionItem>
+            <actionItem id="chop_view">
+                <label>Motion FX View</label>
+            </actionItem>
+            <actionItem id="context_view">
+                <label>Context View</label>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="panetype_inspectors">
+            <label>Inspectors</label>
+
+            <actionItem id="geosheet">
+                <label>Geometry Spreadsheet</label>
+            </actionItem>
+            <actionItem id="parmsheet">
+                <label>Parameter Spreadsheet</label>
+            </actionItem>
+            <actionItem id="pythonpanel::ViewerStateBrowser">
+                <label>Viewer State Browser</label>
+            </actionItem>
+            <actionItem id="datatree">
+                <label>Data Tree</label>
+            </actionItem>
+            <actionItem id="pilist">
+                <label>Handle List</label>
+            </actionItem>
+        </subMenu>
+    	
+        <subMenu id="panetype_animation">
+            <label>Animation</label>
+
+            <actionItem id="chanedit">
+                <label>Animation Editor</label>
+            </actionItem>
+            <actionItem id="chanlist">
+                <label>Channel List</label>
+            </actionItem>
+            <actionItem id="pythonpanel::sesi_auto_rigs">
+                <label>Auto Rigs</label>
+            </actionItem>
+            <actionItem id="pythonpanel::sesi_character_picker">
+                <label>Character Picker</label>
+            </actionItem>
+            <actionItem id="pythonpanel::sesi_pose_library">
+                <label>Pose Library</label>
+            </actionItem>
+            <actionItem id="pythonpanel::sesi_pose_space_deform">
+                <label>Pose-space Deform</label>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="panetype_usd">
+            <label>USD</label>
+
+            <actionItem id="scenegraph">
+                <label>Scene Graph Tree</label>
+            </actionItem>
+            <actionItem id="pythonpanel::SceneGraphDetails">
+                <label>Scene Graph Details</label>
+            </actionItem>
+            <actionItem id="pythonpanel::SceneGraphLayersPanel">
+                <label>Scene Graph Layers</label>
+            </actionItem>
+            <actionItem id="pythonpanel::sesi_light_mixer">
+                <label>Light Mixer</label>
+            </actionItem>
+            <actionItem id="pythonpanel::sesi_light_linker">
+                <label>Light Linker</label>
+            </actionItem>
+            <actionItem id="pythonpanel::sidefx::material_linker">
+                <label>Material Linker</label>
+            </actionItem>
+            <actionItem id="pythonpanel::contexteditor">
+                <label>Context Options Editor</label>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="panetype_rendering">
+            <label>Legacy Rendering</label>
+
+            <actionItem id="ipr_viewer">
+                <label>Render View</label>
+            </actionItem>
+            <actionItem id="rop_view">
+                <label>Render Scheduler</label>
+            </actionItem>
+            <actionItem id="mat_palette">
+                <label>Material Palette</label>
+            </actionItem>
+            <actionItem id="linker">
+                <label>Light Linker</label>
+            </actionItem>
+            <actionItem id="bundlelist">
+                <label>Bundle List</label>
+            </actionItem>
+            <actionItem id="takelist">
+                <label>Take List</label>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="panetype_tops">
+            <label>TOPs</label>
+
+            <actionItem id="pythonpanel::taskgraphtable">
+                <label>Task Graph Table</label>
+            </actionItem>
+            <actionItem id="pythonpanel::pdgstateserver">
+                <label>PDG State Server</label>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="panetype_misc">
+            <label>Misc</label>
+            
+            <actionItem id="projectm">
+                <label>Orbolt Asset Browser</label>
+            </actionItem>
+        	<actionItem id="textport">
+        	    <label>Textport</label>
+        	</actionItem>
+        </subMenu>
+    </menu>
+</menuDocument>

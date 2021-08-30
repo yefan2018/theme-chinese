@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items in the Houdini Network View pane.
+
+    Files named the same (ie. NetworkViewMenu.xml) can exist in
+    $HOME/houdiniX.Y/ directory and will supplement the original definitions
+    found in $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster.
+    See the comments in that file for more advanced customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<mainMenu>
+    <menuBar>
+
+        <subMenu id="create_menu">
+            <label> Add </label>
+            <actionItem id="pane.wsheet.add_op">
+                <label>Node</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.addfileop">
+                <label>File Node</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.create_netbox">
+                <label>Network Box</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.add_postit">
+                <label>Sticky Note</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.add_image">
+                <label>Background Image</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="create_menu_sep_1"/>
+
+            <actionItem id="pane.wsheet.add_bundle">
+                <label>Node Bundle</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.add_group">
+                <label>Node Group</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="edit_menu">
+            <label> Edit </label>
+            <actionItem id="pane.wsheet.select">
+                <label>Select all</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_2"/>
+
+            <actionItem id="cut">
+                <label>Cut</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="copy">
+                <label>Copy</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="paste">
+                <label>Paste</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.delete">
+                <label>Delete</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.del_netbox_and_contents">
+                <label>Delete with Network Box Contents</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_1"/>
+
+            <actionItem id="pane.wsheet.find">
+                <label>Find Node...</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.find_next">
+                <label>Next Matching Node</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.find_prev">
+                <label>Previous Matching Node</label>
+                <value>menuAction</value>
+            </actionItem>
+			<!--
+			<actionItem id="rename_selected_nodes">
+				<label>Rename Selected Nodes...</label>
+			</actionItem>
+			-->
+            <actionItem id="pane.wsheet.batch_rename">
+                <label>Rename Nodes...</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_4"/>
+
+            <actionItem id="pane.wsheet.disconnect_inputs">
+                <label>Disconnect Inputs</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.disconnect_outputs">
+                <label>Disconnect Outputs</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.SubnetIndirectInput)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.disconnect_all">
+                <label>Disconnect Inputs and Outputs</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.SubnetIndirectInput)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.reconnect_around">
+                <label>Reconnect Around Selected</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkDot) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.SubnetIndirectInput)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.swap_inputs">
+                <label>Rotate Input Connections</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.Node) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_5"/>
+
+            <actionItem id="pane.wsheet.scope_chans">
+                <label>Add All Channels to Channel List</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.delete_chans">
+                <label>Delete Channels</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.create_channel_groups">
+                <label>Create Nested Channel Groups</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_6"/>
+
+            <actionItem id="pane.wsheet.collapse">
+                <label>Collapse Selected into Sub-network</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.collapse_to_material">
+                <label>Collapse Selected into Material</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0 and kwargs['editor'].pwd().type().isManager(True) and kwargs['editor'].pwd().childTypeCategory() == hou.vopNodeTypeCategory()</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="edit_menu_sep_7"/>
+
+            <actionItem id="pane.wsheet.expose">
+                <label>Unhide All</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="go_menu">
+            <label> Go </label>
+
+            <actionItem id="pane.wsheet.updir">
+                <label>Up to Parent Network</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.jump">
+                <label>Into Selected Network</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="go_menu_sep_2"/>
+
+            <actionItem id="pane.wsheet.up">
+                <label>Move Current Node Up</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="pane.wsheet.down">
+                <label>Move Current Node Down</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="pane.wsheet.left">
+                <label>Move Current Node Left</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="pane.wsheet.right">
+                <label>Move Current Node Right</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="go_menu_sep_3"/>
+
+            <subMenu id="go_menu_setquickmark">
+                <label>Set Quickmark</label>
+                <actionItem id="pane.wsheet.set_mark_1">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(0)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_2">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(1)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_3">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(2)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_4">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(3)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.set_mark_5">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(4)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+            </subMenu>
+
+            <subMenu id="go_menu_jumpquickmark">
+                <label>Jump to Quickmark</label>
+                <actionItem id="pane.wsheet.jump_mark_1">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(0)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_2">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(1)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_3">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(2)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_4">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(3)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+                <actionItem id="pane.wsheet.jump_mark_5">
+		    <labelExpression><![CDATA[
+import nodegraphview
+return nodegraphview.quickmarkMenuLabel(4)
+]]></labelExpression>
+                    <value>menuAction</value>
+                </actionItem>
+            </subMenu>
+
+            <actionItem id="pane.wsheet.jump_mark_undo">
+                <label>Last View</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="view_menu">
+            <label> View </label>
+            <actionItem id="pane.wsheet.zoom_in">
+                <label>Zoom In</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.zoom_out">
+                <label>Zoom Out</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.home">
+                <label>Zoom to Show All</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.home_selected">
+                <label>Zoom to Show Selected</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="view_menu_sep_2"/>
+
+            <toggleItem id="pane.wsheet.shownodetypes">
+                <label>Show Node Type</label>
+                <value>shownodetypes</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.shownodeshapes">
+                <label>Show Custom Node Shapes</label>
+                <value>shownodeshapes</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.showpreviews">
+                <label>Show Node Previews</label>
+                <value>showpreviews</value>
+            </toggleItem>
+
+            <separatorItem id="view_menu_sep_2a"/>
+
+
+
+            <separatorItem id="view_menu_sep_1"/>
+
+            <titleItem id="dependency_title">
+                <label>Dependency Links</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>showdep</value>
+                <radioItem id="pane.wsheet.showdepnone">
+                    <label>Hide</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.showdepselected">
+                    <label>Show for Selected Nodes</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.showdepall">
+                    <label>Show for All Nodes</label>
+                </radioItem>
+            </menuStripRadio>
+
+            <toggleItem id="pane.wsheet.showchilddep">
+                <label>Show Dependency Links for Child Nodes</label>
+                <value>showchilddep</value>
+            </toggleItem>
+
+            <separatorItem id="view_menu_sep_4"/>
+
+            <actionItem id="pane.wsheet.change_wire_style">
+                <label>Change Network Wiring Style</label>
+                <value>menuAction</value>
+            </actionItem>
+            <toggleItem id="pane.wsheet.display_perfstat">
+                <label>Show Performance Data</label>
+                <value>showperfstats</value>
+            </toggleItem>
+            <subMenu id="view_menu_perfstatname">
+                <label>Performance Data to Show</label>
+                <menuStripDynamicRadio id="pane.wsheet.perfstatname">
+                    <value>perfstatname</value>
+                </menuStripDynamicRadio>
+            </subMenu>
+
+            <separatorItem id="view_menu_sep_5"/>
+
+            <toggleItem id="pane.wsheet.showprompttext">
+                <label>Show Help Messages</label>
+                <value>showprompttext</value>
+            </toggleItem>
+            <actionItem id="pane.wsheet.open_display_options">
+                <label>Display Options</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="tools_menu">
+            <label> Tools </label>
+            <toggleItem id="pane.wsheet.mode_switch">
+                <label>List mode</label>
+                <value>listmode</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.opparms">
+                <label>Show Parameter Dialog</label>
+                <value>showparmdialog</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.opparms_max">
+                <label>Show Parameter Dialog When Maximized</label>
+                <value>showparmdialogmax</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.open_treeview">
+                <label>Show Operator Tree</label>
+                <value>showtree</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.open_groups">
+                <label>Show Groups</label>
+                <value>showgrouplist</value>
+            </toggleItem>
+            <toggleItem id="pane.wsheet.open_sidebar">
+                <label>Show Tool Palette</label>
+                <value>showtypesidebar</value>
+            </toggleItem>
+
+            <separatorItem id="tools_menu_sep_1"/>
+
+            <titleItem id="overview_title">
+                <label>Show Overview</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>overviewmode</value>
+                <radioItem id="pane.wsheet.overview_auto">
+                    <label>When Needed</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.overview_on">
+                    <label>Always</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.overview_off">
+                    <label>Never</label>
+                </radioItem>
+            </menuStripRadio>
+
+            <separatorItem id="tools_menu_sep_2"/>
+
+            <titleItem id="grid_title">
+                <label>Show Grid</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>gridmode</value>
+                <radioItem id="pane.wsheet.grid_off">
+                    <label>No Grid</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.grid_points">
+                    <label>Grid Points</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.grid_lines">
+                    <label>Grid Lines</label>
+                </radioItem>
+            </menuStripRadio>
+            <toggleItem id="pane.wsheet.gridsnapping">
+                <label>Snap to Grid</label>
+                <value>gridsnapping</value>
+            </toggleItem>
+
+            <separatorItem id="tools_menu_sep_3"/>
+
+            <titleItem id="palette_title">
+                <label>Show Palette</label>
+            </titleItem>
+            <menuStripRadio>
+                <value>palettemode</value>
+                <radioItem id="pane.wsheet.no_palette">
+                    <label>None</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.color_palette">
+                    <label>Colors</label>
+                </radioItem>
+                <radioItem id="pane.wsheet.shape_palette">
+                    <label>Shapes</label>
+                </radioItem>
+            </menuStripRadio>
+
+            <separatorItem id="tools_menu_sep_4"/>
+
+            <toggleItem id="pane.wsheet.edit_images">
+                <label>Edit Background Images</label>
+                <value>backgroundimageediting</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.dosnapping">
+                <label>Snap to Visible Nodes</label>
+                <value>dosnapping</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.allowdroponwire">
+                <label>Allow Dropping Nodes on Wires</label>
+                <value>allowdroponwire</value>
+            </toggleItem>
+
+            <toggleItem id="pane.wsheet.doautomovenodes">
+                <label>Make Room for New Nodes</label>
+                <value>doautomovenodes</value>
+            </toggleItem>
+        </subMenu>
+
+        <subMenu id="layout_menu">
+            <label> Layout </label>
+            <actionItem id="pane.wsheet.layout_all">
+                <label>Lay Out All</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout">
+                <label>Lay Out Selected</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_1"/>
+
+            <actionItem id="pane.wsheet.layout_up">
+                <label>Layout Nodes Up</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout_down">
+                <label>Layout Nodes Down</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout_left">
+                <label>Layout Nodes Left</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.layout_right">
+                <label>Layout Nodes Right</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_2"/>
+
+            <actionItem id="pane.wsheet.align_vertical">
+                <label>Align Nodes Vertically</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.align_horizontal">
+                <label>Align Nodes Horizontally</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.distribute_vertical">
+                <label>Distribute Nodes Vertically</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.distribute_horizontal">
+                <label>Distribute Nodes Horizontally</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_3"/>
+
+            <actionItem id="pane.wsheet.minimize">
+                <label>Minimize Selected</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.minimize_adjust">
+                <label>Minimize and Adjust Network</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.maximize">
+                <label>Restore Selected</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.maximize_adjust">
+                <label>Restore and Adjust Network</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and (kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.StickyNote) + kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox)) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.snap_netbox_bounds">
+                <label>Resize Network Boxes to Fit</label>
+		<context>
+		    <expression>kwargs['editor'] is not None and kwargs['editor'].pwd().numItems(selected_only=True, item_type=hou.networkItemType.NetworkBox) > 0</expression>
+		</context>
+                <value>menuAction</value>
+            </actionItem>
+
+            <separatorItem id="layout_menu_sep_4"/>
+
+            <actionItem id="pane.wsheet.space_vertical">
+                <label>Space Nodes Vertically</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.space_horizontal">
+                <label>Space Nodes Horizontally</label>
+                <value>menuAction</value>
+            </actionItem>
+            <actionItem id="pane.wsheet.correct_vop_pos">
+                <label>Correct VOP Node Positions</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+        <subMenu id="help_menu">
+            <label> Help </label>
+
+            <actionItem id="h.pane.wsheet.help_shortcuts">
+                <label>Shortcuts</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_general">
+                <label>General</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_navigation">
+                <label>Navigation</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_wiring">
+                <label>Wiring</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_flags">
+                <label>Flags</label>
+                <value>menuAction</value>
+            </actionItem>
+	    
+            <actionItem id="h.pane.wsheet.help_badges">
+                <label>Badges</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_organization">
+                <label>Organization</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_dependencies">
+                <label>Dependencies</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_menus">
+                <label>Menus</label>
+                <value>menuAction</value>
+            </actionItem>
+
+            <actionItem id="h.pane.wsheet.help_options">
+                <label>Options</label>
+                <value>menuAction</value>
+            </actionItem>
+        </subMenu>
+
+    </menuBar>
+</mainMenu>
+

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items on the Animation Editor Dopesheet Menu.
+
+    Files named the same (ie. AnimationEditorDopesheetMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuCommon.xml
+
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with chedit. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<mainMenu>
+<menuBar>
+<subMenu id="edit_menu">
+
+    <actionItem id="h.pane.chedit.dope.clearsel">
+        <label>Deselect All</label>
+    </actionItem>
+    <subMenu id="edit_adjust_sel_menu">
+        <label>Adjust Selection</label>
+        <actionItem id="h.pane.chedit.dope.growcol">
+            <label>Select Entire Columns</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.growrow">
+            <label>Select Entire Rows</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.snap">
+            <label>Snap Current Selection to Keys</label>
+        </actionItem>
+    </subMenu>
+    <separatorItem id="edit_sep_1"/>
+    <actionItem id="h.pane.chedit.dope.addkey">
+        <label>Key Selection</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.del">
+        <label>Delete Keys</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.disable">
+        <label>Disable Keys</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.enable">
+        <label>Enable Keys</label>
+    </actionItem>
+    <separatorItem id="edit_sep_2"/>
+    <actionItem id="h.cut">
+        <label>Cut</label>
+    </actionItem>
+    <actionItem id="h.copy">
+        <label>Copy</label>
+    </actionItem>
+    <actionItem id="h.paste">
+        <label>Paste</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.sreplace">
+        <label>Replace</label>
+    </actionItem>
+    <separatorItem id="edit_sep_3"/>
+
+    <subMenu id="edit_paste_special_menu">
+        <label>Paste Special</label>
+        <actionItem id="h.pane.chedit.dope.vpaste">
+            <label>Visual Paste</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.vreplace">
+            <label>Visual Replace</label>
+        </actionItem>
+        <separatorItem id="edit_sep_4"/>
+        <actionItem id="h.pane.chedit.dope.vstretch">
+            <label>Visual Stretch</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.vcycle">
+            <label>Visual Cycle</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.vcycleoffset">
+            <label>Visual Cycle with Offset</label>
+        </actionItem>
+        <separatorItem id="edit_sep_5"/>
+        <actionItem id="h.pane.chedit.dope.sstretch">
+            <label>Stretch at Region Selection</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.scycle">
+            <label>Cycle at Region Selection</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.scycleoffset">
+            <label>Cycle with Offset at Region Selection</label>
+        </actionItem>
+    </subMenu>
+    <separatorItem id="edit_sep_5"/>
+    <actionItem id="h.pane.chedit.dope.snapmarks">
+        <label>Snap Selected Keys to Nearest Frame</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="settings_menu">
+    <toggleItem>
+        <label>Add Keys at Pasted Selection Boundary</label>
+        <value>forceKeysOn</value>
+    </toggleItem>
+    <toggleItem>
+        <label>Always Snap Selection to Keys</label>
+        <value>autoSnapOn</value>
+    </toggleItem>
+    <separatorItem id="settings_dope_sep_1"/>
+    <toggleItem id="h.pane.chedit.dope.fnames">
+        <label>Show Full Channel Path Names</label>
+        <value>dopeFullNames</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.dope.cnames">
+        <label>Show Channel Colors</label>
+        <value>dopeColorNames</value>
+    </toggleItem>
+    <separatorItem id="settings_dope_sep_2"/>
+    <toggleItem>
+        <label>Snap Scaled Keys to Nearest Frame</label>
+        <value>autosnap_after_stretch</value>
+    </toggleItem>
+    <separatorItem id="settings_dope_sep_3"/>
+
+</subMenu>
+<subMenu id="view_menu">
+<label>View</label>
+    <actionItem id="h.pane.chedit.home_all">
+        <label>Home All Channels</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_frange">
+        <label>Home Playback Range</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_range">
+        <label>Home Global Range</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.frame">
+        <label>Frame Selection</label>
+    </actionItem>
+    <separatorItem id="view_sep_1"/>
+    <actionItem id="h.pane.chedit.dope.collapse">
+        <label>One Line Per Group</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.expand">
+        <label>One Line Per Channel</label>
+    </actionItem>
+    <toggleItem id="h.pane.chedit.dope.show_ac_row">
+        <label>Show All-Channels Row</label>
+        <value>showAllChansRow</value>
+    </toggleItem>
+
+</subMenu>
+<subMenu id="tools_menu">
+    <toggleItem id="h.pane.chedit.graph.show_tool_bar">
+        <label>Right Toolbar</label>
+        <value>includeVtools</value>
+    </toggleItem>
+</subMenu>
+</menuBar>
+
+<modifyItem id="h.pane.chedit.resetsettings">
+    <insertAfter>settings_dope_sep_3</insertAfter>
+</modifyItem>
+
+<modifyItem id="view_menu">
+    <insertAfter>edit_menu</insertAfter>
+</modifyItem>
+
+</mainMenu>
+
+

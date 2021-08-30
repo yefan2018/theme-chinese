@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+         implicitly "root_menu"
+      -->
+    <menu>
+        <!-- ========================= Window Menu ========================= -->
+        <!--
+        <subMenu id="desktop_submenu">
+                <label>桌面</label>-->
+
+                <menuStripDynamicRadio id="desktop_strip">
+                    <value>desktop.val</value>
+                </menuStripDynamicRadio>
+
+                <separatorItem id="desktop_submenu_sep_1"/>
+
+                <actionItem id="h.add_desktop">
+                    <label>新建桌面</label>
+                </actionItem>
+
+                <actionItem id="h.save_desktop">
+                    <label>保存当前桌面</label>
+                </actionItem>
+
+                <actionItem id="h.saveas_desktop">
+                    <label>将当前桌面另存为...</label>
+                </actionItem>
+
+                <actionItem id="h.save_desktops">
+                    <label>保存所有桌面</label>
+                </actionItem>
+
+                <actionItem id="h.reload_desktop">
+                    <label>重新加载当前桌面</label>
+                </actionItem>
+
+                <separatorItem id="desktop_submenu_sep_2"/>
+
+                <actionItem id="h.desktop_mgr">
+                    <label>桌面管理器...</label>
+                </actionItem>
+
+                <separatorItem id="desktop_submenu_sep_3"/>
+
+                <actionItem id="h.reset_menubar" platform="windows linux">
+                    <label>将主菜单重置到顶部</label>
+                    <value>mainmenubar</value>
+                </actionItem>
+
+                <actionItem id="h.reset_shelf">
+                    <label>将工具架重置到顶部</label>
+                    <value>shelf</value>
+                </actionItem>
+
+                <actionItem id="h.reset_playbar">
+                    <label>将播放栏重置到底部</label>
+                    <value>playbar</value>
+                </actionItem>
+
+                <actionItem id="h.reset_statusbar" platform="windows linux">
+                    <label>将状态栏重置到底部</label>
+                    <value>statusbar</value>
+                </actionItem>
+        <!--
+            </subMenu>-->
+
+    </menu>
+</menuDocument>

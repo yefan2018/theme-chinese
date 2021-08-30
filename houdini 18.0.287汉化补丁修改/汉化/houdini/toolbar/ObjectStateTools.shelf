@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <tool name="object_objview" label="视图" icon="TOOLS_view">
+    <helpURL>operator:obj_state/objview</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Viewing</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'objview')]]></script>
+  </tool>
+
+  <tool name="object_floor" label="建筑平面" icon="VIEW_display_construction_plane">
+    <helpURL>operator:obj_state/floor</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'floor')]]></script>
+  </tool>
+
+  <tool name="object_renderregion" label="渲染区域" icon="TOOLS_render_region">
+    <helpURL>operator:obj_state/renderregion</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Render</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'renderregion')]]></script>
+  </tool>
+
+  <tool name="object_select" label="选择" icon="TOOLS_select">
+    <helpURL>operator:obj_state/select</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'select')]]></script>
+  </tool>
+
+  <tool name="object_geo" label="几何体" icon="OBJ_geo">
+    <helpURL>operator:Object/geo</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Object/geo</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Geometry</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'geo')]]></script>
+  </tool>
+
+  <tool name="object_lookat" label="查看" icon="SHELF_lookat">
+    <helpURL>operator:obj_state/lookat</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'lookat')]]></script>
+  </tool>
+
+  <tool name="object_lookup" label="向上查找" icon="SHELF_lookup">
+    <helpURL>operator:obj_state/lookup</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'lookup')]]></script>
+  </tool>
+
+  <tool name="object_objmaterial" label="材质" icon="SOP_material">
+    <helpURL>operator:obj_state/objmaterial</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Render</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'objmaterial')]]></script>
+  </tool>
+
+  <tool name="object_blend" label="混合" icon="OBJ_blend">
+    <helpURL>operator:Object/blend</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Object/blend</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'blend')]]></script>
+  </tool>
+
+  <tool name="object_masklight" label="遮罩灯" icon="MWS_masklight">
+    <helpURL>operator:obj_state/masklight</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Render</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'masklight')]]></script>
+  </tool>
+
+  <tool name="object_parent" label="关系" icon="SHELF_parent">
+    <helpURL>operator:obj_state/parent</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'parent')]]></script>
+  </tool>
+
+  <tool name="object_dynamicparent" label="动态关系" icon="OBJ_STATE_dynamicparent">
+    <helpURL>operator:obj_state/dynamicparent</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'dynamicparent')]]></script>
+  </tool>
+
+  <tool name="object_followpath" label="跟随路径" icon="SHELF_followpath">
+    <helpURL>operator:obj_state/followpath</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'followpath')]]></script>
+  </tool>
+
+  <tool name="object_blendpose" label="混合姿势" icon="OBJ_STATE_blendpose">
+    <helpURL>operator:obj_state/blendpose</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'blendpose')]]></script>
+  </tool>
+
+  <tool name="object_sticky" label="粘性" icon="OBJ_sticky">
+    <helpURL>operator:Object/sticky</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Object/sticky</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'sticky')]]></script>
+  </tool>
+
+  <tool name="object_aligncapturepose" label="对齐捕捉姿势" icon="OBJ_STATE_aligncapturepose">
+    <helpURL>operator:obj_state/aligncapturepose</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'aligncapturepose')]]></script>
+  </tool>
+
+  <tool name="object_bones" label="骨头" icon="OBJ_STATE_bones">
+    <helpURL>operator:obj_state/bones</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'bones')]]></script>
+  </tool>
+
+  <tool name="object_bonesfromcurve" label="曲线式骨骼" icon="OBJ_STATE_bonesfromcurve">
+    <helpURL>operator:obj_state/bonesfromcurve</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'bonesfromcurve')]]></script>
+  </tool>
+
+  <tool name="object_pose" label="姿势" icon="OBJ_STATE_pose">
+    <helpURL>operator:obj_state/pose</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'pose')]]></script>
+  </tool>
+
+  <tool name="object_bone" label="骨骼" icon="OBJ_bone">
+    <helpURL>operator:Object/bone</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Object/bone</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'bone')]]></script>
+  </tool>
+
+  <tool name="object_capturegeometry" label="捕捉几何体" icon="SOP_capture">
+    <helpURL>operator:obj_state/capturegeometry</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'capturegeometry')]]></script>
+  </tool>
+
+  <tool name="object_path" label="路径" icon="OBJ_STATE_path">
+    <helpURL>operator:Object/path</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Object/path</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'path')]]></script>
+  </tool>
+
+  <tool name="object_mirrormusclecapture" label="镜像肌肉遮罩" icon="OBJ_STATE_mirrorcapture">
+    <helpURL>operator:obj_state/mirrormusclecapture</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'mirrormusclecapture')]]></script>
+  </tool>
+
+  <tool name="object_rivet" label="铆钉" icon="OBJ_rivet">
+    <helpURL>operator:Object/rivet</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Object/rivet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Parenting</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'rivet')]]></script>
+  </tool>
+
+  <tool name="object_morph" label="变形" icon="SOP_blendshapes">
+    <helpURL>operator:obj_state/morph</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'morph')]]></script>
+  </tool>
+
+  <tool name="object_muscle" label="肌肉" icon="OBJ_muscle">
+    <helpURL>operator:Object/muscle</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Object/muscle</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'muscle')]]></script>
+  </tool>
+
+  <tool name="object_objchanmodify" label="修改通道" icon="MWS_chanmodify">
+    <helpURL>operator:obj_state/objchanmodify</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'objchanmodify')]]></script>
+  </tool>
+
+  <tool name="object_objfindmaterial" label="查找材质" icon="MWS_findmaterial">
+    <helpURL>operator:obj_state/objfindmaterial</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Render</toolSubmenu>
+    <script scriptType="python"><![CDATA[import objecttoolutils
+
+objecttoolutils.customStateTool(kwargs, 'objfindmaterial')]]></script>
+  </tool>
+</shelfDocument>

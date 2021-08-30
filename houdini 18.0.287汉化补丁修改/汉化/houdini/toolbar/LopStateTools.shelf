@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <tool name="lop_lopview" label="视图" icon="TOOLS_view">
+    <toolMenuContext name="viewer">
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'lopview')]]></script>
+  </tool>
+
+  <tool name="lop_scenegraphselect" label="选择" icon="TOOLS_select">
+    <toolMenuContext name="viewer">
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'scenegraphselect')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_lop_camera" label="相机" icon="LOP_camera">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_lop_camera')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_lopfollowpathconstraint" label="跟随路径约束" icon="LOP_followpathconstraint">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_lopfollowpathconstraint')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_lop_light" label="灯光" icon="LOP_light">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_lop_light')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_loplookatconstraint" label="查看约束" icon="LOP_lookatconstraint">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_loplookatconstraint')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_loppointsconstraint" label="点约束" icon="LOP_pointsconstraint">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_loppointsconstraint')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_lop_setextents.pystate" label="集成到范围" icon="LOP_setextents">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_lop_setextents.pystate')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_lopsurfaceconstraint" label="曲面约束" icon="LOP_surfaceconstraint">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_lopsurfaceconstraint')]]></script>
+  </tool>
+
+  <tool name="lop_sidefx_loptransformuv.pystate" label="变换 UV" icon="LOP_transformuv">
+    <script scriptType="python"><![CDATA[import toolutils
+
+toolutils.genericStateTool(kwargs, 'sidefx_loptransformuv.pystate')]]></script>
+  </tool>
+</shelfDocument>

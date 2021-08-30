@@ -1,0 +1,214 @@
+<!--
+    This file defines the menu items when clicking over the playbar
+    keying mode in Houdini.
+
+    Files named the same (ie. KeyframesMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+<menu>
+
+<actionItem id="h.pane.chedit.keycurrent">
+    <label>Set Keyframes at Current Time</label>
+</actionItem>
+
+<actionItem id="h.pane.chedit.samplecurrent">
+    <label>Sample Values at Current Time</label>
+</actionItem>
+
+<actionItem id="h.pane.chedit.pastesample">
+    <label>Paste Sampled Values at Current Time</label>
+</actionItem>
+
+<separatorItem id="graph_rmb_sep_1"/>
+
+<actionItem id="h.cut">
+    <label>Cut</label>
+</actionItem>
+
+<actionItem id="h.copy">
+    <label>Copy</label>
+</actionItem>
+
+<actionItem id="h.paste">
+    <label>Paste</label>
+</actionItem>
+
+<subMenu id="paste_settings_menu">
+<label>Paste Settings</label>
+
+    <menuStripRadio id="pasteusing_radio">
+        <value>pasteUsing</value>
+
+        <radioItem id="h.pane.chedit.graph.paste.name">
+            <label>Using Channel Names</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.fullpath">
+            <label>Using Full Paths</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.roworder">
+            <label>Using Row Order</label>
+        </radioItem>
+    </menuStripRadio>
+
+    <separatorItem id="paste_settings_sep_1"/>
+
+    <menuStripRadio id="pasteat_radio">
+        <value>pasteAt</value>
+
+        <radioItem id="h.pane.chedit.graph.paste.atcurrent">
+            <label>At Current Time</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.atorginal">
+            <label>At Original Time</label>
+        </radioItem>
+    </menuStripRadio>
+
+    <separatorItem id="paste_settings_sep_2"/>
+
+    <menuStripRadio id="pasteon_radio">
+        <value>pasteOn</value>
+
+        <radioItem id="h.pane.chedit.graph.paste.onexisting">
+            <label>On Parameters with Existing Channels</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.onall">
+            <label>On All Parameters</label>
+        </radioItem>
+    </menuStripRadio>
+
+</subMenu>
+
+<actionItem id="h.pane.chedit.del">
+    <label>Delete</label>
+</actionItem>
+
+<separatorItem id="graph_rmb_sep_2"/>
+
+<actionItem id="h.pane.chedit.graph.selectall">
+    <label>Select All Handles</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.selectno">
+    <label>Select No Handles</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.invertselection">
+    <label>Invert Handle Selection</label>
+</actionItem>
+
+<separatorItem id="graph_rmb_sep_3"/>
+<actionItem id="h.pane.chedit.graph.loadsnapshots">
+    <label>Revert Active Channels to Snapshots</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.swapsnapshots">
+    <label>Swap Active Channels and Snapshots</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.clearsnapshots">
+    <label>Clear Channel Snapshots</label>
+</actionItem>
+<separatorItem id="graph_rmb_sep_4"/>
+<actionItem id="h.pane.chedit.graph.snapmarks">
+    <label>Snap Selected Keys to Nearest Frame</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.ties">
+    <label>Tie/Untie</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.settodefault">
+    <label>Set Selection to Default Values</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.zeroslope">
+    <label>Set Selected Slopes To Zero</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.manualslope">
+    <label>Set Selected Slopes To Manual</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.autoslope">
+    <label>Set Selected Slopes To Automatic</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.linearslope">
+    <label>Set Selected Slopes To Linear</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.toggleslope">
+    <label>Toggle Selected Slopes Mode</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.smoothslope">
+    <label>Smooth Selected Slopes</label>
+</actionItem>
+<separatorItem id="graph_rmb_sep_5"/>
+<subMenu id="set_selected_segments_menu">
+<label>Set Selected Segments to...</label>
+    <actionItem id="h.pane.chedit.graph.segconst">
+        <label>Constant</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.seglinear">
+        <label>Straight</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segbezier">
+        <label>Bezier</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segcubic">
+        <label>Cubic</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segeaseio">
+        <label>Ease In and Out</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segeasei">
+        <label>Ease In</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segeaseo">
+        <label>Ease Out</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segmatchio">
+        <label>Match In and Out Tangents</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segmatchi">
+        <label>Match In Tangents</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segmatcho">
+        <label>Match Out Tangents</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segspline">
+        <label>Spline</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segqlinear">
+        <label>Quaternion Linear</label>
+    </actionItem>
+</subMenu>
+<separatorItem id="graph_rmb_sep_6"/>
+<actionItem id="h.pane.chedit.graph.eulerfilter">
+    <label>Filter Euler Rotations of Selected Channels</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.matchkeys">
+    <label>Match Keyframes of Selected Timemarks</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.refit">
+    <label>Bake Keyframes of Selected Segments</label>
+</actionItem>
+
+</menu>
+</menuDocument>
+

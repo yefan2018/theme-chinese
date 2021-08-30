@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the menu items on the Animation Editor Graph Menu.
+
+    Files named the same (ie. AnimationEditorGraphMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuCommon.xml
+
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with chedit. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+<mainMenu>
+<menuBar>
+
+<subMenu id="channels_menu">
+    <actionItem id="h.pane.chedit.graph.isolate">
+        <label>隔离通道（仅显示选定的通道）</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.unisolate">
+        <label>还原隔离通道</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="edit_menu">
+    <actionItem id="h.cut">
+        <label>剪切</label>
+    </actionItem>
+
+    <actionItem id="h.copy">
+        <label>复制</label>
+    </actionItem>
+
+    <actionItem id="h.paste">
+        <label>粘贴</label>
+    </actionItem>
+
+    <subMenu id="paste_settings_menu">
+    <label>粘贴设置</label>
+
+	<menuStripRadio id="pasteusing_radio">
+            <value>pasteUsing</value>
+
+	    <radioItem id="h.pane.chedit.graph.paste.name">
+                <label>使用通道名称</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.fullpath">
+                <label>使用完整路径</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.roworder">
+                <label>使用行顺序</label>
+            </radioItem>
+	</menuStripRadio>
+
+        <separatorItem id="paste_settings_sep_1"/>
+
+	<menuStripRadio id="pasteat_radio">
+            <value>pasteAt</value>
+
+	    <radioItem id="h.pane.chedit.graph.paste.atcurrent">
+                <label>在当前时间</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.atorginal">
+                <label>在原始时间</label>
+            </radioItem>
+	</menuStripRadio>
+
+        <separatorItem id="paste_settings_sep_2"/>
+
+	<menuStripRadio id="pasteon_radio">
+            <value>pasteOn</value>
+
+	    <radioItem id="h.pane.chedit.graph.paste.onexisting">
+                <label>使用现有通道的参数</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.onall">
+                <label>在所有参数上</label>
+            </radioItem>
+	</menuStripRadio>
+
+    </subMenu>
+
+    <actionItem id="h.paste">
+        <label>粘贴</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.del">
+        <label>删除</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.selectall">
+        <label>选择所有句柄</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.selectno">
+        <label>选择无效句柄</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.invertselection">
+        <label>反转控点选择</label>
+    </actionItem>
+    <separatorItem id="edit_graph_sep_1"/>
+    <actionItem id="h.pane.chedit.graph.snapmarks">
+        <label>将所选键值对齐到近期的帧</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.ties">
+        <label>关联/解除</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.settodefault">
+        <label>将选定项设置为默认值</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.zeroslope">
+        <label>将所选斜角设置为零</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.manualslope">
+        <label>将选定斜角设置为手动</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.autoslope">
+        <label>将所选斜角设置为自动</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.linearslope">
+        <label>将所选斜角设置为线性</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.toggleslope">
+        <label>切换选定的斜角模式</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.smoothslope">
+        <label>平滑所选斜角</label>
+    </actionItem>
+    <separatorItem id="edit_graph_sep_2"/>
+
+    <subMenu id="set_selected_segments_menu">
+    <label>选定段集成到...</label>
+        <actionItem id="h.pane.chedit.graph.segconst">
+            <label>常量</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.seglinear">
+            <label>直线</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segbezier">
+            <label>贝塞尔</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segcubic">
+            <label>立方</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segeaseio">
+            <label>缓入缓出</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segeasei">
+            <label>缓入</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segeaseo">
+            <label>缓出</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segmatchio">
+            <label>匹配进出切线</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segmatchi">
+            <label>在切线中匹配</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segmatcho">
+            <label>匹配切线</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segspline">
+            <label>样条</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segqlinear">
+            <label>四元线性</label>
+        </actionItem>
+    </subMenu>
+
+    <separatorItem id="edit_graph_sep_3"/>
+
+    <actionItem id="h.pane.chedit.graph.eulerfilter">
+        <label>筛选所选通道的欧拉轮换</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.matchkeys">
+        <label>匹配选定时间标记的关键帧</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.refit">
+        <label>烘焙选定段的关键帧</label>
+    </actionItem>
+
+    <separatorItem id="edit_graph_sep_4"/>
+
+</subMenu>
+
+<subMenu id="tools_menu">
+
+    <toggleItem id="h.pane.chedit.graph.show_func_bar">
+        <label>底部值工具栏</label>
+        <value>includeGraphValues</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.show_top_timeline">
+        <label>顶部时间线</label>
+        <value>includegraphtimebar</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.show_tool_bar">
+        <label>右侧工具栏</label>
+        <value>includeVtools</value>
+    </toggleItem>
+
+</subMenu>
+
+<subMenu id="settings_menu">
+    <toggleItem id="audioTemplate">
+        <label>在时间轴中显示音频</label>
+        <value>audioTemplate</value>
+    </toggleItem>
+
+    <toggleItem id="syncFromScoped">
+        <label>从通道列表中同步组选择</label>
+        <value>syncFromScoped</value>
+    </toggleItem>
+
+    <separatorItem id="settings_graph_sep_1"/>
+
+    <subMenu id="grid_density_menu">
+        <label>网格线密度</label>
+	<menuStripRadio id="grid_density">
+            <value>gridOn</value>
+	    <radioItem> <label>关闭</label> </radioItem>
+	    <radioItem> <label>低</label> </radioItem>
+	    <radioItem> <label>中</label> </radioItem>
+	    <radioItem> <label>高</label> </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="slope_handle_length_menu">
+        <label>斜率手柄长度</label>
+	<menuStripRadio id="handle_length">
+            <value>handleLength</value>
+	    <radioItem> <label>短</label> </radioItem>
+	    <radioItem> <label>中</label> </radioItem>
+	    <radioItem> <label>长</label> </radioItem>
+	    <radioItem> <label>自定义...</label> </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="curve_quality_menu">
+        <label>曲率</label>
+	<menuStripRadio id="curve_quality">
+            <value>graphLOD</value>
+	    <radioItem> <label>高</label> </radioItem>
+	    <radioItem> <label>中</label> </radioItem>
+	    <radioItem> <label>低</label> </radioItem>
+	    <radioItem> <label>直线</label> </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="add_keys_menu">
+        <label>添加键值</label>
+	<menuStripRadio id="add_keys">
+            <value>preserveShape</value>
+	    <radioItem id="h.pane.chedit.graph.addkeys_mouse_click_position">
+                <label>在鼠标单击位置</label>
+            </radioItem>
+	    <radioItem id="h.pane.chedit.graph.addkeys_curve_value">
+	        <label>在曲线值</label>
+            </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="channel_colors_menu">
+        <label>通道颜色</label>
+	<menuStripRadio id="channel_colors">
+            <value>colors.menu</value>
+	    <radioItem>
+                <label>默认</label>
+            </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <actionItem id="h.pane.chedit.graph.togglenewslope">
+        <label>切换自动倾斜模式首选项</label>
+    </actionItem>
+
+    <separatorItem id="settings_graph_sep_2"/>
+
+    <toggleItem id="h.pane.chedit.graph.snap_moved_keys">
+        <label>将移动的键值捕捉到近期的帧</label>
+        <value>snapToFrame</value>
+    </toggleItem>
+
+    <toggleItem id="autosnap_after_stretch">
+        <label>将缩放键值对齐到近期的帧</label>
+        <value>autosnap_after_stretch</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.bold_non_int_keys">
+        <label>粗体非整数键值</label>
+        <value>boldNonIntKeys</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.keep_accel_ratios">
+        <label>保持加速比</label>
+        <value>keepAccelRatios</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.mixed_value_time_mark_handles">
+        <label>值/时间句柄</label>
+        <value>mixedValueTimeMarkHandles</value>
+    </toggleItem>
+
+    <separatorItem id="settings_graph_sep_3"/>
+
+</subMenu>
+
+
+<subMenu id="snapshots_menu">
+<label>快照</label>
+
+    <toggleItem id="h.pane.chedit.graph.enablesnapshots">
+        <label>启用通道快照</label>
+        <value>snapshotHandles</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.persitentsnapshots">
+        <label>保持通道快照</label>
+        <value>snapshotPersistent</value>
+    </toggleItem>
+
+    <separatorItem id="snapshots_sep_1"/>
+
+    <actionItem id="h.pane.chedit.graph.loadsnapshots">
+        <label>将活动通道还原为快照</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.swapsnapshots">
+        <label>交换活动通道和快照</label>
+    </actionItem>
+
+    <separatorItem id="snapshots_sep_2"/>
+
+    <actionItem id="h.pane.chedit.graph.clearsnapshots">
+        <label>清除通道快照</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="timegroup_menu">
+<label>时间组</label>
+    <actionItem id="h.pane.chedit.graph.creategroup">
+        <label>从所选键值创建时间组</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.attach">
+        <label>附加到/从时间组连接/分离选定的键值</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.scope">
+        <label>将时间组通道添加到通道列表</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="view_menu">
+<label>视图</label>
+    <actionItem id="h.pane.chedit.home">
+        <label>返回通道（当前图表）</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all">
+        <label>返回通道（所有图表）</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_frange">
+        <label>返回播放范围（所有图形）</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_range">
+        <label>返回全局范围（所有图表）</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.frame">
+        <label>帧选择</label>
+    </actionItem>
+    <separatorItem id="view_sep_1"/>
+    <toggleItem id="h.pane.chedit.graph.hadapt">
+        <label>水平适应</label>
+        <value>hAdapt</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.vadapt">
+        <label>垂直适应</label>
+        <value>adaptOn</value>
+    </toggleItem>
+    <separatorItem id="view_sep_2"/>
+    <toggleItem id="h.pane.chedit.handle">
+        <label>显示框句柄</label>
+        <value>scaleHandle</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.pivot">
+        <label>显示框透视</label>
+        <value>pivotHandle</value>
+    </toggleItem>
+    <separatorItem id="view_sep_3"/>
+    <subMenu id="show_handles_mode_menu">
+        <label>显示手柄</label>
+	<menuStripRadio id="show_handles_mode">
+            <value>showHandleMode</value>
+	    <radioItem id="h.pane.chedit.graph.hide_all_handles">
+                <label>没有</label>
+            </radioItem>
+	    <radioItem id="h.pane.chedit.graph.show_all_handles">
+	        <label>所有</label>
+            </radioItem>
+	    <radioItem id="h.pane.chedit.graph.show_near_handles">
+	        <label>选择</label>
+            </radioItem>
+	</menuStripRadio>
+    </subMenu>
+    <separatorItem id="view_sep_4"/>
+    <toggleItem id="h.pane.chedit.graph.show_value_handles">
+        <label>显示值</label>
+        <value>valueHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_time_mark_handles">
+        <label>显示时间标记</label>
+        <value>markHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_slope_handles">
+        <label>显示斜角和加速度</label>
+        <value>slopeHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_segment_handles">
+        <label>显示函数</label>
+        <value>segmentHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_time_group_handles">
+        <label>显示时间组</label>
+        <value>groupHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_time_bar">
+        <label>显示时间栏</label>
+        <value>timeBar</value>
+    </toggleItem>
+    <separatorItem id="view_sep_5"/>
+    <toggleItem id="h.pane.chedit.graph.lnames">
+        <label>显示完整通道名称</label>
+        <value>longNames</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.snames">
+        <label>显示通道名称</label>
+        <value>showNames</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_times">
+        <label>显示选定标记的时间</label>
+        <value>showTimes</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_values">
+        <label>显示所选键值的值</label>
+        <value>showValues</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.sattached">
+        <label>仅显示附加时间组</label>
+        <value>showAttached</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.drawpastends">
+        <label>绘制过去通道端</label>
+        <value>drawPastEnds</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.drawchops">
+        <label>绘制 CHOP 导出</label>
+        <value>showChops</value>
+    </toggleItem>
+</subMenu>
+
+</menuBar>
+
+<modifyItem id="h.pane.chedit.resetsettings">
+    <insertAfter>settings_graph_sep_3</insertAfter>
+</modifyItem>
+
+<modifyItem id="snapshots_menu">
+    <insertAfter>tools_menu</insertAfter>
+</modifyItem>
+
+<modifyItem id="timegroup_menu">
+    <insertAfter>snapshots_menu</insertAfter>
+</modifyItem>
+
+<modifyItem id="view_menu">
+    <insertAfter>edit_menu</insertAfter>
+</modifyItem>
+
+</mainMenu>

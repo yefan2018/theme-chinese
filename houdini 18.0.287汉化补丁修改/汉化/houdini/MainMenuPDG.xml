@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Please note, that the files defining the main menu (ie, MainMenuCommon,
+     MainMenuMaster, and MainMenuEscape)
+     can exist in $HOME/houdiniX.Y/ directory and will supplement 
+     the original definitions found in $HFS/houdini/ -->
+
+<!-- Please see ExampleMenu.xml for examples that customise the main menu. -->
+<!-- Please see menu.xsd for the menu validation schema. -->
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file_menu">
+    <label>文件</label>
+
+      <actionItem id="h.new">
+        <label>新建</label>
+      </actionItem>
+
+      <actionItem id="h.open">
+        <label>打开...</label>
+      </actionItem>
+
+      <subMenu id="recent_files">
+      <label>打开近期文件</label>
+        <menuStripDynamic id="file_history_strip">
+          <value>file.history.menu</value>
+        </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem id="file_menu_sep_1"/>
+
+      <actionItem id="h.save">
+        <label>保存</label>
+      </actionItem>
+
+      <actionItem id="h.save_as">
+        <label>另存为...</label>
+      </actionItem>
+
+      <menuStripDynamic id="saveastype_strip">
+        <value>saveastype.menu</value>
+      </menuStripDynamic>
+
+      <separatorItem id="file_menu_sep_quit"/>
+
+      <actionItem id="h.quit">
+        <label>退出应用程序</label>
+      </actionItem>
+    </subMenu>
+
+    <!-- ============================ EditMenu =========================== -->
+    <subMenu id="edit_menu">
+    <label>编辑</label>
+
+      <menuStripDynamic id="undo_strip">
+        <value>undo.menu</value>
+      </menuStripDynamic>
+
+      <actionItem id="h.undo_mgr">
+        <label>撤消历史记录...</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_1"/>
+
+      <actionItem id="h.cut">
+        <label>剪切</label>
+      </actionItem>
+
+      <actionItem id="h.copy">
+        <label>复制</label>
+      </actionItem>
+
+      <actionItem id="h.paste">
+        <label>粘贴</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_2"/>
+
+      <actionItem id="h.prefs_ui">
+        <label>偏好...</label>
+      </actionItem>
+
+      <actionItem id="h.hotkey_mgr">
+        <label>热键...</label>
+      </actionItem>
+
+      <actionItem id="h.colorsettings">
+        <label>颜色设置...</label>
+      </actionItem>
+
+      <actionItem id="h.aliases">
+        <label>别名和变量...</label>
+      </actionItem>
+
+    </subMenu>
+
+    <!-- ============================ Assets Menu =========================== -->
+    <subMenu id = "assets_menu">
+    <label>资产</label>
+
+    <actionItem id="h.createotl">
+      <label>从选定项新建数字资产...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_1"/>
+
+    <subMenu id="unlock_asset">
+      <label>解锁资产</label>
+        <menuStripDynamic id="unlock_asset_strip">
+          <value>unlock.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="lock_asset">
+      <label>锁定资产</label>
+        <menuStripDynamic id="lock_asset_strip">
+          <value>lock.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="save_asset">
+      <label>保存资产</label>
+        <menuStripDynamic id="save_asset_strip">
+          <value>save.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="edit_asset">
+      <label>编辑资产属性...</label>
+        <menuStripDynamic id="edit_asset_strip">
+          <value>edit.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <separatorItem id="assets_menu_sep_2"/>
+    
+    <actionItem id="h.openotl">
+      <label>正在安装资产库...</label>
+    </actionItem>
+
+    <actionItem id="h.manageotl">
+      <label>资产管理...</label>
+    </actionItem>
+
+    <actionItem id="h.refreshotl">
+      <label>刷新资产库</label>
+    </actionItem>
+
+    <actionItem id="h.blackboxotl">
+      <label>从选定项创建黑盒资产...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_3"/>
+    
+    <actionItem id="h.help_orbolt">
+      <label>奥博尔特资产商店...</label>
+    </actionItem>
+
+    <actionItem id="h.asset_browser">
+      <label>奥博尔特资产浏览器...</label>
+    </actionItem>
+
+    <actionItem id="h.uploadotl">
+      <label>上传至奥博尔特资产商店...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_4"/>
+
+    <subMenu id="other_asset_tools_submenu">
+    <label>其他资产工具</label>
+      <actionItem id="h.encapsulate_asset">
+        <label>封装资产</label>
+      </actionItem>
+
+      <actionItem id="h.compile_embed_material">
+        <label>编译和嵌入材质</label>
+      </actionItem>
+
+      <actionItem id="h.embed_internal_assets">
+        <label>嵌入内部资产</label>
+      </actionItem>
+    </subMenu>
+
+    </subMenu>
+
+
+    <!-- ========================= Window Menu ========================= -->
+
+    <subMenu id="windows_menu">
+    <label>窗口</label>
+      <separatorItem id="windows_menu_sep_0"/>
+
+      <toggleItem id="h.keep_float_windows_on_top" platform="mbsd">
+        <label>将浮动窗口保持在顶部</label>
+	<value>keepFloatWindowsOnTop</value>
+      </toggleItem>
+
+      <separatorItem id="windows_menu_sep_1" platform="mbsd"/>
+
+      <actionItem id="h.floatpanel">
+        <label>新建浮动面板</label>
+      </actionItem>
+
+      <actionItem id="h.textport">
+        <label>Hscript 文本端口</label>
+      </actionItem>
+
+      <actionItem id="h.python_shell">
+        <label>Python 壳</label>
+      </actionItem>
+
+      <actionItem id="h.python_source_editor">
+        <label>Python 源码码编辑器</label>
+      </actionItem>
+
+      <actionItem id="h.open_parmspreadsheet">
+        <label>参数化电子表格</label>
+      </actionItem>
+
+      <actionItem id="h.open_treeview">
+        <label>树视图</label>
+      </actionItem>
+      
+      <actionItem id="h.engine_debugger">
+        <label>胡迪尼引擎调试器</label>
+      </actionItem>
+
+      <separatorItem id="windows_menu_sep_2"/>
+
+      <actionItem id="h.optype_mgr">
+        <label>资产管理</label>
+      </actionItem>
+
+      <separatorItem id="windows_menu_sep_3"/>
+
+      <actionItem id="h.perf_monitor">
+        <label>性能监视器</label>
+      </actionItem>
+
+      <scriptItem id="h.taskgraphtable_py">
+        <label>任务图形表</label>
+        <scriptCode><![CDATA[
+panetab = hou.ui.curDesktop().createFloatingPaneTab(
+    hou.paneTabType.PythonPanel,
+    position=(),
+    size=(),
+)
+panetab.setLinkGroup(hou.paneLinkType.FollowSelection)
+panetab.setActiveInterface(hou.pypanel.interfaces()["taskgraphtable"])
+        ]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.pdgstateserver_py">
+        <label>任务图形表</label>
+        <scriptCode><![CDATA[
+panetab = hou.ui.curDesktop().createFloatingPaneTab(
+    hou.paneTabType.PythonPanel,
+    position=(),
+    size=(),
+)
+panetab.setLinkGroup(hou.paneLinkType.FollowSelection)
+panetab.setActiveInterface(hou.pypanel.interfaces()["pdgstateserver"])
+        ]]>
+        </scriptCode>
+      </scriptItem>
+
+      <actionItem id="h.shell">
+        <label>壳</label>
+        <value>openShell</value>
+      </actionItem>
+
+
+    </subMenu>
+
+    <!-- ========================= HELP Menu ========================= -->
+    <subMenu id = "help_menu">
+    <label>帮助</label>
+
+      <actionItem id="h.startuphelp">
+        <label>从这里开始</label>
+      </actionItem>
+      
+      <actionItem id="h.helpcontents">
+        <label>内容</label>
+      </actionItem>
+
+      <actionItem id="h.help_examples">
+        <label>示例文件</label>
+      </actionItem>
+
+      <menuStripDynamic id="side_help_strip">
+        <value>side_help.val</value>
+      </menuStripDynamic>
+
+      <separatorItem id="help_menu_sep_1"/>
+
+      <actionItem id="h.help_sesi">
+        <label>Sidefx.com</label>
+      </actionItem>
+
+      <actionItem id="h.help_tutorials_online">
+        <label>在线教程</label>
+      </actionItem>
+
+      <actionItem id="h.help_forum">
+        <label>胡迪尼论坛</label>
+      </actionItem>
+
+      <separatorItem id="help_menu_sep_2"/>
+
+      <actionItem id="h.help_support_online">
+        <label>在线支持</label>
+      </actionItem>
+
+      <actionItem id="h.help_updates">
+        <label>更新</label>
+      </actionItem>
+
+      <separatorItem id="help_menu_sep_3"/>
+
+      <toggleItem id="h.help_tags">
+        <label>工具提示帮助</label>
+	<value>helpTags</value>
+      </toggleItem>
+
+      <toggleItem id="h.toggle_help_on_startup">
+        <label>启动时打开"从这里开始"窗格</label>
+	<value>startupPage</value>
+      </toggleItem>
+
+      <separatorItem id="help_menu_sep_4"/>
+
+      <actionItem id="h.version">
+      <!-- TODO: bring up the splash screen in window with [OK] buton -->
+        <label>关于胡迪尼</label>
+      </actionItem>
+
+    </subMenu>
+
+
+  </menuBar>
+</mainMenu>
+

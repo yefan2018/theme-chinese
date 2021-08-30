@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file.menu">
+    <label>文件</label>
+
+      <actionItem id="open">
+        <label>打开...</label>
+	<value>vdCommand</value>
+      </actionItem>
+
+      <actionItem id="quit">
+        <label>退出</label>
+	<value>vdCommand</value>
+      </actionItem>
+    </subMenu>
+
+    <!-- ======================== Display Menu =========================== -->
+    <subMenu id="display.menu">
+    <label>显示</label>
+ 
+    <toggleItem id="autohome">
+	<label>自动返回</label>
+	<value>autoHome</value>
+    </toggleItem>
+    </subMenu>
+    
+  </menuBar>
+</mainMenu>

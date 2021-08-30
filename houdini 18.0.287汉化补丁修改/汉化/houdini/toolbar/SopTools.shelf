@@ -1,0 +1,4554 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <tool name="sop_tube" label="管道" icon="SOP_tube">
+    <helpURL>operator:Sop/tube</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'tube', orient=OrientInfo('orient'))]]></script>
+  </tool>
+
+  <tool name="sop_tissuesolver" label="系列解算" icon="SOP_tissuesolver">
+    <helpURL>operator:Sop/tissuesolver</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/tissuesolver</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'tissuesolver')]]></script>
+  </tool>
+
+  <tool name="sop_volumeslice" label="体积切片" icon="SOP_volumeslice">
+    <helpURL>operator:Sop/volumeslice</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeslice</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeslice')]]></script>
+  </tool>
+
+  <tool name="sop_volumetrail" label="体积跟踪" icon="SOP_volumetrail">
+    <helpURL>operator:Sop/volumetrail</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumetrail</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumetrail')]]></script>
+  </tool>
+
+  <tool name="sop_rop_alembic" label="ROP 净化器输出" icon="ROP_alembic">
+    <helpURL>operator:Sop/rop_alembic</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rop_alembic</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <toolSubmenu>Export</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rop_alembic')]]></script>
+  </tool>
+
+  <tool name="sop_trail" label="跟踪" icon="SOP_trail">
+    <helpURL>operator:Sop/trail</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/trail</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'trail')]]></script>
+  </tool>
+
+  <tool name="sop_shrinkwrap::2.0" label="弹性膜" icon="SOP_shrinkwrap-2.0">
+    <helpURL>operator:Sop/shrinkwrap?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/shrinkwrap::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'shrinkwrap::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_dopnet" label="DOP 网格" icon="NETWORKS_dop">
+    <helpURL>operator:Sop/dopnet</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/dopnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'dopnet')]]></script>
+  </tool>
+
+  <tool name="sop_edgeequalize" label="边缘平衡" icon="SOP_edgeequalize">
+    <helpURL>operator:Sop/edgeequalize</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/edgeequalize</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'edgeequalize')]]></script>
+  </tool>
+
+  <tool name="sop_posespaceeditconfigure" label="姿势空间编辑配置" icon="SOP_posespaceeditconfigure">
+    <helpURL>operator:Sop/posespaceeditconfigure</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/posespaceeditconfigure</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'posespaceeditconfigure')]]></script>
+  </tool>
+
+  <tool name="sop_attribcomposite" label="属性复合" icon="SOP_attribcomposite">
+    <helpURL>operator:Sop/attribcomposite</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribcomposite</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribcomposite')]]></script>
+  </tool>
+
+  <tool name="sop_sblend" label="序列混合" icon="SOP_sblend">
+    <helpURL>operator:Sop/sblend</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/sblend</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'sblend')]]></script>
+  </tool>
+
+  <tool name="sop_shapediff" label="形状差异" icon="SOP_shapediff">
+    <helpURL>operator:Sop/shapediff</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/shapediff</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'shapediff')]]></script>
+  </tool>
+
+  <tool name="sop_sort" label="排序" icon="SOP_sort">
+    <helpURL>operator:Sop/sort</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/sort</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'sort')]]></script>
+  </tool>
+
+  <tool name="sop_delete" label="删除" icon="SOP_delete">
+    <helpURL>operator:Sop/delete</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/delete</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'delete')]]></script>
+  </tool>
+
+  <tool name="sop_triangulate2d" label="三角测量 2D" icon="SOP_triangulate2d">
+    <helpURL>operator:Sop/triangulate2d</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/triangulate2d</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'triangulate2d')]]></script>
+  </tool>
+
+  <tool name="sop_vdbsegmentbyconnectivity" label="以连通性做 VDB 划分" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbsegmentbyconnectivity</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbsegmentbyconnectivity</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbsegmentbyconnectivity')]]></script>
+  </tool>
+
+  <tool name="sop_tetrasurface" label="转换 Tets" icon="SOP_tetrasurface">
+    <helpURL>operator:Sop/tetrasurface</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/tetrasurface</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'tetrasurface')]]></script>
+  </tool>
+
+  <tool name="sop_line" label="线" icon="SOP_line">
+    <helpURL>operator:Sop/line</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/line</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'line', orient=OrientInfo('dir'))]]></script>
+  </tool>
+
+  <tool name="sop_solidembed::2.0" label="固态插入" icon="SOP_solidembed">
+    <helpURL>operator:Sop/solidembed?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/solidembed::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>FEM</toolSubmenu>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'solidembed::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_volume" label="体积" icon="SOP_volume">
+    <helpURL>operator:Sop/volume</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volume</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volume')]]></script>
+  </tool>
+
+  <tool name="sop_volumesdf" label="体积 SDF" icon="SOP_volumesdf">
+    <helpURL>operator:Sop/volumesdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumesdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumesdf')]]></script>
+  </tool>
+
+  <tool name="sop_volumeramp" label="体积倾斜" icon="SOP_volumeramp">
+    <helpURL>operator:Sop/volumeramp</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeramp</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeramp')]]></script>
+  </tool>
+
+  <tool name="sop_volumeconvolve3" label="体积体积曲 3x3x3" icon="SOP_volumeconvolve3">
+    <helpURL>operator:Sop/volumeconvolve3</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeconvolve3</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeconvolve3')]]></script>
+  </tool>
+
+  <tool name="sop_switchif" label="条件开关" icon="SOP_switchif">
+    <helpURL>operator:Sop/switchif</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/switchif</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'switchif')]]></script>
+  </tool>
+
+  <tool name="sop_attribswap" label="属性交换" icon="SOP_attribswap">
+    <helpURL>operator:Sop/attribswap</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribswap</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribswap')]]></script>
+  </tool>
+
+  <tool name="sop_subdivide" label="细分" icon="SOP_subdivide">
+    <helpURL>operator:Sop/subdivide</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/subdivide</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'subdivide')]]></script>
+  </tool>
+
+  <tool name="sop_agentclip::2.0" label="代理剪辑" icon="SOP_agentclip-2.0">
+    <helpURL>operator:Sop/agentclip?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/agentclip::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Crowds</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'agentclip::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_bound" label="绑定" icon="SOP_bound">
+    <helpURL>operator:Sop/bound</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bound</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bound')]]></script>
+  </tool>
+
+  <tool name="sop_voronoisplit" label="沃罗诺伊分裂" icon="SOP_voronoisplit">
+    <helpURL>operator:Sop/voronoisplit</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/voronoisplit</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'voronoisplit')]]></script>
+  </tool>
+
+  <tool name="sop_solidify" label="凝固" icon="SOP_solidify">
+    <helpURL>operator:Sop/solidify</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/solidify</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'solidify')]]></script>
+  </tool>
+
+  <tool name="sop_orientalongcurve" label="沿着弯曲的方向" icon="SOP_orientalongcurve">
+    <helpURL>operator:Sop/orientalongcurve</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/orientalongcurve</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'orientalongcurve')]]></script>
+  </tool>
+
+  <tool name="sop_volumemix" label="体积混合" icon="SOP_volumemix">
+    <helpURL>operator:Sop/volumemix</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumemix</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumemix')]]></script>
+  </tool>
+
+  <tool name="sop_shrinkwrap" label="弹性膜" icon="SOP_shrinkwrap">
+    <helpURL>operator:Sop/shrinkwrap</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/shrinkwrap</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'shrinkwrap')]]></script>
+  </tool>
+
+  <tool name="sop_vdbdiagnostics" label="VDB 诊断" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbdiagnostics</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbdiagnostics</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbdiagnostics')]]></script>
+  </tool>
+
+  <tool name="sop_vdbactivatesdf" label="VDB 激活 SDF" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbactivatesdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbactivatesdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbactivatesdf')]]></script>
+  </tool>
+
+  <tool name="sop_capturemirror" label="捕捉镜像" icon="SOP_capturemirror">
+    <helpURL>operator:Sop/capturemirror</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/capturemirror</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'capturemirror')]]></script>
+  </tool>
+
+  <tool name="sop_topnetmgr" label="TOP 网格" icon="NETWORKS_top">
+    <helpURL>operator:Sop/topnetmgr</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/topnetmgr</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'topnetmgr')]]></script>
+  </tool>
+
+  <tool name="sop_detangle" label="Detangle" icon="SOP_detangle">
+    <helpURL>operator:Sop/detangle</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/detangle</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'detangle')]]></script>
+  </tool>
+
+  <tool name="sop_compile_end" label="限制末尾收缩" icon="SOP_compile_end">
+    <helpURL>operator:Sop/compile_end</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/compile_end</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'compile_end')]]></script>
+  </tool>
+
+  <tool name="sop_copytopoints" label="复制到点" icon="SOP_copytopoints">
+    <helpURL>operator:Sop/copytopoints</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/copytopoints</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'copytopoints')]]></script>
+  </tool>
+
+  <tool name="sop_vdbpointsdelete" label="VDB 点删除" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbpointsdelete</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbpointsdelete</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbpointsdelete')]]></script>
+  </tool>
+
+  <tool name="sop_lidarimport" label="激光雷达导入" icon="SOP_lidarimport">
+    <helpURL>operator:Sop/lidarimport</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/lidarimport</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'lidarimport')]]></script>
+  </tool>
+
+  <tool name="sop_clay" label="橡皮泥" icon="SOP_clay">
+    <helpURL>operator:Sop/clay</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/clay</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'clay')]]></script>
+  </tool>
+
+  <tool name="sop_vdb" label="VDB" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdb</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdb</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdb')]]></script>
+  </tool>
+
+  <tool name="sop_bulge" label="膨胀" icon="SOP_bulge">
+    <helpURL>operator:Sop/bulge</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bulge</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bulge')]]></script>
+  </tool>
+
+  <tool name="sop_convertvdb" label="转换 VDB" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/convertvdb</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/convertvdb</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'convertvdb')]]></script>
+  </tool>
+
+  <tool name="sop_polysoup" label="多重加速" icon="SOP_polysoup">
+    <helpURL>operator:Sop/polysoup</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polysoup</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polysoup')]]></script>
+  </tool>
+
+  <tool name="sop_grid" label="格子" icon="SOP_grid">
+    <helpURL>operator:Sop/grid</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'grid', orient=OrientInfo('orient'))]]></script>
+  </tool>
+
+  <tool name="sop_sweep" label="扫除" icon="SOP_sweep">
+    <helpURL>operator:Sop/sweep</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/sweep</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'sweep')]]></script>
+  </tool>
+
+  <tool name="sop_edgecollapse" label="边缘折叠" icon="SOP_edgecollapse">
+    <helpURL>operator:Sop/edgecollapse</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/edgecollapse</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'edgecollapse', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_attribfromvolume" label="来自体积的属性" icon="SOP_attribfromvolume">
+    <helpURL>operator:Sop/attribfromvolume</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribfromvolume</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribfromvolume')]]></script>
+  </tool>
+
+  <tool name="sop_opencl" label="OpenCL" icon="SOP_opencl">
+    <helpURL>operator:Sop/opencl</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/opencl</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'opencl')]]></script>
+  </tool>
+
+  <tool name="sop_rest" label="静止位置" icon="SOP_rest">
+    <helpURL>operator:Sop/rest</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rest</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Material</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rest')]]></script>
+  </tool>
+
+  <tool name="sop_bonecapturelines" label="骨骼捕捉线" icon="SOP_bonecapturelines">
+    <helpURL>operator:Sop/bonecapturelines</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bonecapturelines</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bonecapturelines')]]></script>
+  </tool>
+
+  <tool name="sop_compile_begin" label="限制开始收缩" icon="SOP_compile_begin">
+    <helpURL>operator:Sop/compile_begin</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/compile_begin</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'compile_begin')]]></script>
+  </tool>
+
+  <tool name="sop_particlefluidsurface" label="粒子流体表面" icon="SOP_particlefluidsurface">
+    <helpURL>operator:Sop/particlefluidsurface</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/particlefluidsurface</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Fluid</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'particlefluidsurface')]]></script>
+  </tool>
+
+  <tool name="sop_agentlayer" label="代理层" icon="SOP_agentlayer">
+    <helpURL>operator:Sop/agentlayer</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/agentlayer</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Crowds</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'agentlayer')]]></script>
+  </tool>
+
+  <tool name="sop_groupcombine" label="组组合" icon="SOP_groupcombine">
+    <helpURL>operator:Sop/groupcombine</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/groupcombine</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Group</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'groupcombine')]]></script>
+  </tool>
+
+  <tool name="sop_captureoverride" label="捕捉覆盖" icon="SOP_captureoverride">
+    <helpURL>operator:Sop/captureoverride</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/captureoverride</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'captureoverride')]]></script>
+  </tool>
+
+  <tool name="sop_packededit" label="填充编辑" icon="SOP_packededit">
+    <helpURL>operator:Sop/packededit</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/packededit</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'packededit')]]></script>
+  </tool>
+
+  <tool name="sop_polyspline" label="多重样条" icon="SOP_polyspline">
+    <helpURL>operator:Sop/polyspline</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyspline</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyspline')]]></script>
+  </tool>
+
+  <tool name="sop_tetpartition" label="泰特分割" icon="SOP_tetpartition">
+    <helpURL>operator:Sop/tetpartition</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/tetpartition</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'tetpartition')]]></script>
+  </tool>
+
+  <tool name="sop_capture" label="骨骼捕捉" icon="SOP_capture">
+    <helpURL>operator:Sop/capture</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/capture</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'capture')]]></script>
+  </tool>
+
+  <tool name="sop_attribtransfer" label="属性传递" icon="SOP_attribtransfer">
+    <helpURL>operator:Sop/attribtransfer</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribtransfer</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribtransfer')]]></script>
+  </tool>
+
+  <tool name="sop_pack" label="包裹" icon="SOP_pack">
+    <helpURL>operator:Sop/pack</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/pack</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'pack')]]></script>
+  </tool>
+
+  <tool name="sop_convertmeta" label="转换元" icon="SOP_convertmeta">
+    <helpURL>operator:Sop/convertmeta</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/convertmeta</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'convertmeta')]]></script>
+  </tool>
+
+  <tool name="sop_shopnet" label="SHOP 网格" icon="NETWORKS_shop">
+    <helpURL>operator:Sop/shopnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/shopnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'shopnet')]]></script>
+  </tool>
+
+  <tool name="sop_volumeresize" label="体积尺寸调整" icon="SOP_volumeresize">
+    <helpURL>operator:Sop/volumeresize</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeresize</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeresize')]]></script>
+  </tool>
+
+  <tool name="sop_copyxform" label="复制和转换" icon="SOP_copyxform">
+    <helpURL>operator:Sop/copyxform</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/copyxform</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'copyxform')]]></script>
+  </tool>
+
+  <tool name="sop_align" label="对齐" icon="SOP_align">
+    <helpURL>operator:Sop/align</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/align</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'align')]]></script>
+  </tool>
+
+  <tool name="sop_volumereduce" label="体积减少" icon="SOP_volumereduce">
+    <helpURL>operator:Sop/volumereduce</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumereduce</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumereduce')]]></script>
+  </tool>
+
+  <tool name="sop_volumebound" label="体积绑定" icon="SOP_volumebound">
+    <helpURL>operator:Sop/volumebound</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumebound</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumebound')]]></script>
+  </tool>
+
+  <tool name="sop_vdbvectormerge" label="VDB 矢量合并" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbvectormerge</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbvectormerge</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbvectormerge')]]></script>
+  </tool>
+
+  <tool name="sop_volumecompress" label="体积包" icon="SOP_volumecompress">
+    <helpURL>operator:Sop/volumecompress</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumecompress</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumecompress')]]></script>
+  </tool>
+
+  <tool name="sop_basis" label="基础" icon="SOP_basis">
+    <helpURL>operator:Sop/basis</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/basis</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'basis')]]></script>
+  </tool>
+
+  <tool name="sop_xformbyattrib" label="按属性变换" icon="SOP_xformbyattrib">
+    <helpURL>operator:Sop/xformbyattrib</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/xformbyattrib</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'xformbyattrib')]]></script>
+  </tool>
+
+  <tool name="sop_blendshapes" label="混合形状" icon="SOP_blendshapes">
+    <helpURL>operator:Sop/blendshapes</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/blendshapes</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'blendshapes')]]></script>
+  </tool>
+
+  <tool name="sop_reverse" label="反向" icon="SOP_reverse">
+    <helpURL>operator:Sop/reverse</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/reverse</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'reverse', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_volumearrivaltime" label="体积到达时间" icon="SOP_volumearrivaltime">
+    <helpURL>operator:Sop/volumearrivaltime</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumearrivaltime</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumearrivaltime')]]></script>
+  </tool>
+
+  <tool name="sop_object_merge" label="对象合并" icon="SOP_object_merge">
+    <helpURL>operator:Sop/object_merge</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/object_merge</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'object_merge')]]></script>
+  </tool>
+
+  <tool name="sop_refine" label="修饰" icon="SOP_refine">
+    <helpURL>operator:Sop/refine</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/refine</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'refine', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_ends" label="结束" icon="SOP_ends">
+    <helpURL>operator:Sop/ends</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/ends</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'ends')]]></script>
+  </tool>
+
+  <tool name="sop_volumestamp" label="体积标志" icon="SOP_volumestamp">
+    <helpURL>operator:Sop/volumestamp</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumestamp</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumestamp')]]></script>
+  </tool>
+
+  <tool name="sop_captureattribunpack" label="捕捉属性解包" icon="SOP_captureattribunpack">
+    <helpURL>operator:Sop/captureattribunpack</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/captureattribunpack</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'captureattribunpack')]]></script>
+  </tool>
+
+  <tool name="sop_polywire" label="多重连线" icon="SOP_polywire">
+    <helpURL>operator:Sop/polywire</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polywire</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polywire')]]></script>
+  </tool>
+
+  <tool name="sop_curveclay" label="弯曲橡皮泥" icon="SOP_curveclay">
+    <helpURL>operator:Sop/curveclay</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/curveclay</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'curveclay')]]></script>
+  </tool>
+
+  <tool name="sop_intersectionstitch" label="交叉缝合" icon="SOP_intersectionstitch">
+    <helpURL>operator:Sop/intersectionstitch</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/intersectionstitch</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'intersectionstitch')]]></script>
+  </tool>
+
+  <tool name="sop_solidconform" label="固态适应" icon="SOP_solidconform">
+    <helpURL>operator:Sop/solidconform</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/solidconform</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>FEM</toolSubmenu>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'solidconform')]]></script>
+  </tool>
+
+  <tool name="sop_vdbrenormalizesdf" label="VDB 重规范 SDF" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbrenormalizesdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbrenormalizesdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbrenormalizesdf')]]></script>
+  </tool>
+
+  <tool name="sop_edgestraighten" label="边缘拉直" icon="SOP_edgestraighten">
+    <helpURL>operator:Sop/edgestraighten</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/edgestraighten</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'edgestraighten')]]></script>
+  </tool>
+
+  <tool name="sop_vdbfromparticlefluid" label="来自粒子流体的 VDB" icon="SOP_vdbfromparticlefluid">
+    <helpURL>operator:Sop/vdbfromparticlefluid</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbfromparticlefluid</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbfromparticlefluid')]]></script>
+  </tool>
+
+  <tool name="sop_bonedeform" label="骨骼变形" icon="SOP_bonedeform">
+    <helpURL>operator:Sop/bonedeform</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bonedeform</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bonedeform')]]></script>
+  </tool>
+
+  <tool name="sop_matnet" label="材质网格" icon="NETWORKS_mat">
+    <helpURL>operator:Sop/matnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/matnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'matnet')]]></script>
+  </tool>
+
+  <tool name="sop_circle" label="圆圈" icon="SOP_circle">
+    <helpURL>operator:Sop/circle</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'circle', orient=OrientInfo('orient'))]]></script>
+  </tool>
+
+  <tool name="sop_posespaceedit" label="姿势空间编辑" icon="SOP_posespaceedit">
+    <helpURL>operator:Sop/posespaceedit</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/posespaceedit</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'posespaceedit')]]></script>
+  </tool>
+
+  <tool name="sop_vdbactivate" label="VDB 激活" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbactivate</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbactivate</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbactivate')]]></script>
+  </tool>
+
+  <tool name="sop_attribstringedit" label="属性字符串编辑" icon="SOP_attribstringedit">
+    <helpURL>operator:Sop/attribstringedit</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribstringedit</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribstringedit')]]></script>
+  </tool>
+
+  <tool name="sop_attribmirror" label="属性镜像" icon="SOP_attribmirror">
+    <helpURL>operator:Sop/attribmirror</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribmirror</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribmirror')]]></script>
+  </tool>
+
+  <tool name="sop_torus" label="环状" icon="SOP_torus">
+    <helpURL>operator:Sop/torus</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'torus', orient=OrientInfo('orient'))]]></script>
+  </tool>
+
+  <tool name="sop_normal" label="法线" icon="SOP_normal">
+    <helpURL>operator:Sop/normal</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/normal</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'normal')]]></script>
+  </tool>
+
+  <tool name="sop_attribinterpolate" label="属性插值" icon="SOP_attribinterpolate">
+    <helpURL>operator:Sop/attribinterpolate</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribinterpolate</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribinterpolate')]]></script>
+  </tool>
+
+  <tool name="sop_pointcloudiso" label="点云等向" icon="SOP_pointcloudiso">
+    <helpURL>operator:Sop/pointcloudiso</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/pointcloudiso</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'pointcloudiso')]]></script>
+  </tool>
+
+  <tool name="sop_polyfill" label="多重填充" icon="SOP_polyfill">
+    <helpURL>operator:Sop/polyfill</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyfill</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyfill')]]></script>
+  </tool>
+
+  <tool name="sop_posespacedeform" label="姿势空间变形" icon="SOP_posespacedeform">
+    <helpURL>operator:Sop/posespacedeform</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/posespacedeform</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'posespacedeform')]]></script>
+  </tool>
+
+  <tool name="sop_null" label="空" icon="SOP_null">
+    <helpURL>operator:Sop/null</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/null</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'null')]]></script>
+  </tool>
+
+  <tool name="sop_scatter::2.0" label="散射" icon="SOP_scatter-2.0">
+    <helpURL>operator:Sop/scatter?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/scatter::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Particle</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'scatter::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_lsystem" label="L 系统" icon="SOP_lsystem">
+    <helpURL>operator:Sop/lsystem</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+lsystem = soptoolutils.genericTool(kwargs, 'lsystem')
+
+if hou.ui.orientationUpAxis() == hou.orientUpAxis.Z:
+    parm = lsystem.parm('premise')
+    if not lsystem.type().hasPermanentUserDefaults() and not parm.hasTemporaryDefaults():
+        parm.set('^(90)' + parm.evalAsString())]]></script>
+  </tool>
+
+  <tool name="sop_cop2net" label="COP2 网格" icon="NETWORKS_cop2">
+    <helpURL>operator:Sop/cop2net</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/cop2net</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'cop2net')]]></script>
+  </tool>
+
+  <tool name="sop_project" label="项目" icon="SOP_project">
+    <helpURL>operator:Sop/project</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/project</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'project')]]></script>
+  </tool>
+
+  <tool name="sop_vdbadvectpoints" label="VDB 平流点" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbadvectpoints</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbadvectpoints</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbadvectpoints')]]></script>
+  </tool>
+
+  <tool name="sop_inflate" label="膨胀" icon="SOP_inflate">
+    <helpURL>operator:Sop/inflate</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/inflate</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'inflate')]]></script>
+  </tool>
+
+  <tool name="sop_vdblod" label="VDB LOD" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdblod</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdblod</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdblod')]]></script>
+  </tool>
+
+  <tool name="sop_dopimport" label="多普导入" icon="SOP_dopimport">
+    <helpURL>operator:Sop/dopimport</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/dopimport</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'dopimport')]]></script>
+  </tool>
+
+  <tool name="sop_rails" label="隔离" icon="SOP_rails">
+    <helpURL>operator:Sop/rails</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rails</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rails')]]></script>
+  </tool>
+
+  <tool name="sop_script" label="脚本" icon="SOP_script">
+    <helpURL>operator:Sop/script</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/script</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'script')]]></script>
+  </tool>
+
+  <tool name="sop_extrude" label="拉伸 - 旧" icon="SOP_extrude">
+    <helpURL>operator:Sop/extrude</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/extrude</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'extrude')]]></script>
+  </tool>
+
+  <tool name="sop_clothcapture" label="布料捕捉" icon="SOP_clothcapture">
+    <helpURL>operator:Sop/clothcapture</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/clothcapture</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'clothcapture')]]></script>
+  </tool>
+
+  <tool name="sop_grouptransfer" label="组传递" icon="SOP_grouptransfer">
+    <helpURL>operator:Sop/grouptransfer</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/grouptransfer</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Group</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'grouptransfer')]]></script>
+  </tool>
+
+  <tool name="sop_iso" label="等光表面" icon="SOP_iso">
+    <helpURL>operator:Sop/iso</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/iso</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'iso')]]></script>
+  </tool>
+
+  <tool name="sop_capturecorrect" label="捕捉修正" icon="SOP_capturecorrect">
+    <helpURL>operator:Sop/capturecorrect</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/capturecorrect</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'capturecorrect')]]></script>
+  </tool>
+
+  <tool name="sop_vdbmorphsdf" label="VDB 变形 SDF" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbmorphsdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbmorphsdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbmorphsdf')]]></script>
+  </tool>
+
+  <tool name="sop_vdbvisualizetree" label="VDB 可视化树" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbvisualizetree</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbvisualizetree</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbvisualizetree')]]></script>
+  </tool>
+
+  <tool name="sop_edgetransport" label="边缘传输" icon="SOP_edgetransport">
+    <helpURL>operator:Sop/edgetransport</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/edgetransport</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'edgetransport')]]></script>
+  </tool>
+
+  <tool name="sop_vdbfromparticles" label="来自粒子的 VDB" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbfromparticles</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbfromparticles</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbfromparticles')]]></script>
+  </tool>
+
+  <tool name="sop_measure" label="估量" icon="SOP_measure">
+    <helpURL>operator:Sop/measure</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/measure</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'measure')]]></script>
+  </tool>
+
+  <tool name="sop_packpoints" label="包裹点" icon="SOP_packpoints">
+    <helpURL>operator:Sop/packpoints</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/packpoints</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'packpoints')]]></script>
+  </tool>
+
+  <tool name="sop_mdd" label="MDD" icon="SOP_mdd">
+    <helpURL>operator:Sop/mdd</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/mdd</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'mdd')]]></script>
+  </tool>
+
+  <tool name="sop_vdbcombine" label="VDB 组合" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbcombine</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbcombine</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbcombine')]]></script>
+  </tool>
+
+  <tool name="sop_vdbsmooth" label="VDB 平滑" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbsmooth</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbsmooth</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbsmooth')]]></script>
+  </tool>
+
+  <tool name="sop_merge" label="合并" icon="SOP_merge">
+    <helpURL>operator:Sop/merge</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/merge</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'merge')]]></script>
+  </tool>
+
+  <tool name="sop_name" label="名字" icon="SOP_name">
+    <helpURL>operator:Sop/name</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/name</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'name')]]></script>
+  </tool>
+
+  <tool name="sop_relax" label="点松弛" icon="SOP_relax">
+    <helpURL>operator:Sop/relax</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/relax</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'relax')]]></script>
+  </tool>
+
+  <tool name="sop_wirecapture" label="线性捕捉" icon="SOP_wirecapture">
+    <helpURL>operator:Sop/wirecapture</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/wirecapture</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'wirecapture')]]></script>
+  </tool>
+
+  <tool name="sop_polypatch" label="多重补丁" icon="SOP_polypatch">
+    <helpURL>operator:Sop/polypatch</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polypatch</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polypatch')]]></script>
+  </tool>
+
+  <tool name="sop_volumepatch" label="体积补丁" icon="SOP_volumepatch">
+    <helpURL>operator:Sop/volumepatch</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumepatch</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumepatch')]]></script>
+  </tool>
+
+  <tool name="sop_python" label="Python" icon="SOP_python">
+    <helpURL>operator:Sop/python</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/python</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'python')]]></script>
+  </tool>
+
+  <tool name="sop_carve" label="雕刻" icon="SOP_carve">
+    <helpURL>operator:Sop/carve</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/carve</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'carve')]]></script>
+  </tool>
+
+  <tool name="sop_intersectionanalysis" label="交叉分析" icon="SOP_intersectionanalysis">
+    <helpURL>operator:Sop/intersectionanalysis</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/intersectionanalysis</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'intersectionanalysis')]]></script>
+  </tool>
+
+  <tool name="sop_volumesplice" label="体积拼接" icon="SOP_volumesplice">
+    <helpURL>operator:Sop/volumesplice</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumesplice</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumesplice')]]></script>
+  </tool>
+
+  <tool name="sop_platonic" label="柏拉图固体" icon="SOP_platonic">
+    <helpURL>operator:Sop/platonic</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'platonic', orient=OrientInfo('orient'))]]></script>
+  </tool>
+
+  <tool name="sop_revolve" label="旋转" icon="SOP_revolve">
+    <helpURL>operator:Sop/revolve</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/revolve</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'revolve', orient=OrientInfo('dir'))]]></script>
+  </tool>
+
+  <tool name="sop_superquad" label="强力填充" icon="SOP_superquad">
+    <helpURL>operator:Sop/superquad</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/superquad</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'superquad')]]></script>
+  </tool>
+
+  <tool name="sop_switch" label="开关" icon="SOP_switch">
+    <helpURL>operator:Sop/switch</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/switch</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'switch')]]></script>
+  </tool>
+
+  <tool name="sop_stash" label="隐藏" icon="SOP_stash">
+    <helpURL>operator:Sop/stash</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/stash</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'stash')]]></script>
+  </tool>
+
+  <tool name="sop_edgeflip" label="边缘翻转" icon="SOP_edgeflip">
+    <helpURL>operator:Sop/edgeflip</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/edgeflip</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'edgeflip', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_wiredeform" label="线性变形" icon="SOP_wiredeform">
+    <helpURL>operator:Sop/wiredeform</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/wiredeform</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'wiredeform')]]></script>
+  </tool>
+
+  <tool name="sop_vdbpotentialflow" label="VDB 内部流动" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbpotentialflow</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbpotentialflow</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbpotentialflow')]]></script>
+  </tool>
+
+  <tool name="sop_dopimportrecords" label="Dop 导入记录" icon="SOP_dopimportrecords">
+    <helpURL>operator:Sop/dopimportrecords</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/dopimportrecords</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'dopimportrecords')]]></script>
+  </tool>
+
+  <tool name="sop_volumevisualization" label="体积可视化" icon="SOP_volumevisualization">
+    <helpURL>operator:Sop/volumevisualization</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumevisualization</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumevisualization')]]></script>
+  </tool>
+
+  <tool name="sop_volumesurface" label="体积表面" icon="SOP_volumesurface">
+    <helpURL>operator:Sop/volumesurface</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumesurface</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumesurface')]]></script>
+  </tool>
+
+  <tool name="sop_vdbresample" label="VDB 重采样" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbresample</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbresample</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbresample')]]></script>
+  </tool>
+
+  <tool name="sop_vdbtospheres" label="VDB 到范围" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbtospheres</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbtospheres</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbtospheres')]]></script>
+  </tool>
+
+  <tool name="sop_attribute" label="属性重命名" icon="SOP_attribute">
+    <helpURL>operator:Sop/attribute</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribute</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Material</toolSubmenu>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribute')]]></script>
+  </tool>
+
+  <tool name="sop_metagroups" label="可变化组" icon="SOP_metagroups">
+    <helpURL>operator:Sop/metagroups</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/metagroups</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'metagroups')]]></script>
+  </tool>
+
+  <tool name="sop_control" label="控制" icon="SOP_control">
+    <helpURL>operator:Sop/control</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/control</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'control')]]></script>
+  </tool>
+
+  <tool name="sop_attribpromote" label="属性提升" icon="SOP_attribpromote">
+    <helpURL>operator:Sop/attribpromote</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribpromote</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribpromote')]]></script>
+  </tool>
+
+  <tool name="sop_ropnet" label="ROP 网格" icon="NETWORKS_rop">
+    <helpURL>operator:Sop/ropnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/ropnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'ropnet')]]></script>
+  </tool>
+
+  <tool name="sop_extractcentroid" label="提取质心" icon="SOP_extractcentroid">
+    <helpURL>operator:Sop/extractcentroid</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/extractcentroid</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'extractcentroid')]]></script>
+  </tool>
+
+  <tool name="sop_unpack" label="解包" icon="SOP_unpack">
+    <helpURL>operator:Sop/unpack</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/unpack</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'unpack')]]></script>
+  </tool>
+
+  <tool name="sop_hole" label="孔" icon="SOP_hole">
+    <helpURL>operator:Sop/hole</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/hole</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'hole')]]></script>
+  </tool>
+
+  <tool name="sop_agent" label="代理" icon="SOP_agent">
+    <helpURL>operator:Sop/agent</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/agent</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <toolSubmenu>Crowds</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'agent')]]></script>
+  </tool>
+
+  <tool name="sop_bonecapturebiharmonic" label="骨骼捕捉重调" icon="SOP_bonecapturebiharmonic">
+    <helpURL>operator:Sop/bonecapturebiharmonic</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bonecapturebiharmonic</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bonecapturebiharmonic')]]></script>
+  </tool>
+
+  <tool name="sop_attribcopy" label="属性复制" icon="SOP_attribcopy">
+    <helpURL>operator:Sop/attribcopy</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribcopy</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribcopy')]]></script>
+  </tool>
+
+  <tool name="sop_alembicprimitive" label="净化原始" icon="SOP_alembic">
+    <helpURL>operator:Sop/alembicprimitive</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/alembicprimitive</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'alembicprimitive')]]></script>
+  </tool>
+
+  <tool name="sop_unix" label="Unix" icon="SOP_unix">
+    <helpURL>operator:Sop/unix</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/unix</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'unix')]]></script>
+  </tool>
+
+  <tool name="sop_filemerge" label="文件合并" icon="SOP_filemerge">
+    <helpURL>operator:Sop/filemerge</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/filemerge</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'filemerge')]]></script>
+  </tool>
+
+  <tool name="sop_edgedivide" label="边分割" icon="SOP_edgedivide">
+    <helpURL>operator:Sop/edgedivide</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/edgedivide</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'edgedivide', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_vdbpointsgroup" label="VDB 积分组" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbpointsgroup</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbpointsgroup</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbpointsgroup')]]></script>
+  </tool>
+
+  <tool name="sop_sopnet" label="SOP 网格" icon="OBJ_geo">
+    <helpURL>operator:Sop/sopnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/sopnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'sopnet')]]></script>
+  </tool>
+
+  <tool name="sop_edgecusp" label="边缘尖" icon="SOP_edgecusp">
+    <helpURL>operator:Sop/edgecusp</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/edgecusp</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'edgecusp', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_unpackpoints" label="解包点" icon="SOP_unpackpoints">
+    <helpURL>operator:Sop/unpackpoints</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/unpackpoints</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'unpackpoints')]]></script>
+  </tool>
+
+  <tool name="sop_solidfracture::2.0" label="固态碎裂" icon="SOP_solidfracture">
+    <helpURL>operator:Sop/solidfracture?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/solidfracture::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>FEM</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'solidfracture::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_volumefeather" label="体积羽毛" icon="SOP_volumefeather">
+    <helpURL>operator:Sop/volumefeather</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumefeather</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumefeather')]]></script>
+  </tool>
+
+  <tool name="sop_fractal" label="零碎" icon="SOP_fractal">
+    <helpURL>operator:Sop/fractal</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/fractal</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'fractal', orient=OrientInfo('dir'))]]></script>
+  </tool>
+
+  <tool name="sop_matchtopology" label="匹配拓扑" icon="SOP_matchtopology">
+    <helpURL>operator:Sop/matchtopology</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/matchtopology</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'matchtopology')]]></script>
+  </tool>
+
+  <tool name="sop_volumeanalysis" label="体积分析" icon="SOP_volumeanalysis">
+    <helpURL>operator:Sop/volumeanalysis</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeanalysis</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeanalysis')]]></script>
+  </tool>
+
+  <tool name="sop_agentunpack" label="代理解包" icon="SOP_agentunpack">
+    <helpURL>operator:Sop/agentunpack</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/agentunpack</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Crowds</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'agentunpack')]]></script>
+  </tool>
+
+  <tool name="sop_wire" label="线框" icon="SOP_wire">
+    <helpURL>operator:Sop/wire</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/wire</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'wire')]]></script>
+  </tool>
+
+  <tool name="sop_groupcreate" label="组创建" icon="SOP_groupcreate">
+    <helpURL>operator:Sop/groupcreate</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/groupcreate</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Group</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'groupcreate')]]></script>
+  </tool>
+
+  <tool name="sop_vdbadvectsdf" label="VDB 对流" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbadvectsdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbadvectsdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbadvectsdf')]]></script>
+  </tool>
+
+  <tool name="sop_cap" label="掩盖" icon="SOP_cap">
+    <helpURL>operator:Sop/cap</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/cap</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'cap')]]></script>
+  </tool>
+
+  <tool name="sop_polyframe" label="多重帧" icon="SOP_polyframe">
+    <helpURL>operator:Sop/polyframe</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyframe</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyframe')]]></script>
+  </tool>
+
+  <tool name="sop_vdbsmoothsdf" label="VDB 平滑 SDF" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbsmoothsdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbsmoothsdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbsmoothsdf')]]></script>
+  </tool>
+
+  <tool name="sop_alembic" label="净化器" icon="SOP_alembic">
+    <helpURL>operator:Sop/alembic</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'alembic')]]></script>
+  </tool>
+
+  <tool name="sop_trim" label="修剪" icon="SOP_trim">
+    <helpURL>operator:Sop/trim</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/trim</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'trim')]]></script>
+  </tool>
+
+  <tool name="sop_divide" label="划分" icon="SOP_divide">
+    <helpURL>operator:Sop/divide</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/divide</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'divide')]]></script>
+  </tool>
+
+  <tool name="sop_wireblend" label="线性混合" icon="SOP_wireblend">
+    <helpURL>operator:Sop/wireblend</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/wireblend</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Hair</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'wireblend')]]></script>
+  </tool>
+
+  <tool name="sop_each" label="每个" icon="SOP_each">
+    <helpURL>operator:Sop/each</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/each</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'each')]]></script>
+  </tool>
+
+  <tool name="sop_bakevolume" label="烘焙体积" icon="SOP_bakevolume">
+    <helpURL>operator:Sop/bakevolume</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bakevolume</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bakevolume')]]></script>
+  </tool>
+
+  <tool name="sop_grouprename" label="组重命名" icon="SOP_grouprename">
+    <helpURL>operator:Sop/grouprename</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/grouprename</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Group</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'grouprename')]]></script>
+  </tool>
+
+  <tool name="sop_vdbprojectnondivergent" label="VDB 项目聚集" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbprojectnondivergent</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbprojectnondivergent</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbprojectnondivergent')]]></script>
+  </tool>
+
+  <tool name="sop_volumeblur" label="体积模糊" icon="SOP_volumeblur">
+    <helpURL>operator:Sop/volumeblur</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeblur</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeblur')]]></script>
+  </tool>
+
+  <tool name="sop_starburst" label="放射性" icon="SOP_starburst">
+    <helpURL>operator:Sop/starburst</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/starburst</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'starburst')]]></script>
+  </tool>
+
+  <tool name="sop_copy" label="复制图章" icon="SOP_copy">
+    <helpURL>operator:Sop/copy</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/copy</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'copy')]]></script>
+  </tool>
+
+  <tool name="sop_circlefromedges" label="从边圈出" icon="SOP_circlefromedges">
+    <helpURL>operator:Sop/circlefromedges</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/circlefromedges</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'circlefromedges')]]></script>
+  </tool>
+
+  <tool name="sop_rop_gltf" label="ROP GLTF 输出" icon="OBJ_gltf_hierarchy">
+    <helpURL>operator:Sop/rop_gltf</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rop_gltf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <toolSubmenu>Export</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rop_gltf')]]></script>
+  </tool>
+
+  <tool name="sop_xformaxis" label="变换坐标轴" icon="SOP_xformaxis">
+    <helpURL>operator:Sop/xformaxis</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/xformaxis</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'xformaxis')]]></script>
+  </tool>
+
+  <tool name="sop_vopnet" label="VOP 网格" icon="NETWORKS_vop">
+    <helpURL>operator:Sop/vopnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vopnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vopnet')]]></script>
+  </tool>
+
+  <tool name="sop_profile" label="轮廓" icon="SOP_profile">
+    <helpURL>operator:Sop/profile</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/profile</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'profile')]]></script>
+  </tool>
+
+  <tool name="sop_repack" label="包裹" icon="SOP_repack">
+    <helpURL>operator:Sop/repack</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/repack</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'repack')]]></script>
+  </tool>
+
+  <tool name="sop_volumerasterizeparticles" label="体积栅格化粒子" icon="SOP_volumerasterizeparticles">
+    <helpURL>operator:Sop/volumerasterizeparticles</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumerasterizeparticles</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumerasterizeparticles')]]></script>
+  </tool>
+
+  <tool name="sop_facet" label="平面" icon="SOP_facet">
+    <helpURL>operator:Sop/facet</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/facet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'facet')]]></script>
+  </tool>
+
+  <tool name="sop_polyreduce::2.0" label="多重缩小" icon="SOP_polyreduce-2.0">
+    <helpURL>operator:Sop/polyreduce?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyreduce::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyreduce::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_surfsect" label="冲浪" icon="SOP_surfsect">
+    <helpURL>operator:Sop/surfsect</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/surfsect</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'surfsect')]]></script>
+  </tool>
+
+  <tool name="sop_blast" label="爆炸" icon="SOP_blast">
+    <helpURL>operator:Sop/blast</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/blast</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'blast')]]></script>
+  </tool>
+
+  <tool name="sop_topnet" label="TOP 几何体" icon="NETWORKS_topgeometry">
+    <helpURL>operator:Sop/topnet</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/topnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'topnet')]]></script>
+  </tool>
+
+  <tool name="sop_mirror" label="镜像" icon="SOP_mirror">
+    <helpURL>operator:Sop/mirror</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/mirror</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'mirror')]]></script>
+  </tool>
+
+  <tool name="sop_channel" label="通道" icon="SOP_channel">
+    <helpURL>operator:Sop/channel</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/channel</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'channel')]]></script>
+  </tool>
+
+  <tool name="sop_primitive" label="原始的" icon="SOP_primitive">
+    <helpURL>operator:Sop/primitive</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/primitive</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'primitive')]]></script>
+  </tool>
+
+  <tool name="sop_polydoctor" label="多重修改" icon="SOP_polydoctor">
+    <helpURL>operator:Sop/polydoctor</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polydoctor</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polydoctor')]]></script>
+  </tool>
+
+  <tool name="sop_pointgenerate" label="点生成" icon="SOP_pointgenerate">
+    <helpURL>operator:Sop/pointgenerate</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/pointgenerate</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Particle</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'pointgenerate')]]></script>
+  </tool>
+
+  <tool name="sop_convertvdbpoints" label="转换 VDB 点" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/convertvdbpoints</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/convertvdbpoints</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'convertvdbpoints')]]></script>
+  </tool>
+
+  <tool name="sop_grouppromote" label="组推动" icon="SOP_grouppromote">
+    <helpURL>operator:Sop/grouppromote</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/grouppromote</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Group</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'grouppromote')]]></script>
+  </tool>
+
+  <tool name="sop_polyextrude" label="多重挤压" icon="SOP_polyextrude">
+    <helpURL>operator:Sop/polyextrude</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyextrude</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyextrude', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_blendshapes::2.0" label="混合形状" icon="SOP_blendshapes-2.0">
+    <helpURL>operator:Sop/blendshapes?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/blendshapes::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'blendshapes::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_vdbanalysis" label="VDB 分析" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbanalysis</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbanalysis</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbanalysis')]]></script>
+  </tool>
+
+  <tool name="sop_polyexpand2d" label="多重展开 2D" icon="SOP_polyexpand2d">
+    <helpURL>operator:Sop/polyexpand2d</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyexpand2d</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyexpand2d')]]></script>
+  </tool>
+
+  <tool name="sop_volumebreak" label="体积中断" icon="SOP_volumebreak">
+    <helpURL>operator:Sop/volumebreak</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumebreak</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumebreak')]]></script>
+  </tool>
+
+  <tool name="sop_creep" label="蔓延" icon="SOP_creep">
+    <helpURL>operator:Sop/creep</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/creep</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'creep')]]></script>
+  </tool>
+
+  <tool name="sop_ripple" label="涟漪" icon="SOP_ripple">
+    <helpURL>operator:Sop/ripple</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/ripple</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'ripple')]]></script>
+  </tool>
+
+  <tool name="sop_polycut" label="多重切割" icon="SOP_polycut">
+    <helpURL>operator:Sop/polycut</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polycut</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polycut')]]></script>
+  </tool>
+
+  <tool name="sop_vdbfracture" label="VDB 碎裂" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbfracture</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbfracture</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbfracture')]]></script>
+  </tool>
+
+  <tool name="sop_vdbclip" label="VDB 剪辑" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbclip</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbclip</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbclip')]]></script>
+  </tool>
+
+  <tool name="sop_magnet" label="磁铁" icon="SOP_magnet">
+    <helpURL>operator:Sop/magnet</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/magnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'magnet')]]></script>
+  </tool>
+
+  <tool name="sop_fur" label="毛皮" icon="SOP_fur">
+    <helpURL>operator:Sop/fur</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/fur</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Hair</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'fur')]]></script>
+  </tool>
+
+  <tool name="sop_unpackusd" label="解包 USD" icon="SOP_unpackusd">
+    <helpURL>operator:Sop/unpackusd</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/unpackusd</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'unpackusd')]]></script>
+  </tool>
+
+  <tool name="sop_posespacedeformcombine" label="姿势空间变形组合" icon="SOP_posespacedeformcombine">
+    <helpURL>operator:Sop/posespacedeformcombine</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/posespacedeformcombine</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'posespacedeformcombine')]]></script>
+  </tool>
+
+  <tool name="sop_posescope" label="姿势范围" icon="SOP_posescope">
+    <helpURL>operator:Sop/posescope</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/posescope</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'posescope')]]></script>
+  </tool>
+
+  <tool name="sop_trace" label="跟踪" icon="SOP_trace">
+    <helpURL>operator:Sop/trace</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'trace')]]></script>
+  </tool>
+
+  <tool name="sop_scatter" label="散射" icon="SOP_scatter">
+    <helpURL>operator:Sop/scatter</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/scatter</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Particle</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'scatter', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_polybevel" label="多重斜面" icon="SOP_polybevel">
+    <helpURL>operator:Sop/polybevel</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polybevel</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polybevel')]]></script>
+  </tool>
+
+  <tool name="sop_mountain" label="山脉" icon="SOP_mountain">
+    <helpURL>operator:Sop/mountain</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/mountain</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'mountain')]]></script>
+  </tool>
+
+  <tool name="sop_sweep::2.0" label="扫除" icon="SOP_sweep-2.0">
+    <helpURL>operator:Sop/sweep?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/sweep::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'sweep::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_objnet" label="对象网格" icon="NETWORKS_scene">
+    <helpURL>operator:Sop/objnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/objnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'objnet')]]></script>
+  </tool>
+
+  <tool name="sop_cluster" label="集群" icon="SOP_cluster">
+    <helpURL>operator:Sop/cluster</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/cluster</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'cluster')]]></script>
+  </tool>
+
+  <tool name="sop_tetrahedralize" label="四面体" icon="SOP_tetrahedralize">
+    <helpURL>operator:Sop/tetrahedralize</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/tetrahedralize</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'tetrahedralize')]]></script>
+  </tool>
+
+  <tool name="sop_dissolve" label="分解" icon="SOP_dissolve">
+    <helpURL>operator:Sop/dissolve</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/dissolve</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'dissolve', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_vdbfrompolygons" label="来自多边形的 VDB" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbfrompolygons</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbfrompolygons</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbfrompolygons')]]></script>
+  </tool>
+
+  <tool name="sop_wiretransfershape" label="连线传递" icon="SOP_wiretransfershape">
+    <helpURL>operator:Sop/wiretransfershape</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/wiretransfershape</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Hair</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'wiretransfershape')]]></script>
+  </tool>
+
+  <tool name="sop_rishader" label="RMan 着色器" icon="SOP_rishader">
+    <helpURL>operator:Sop/rishader</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rishader</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Material</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rishader')]]></script>
+  </tool>
+
+  <tool name="sop_splitpoints" label="点分割" icon="SOP_splitpoints">
+    <helpURL>operator:Sop/splitpoints</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/splitpoints</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'splitpoints')]]></script>
+  </tool>
+
+  <tool name="sop_rewire" label="重布线顶点" icon="SOP_rewire">
+    <helpURL>operator:Sop/rewire</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rewire</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rewire')]]></script>
+  </tool>
+
+  <tool name="sop_clothdeform" label="布布变形" icon="SOP_clothdeform">
+    <helpURL>operator:Sop/clothdeform</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/clothdeform</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'clothdeform')]]></script>
+  </tool>
+
+  <tool name="sop_enumerate" label="枚举" icon="SOP_enumerate">
+    <helpURL>operator:Sop/enumerate</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/enumerate</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'enumerate')]]></script>
+  </tool>
+
+  <tool name="sop_windingnumber" label="获取编号" icon="SOP_windingnumber">
+    <helpURL>operator:Sop/windingnumber</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/windingnumber</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'windingnumber')]]></script>
+  </tool>
+
+  <tool name="sop_peak" label="峰值" icon="SOP_peak">
+    <helpURL>operator:Sop/peak</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/peak</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'peak')]]></script>
+  </tool>
+
+  <tool name="sop_attribcast" label="属性投射" icon="SOP_attribcast">
+    <helpURL>operator:Sop/attribcast</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribcast</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribcast')]]></script>
+  </tool>
+
+  <tool name="sop_block_end" label="限制末尾" icon="SOP_block_end">
+    <helpURL>operator:Sop/block_end</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/block_end</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'block_end')]]></script>
+  </tool>
+
+  <tool name="sop_tetrahedralize::2.0" label="四面体" icon="SOP_tetrahedralize-2.0">
+    <helpURL>operator:Sop/tetrahedralize?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/tetrahedralize::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'tetrahedralize::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_bakeode" label="烘焙 ODE" icon="SOP_bakeode">
+    <helpURL>operator:Sop/bakeode</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bakeode</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Export</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bakeode')]]></script>
+  </tool>
+
+  <tool name="sop_curvesect" label="曲线" icon="SOP_curvesect">
+    <helpURL>operator:Sop/curvesect</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/curvesect</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'curvesect')]]></script>
+  </tool>
+
+  <tool name="sop_timeshift" label="定期转移" icon="SOP_timeshift">
+    <helpURL>operator:Sop/timeshift</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/timeshift</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'timeshift')]]></script>
+  </tool>
+
+  <tool name="sop_crease" label="折痕" icon="SOP_crease">
+    <helpURL>operator:Sop/crease</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/crease</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'crease')]]></script>
+  </tool>
+
+  <tool name="sop_polysplit" label="多重拆分" icon="SOP_polysplit">
+    <helpURL>operator:Sop/polysplit</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polysplit</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <toolSubmenu>Edge</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polysplit')]]></script>
+  </tool>
+
+  <tool name="sop_lopnet" label="LOP 网格" icon="NETWORKS_lop">
+    <helpURL>operator:Sop/lopnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/lopnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'lopnet')]]></script>
+  </tool>
+
+  <tool name="sop_volumeresample" label="体积重采样" icon="SOP_volumeresample">
+    <helpURL>operator:Sop/volumeresample</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeresample</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeresample')]]></script>
+  </tool>
+
+  <tool name="sop_tridivide" label="专业分析" icon="SOP_tridivide">
+    <helpURL>operator:Sop/tridivide</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/tridivide</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'tridivide')]]></script>
+  </tool>
+
+  <tool name="sop_volumemerge" label="体积合并" icon="SOP_volumemerge">
+    <helpURL>operator:Sop/volumemerge</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumemerge</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumemerge')]]></script>
+  </tool>
+
+  <tool name="sop_remesh::2.0" label="重布线" icon="SOP_remesh-2.0">
+    <helpURL>operator:Sop/remesh?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/remesh::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'remesh::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_volumefft" label="体积 FFT" icon="SOP_volumefft">
+    <helpURL>operator:Sop/volumefft</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumefft</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumefft')]]></script>
+  </tool>
+
+  <tool name="sop_triangulate2d::2.0" label="三角测量 2D" icon="SOP_triangulate2d-2.0">
+    <helpURL>operator:Sop/triangulate2d?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/triangulate2d::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'triangulate2d::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_error" label="错误" icon="SOP_error">
+    <helpURL>operator:Sop/error</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/error</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'error')]]></script>
+  </tool>
+
+  <tool name="sop_sphere" label="范围" icon="SOP_sphere">
+    <helpURL>operator:Sop/sphere</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+from soptoolutils import OrientInfo
+
+soptoolutils.genericTool(kwargs, 'sphere', orient=OrientInfo('orient'))]]></script>
+  </tool>
+
+  <tool name="sop_skin" label="皮肤" icon="SOP_skin">
+    <helpURL>operator:Sop/skin</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/skin</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>NURBS</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'skin')]]></script>
+  </tool>
+
+  <tool name="sop_tribez" label="专业贝塞尔" icon="SOP_tribez">
+    <helpURL>operator:Sop/tribez</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/tribez</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'tribez')]]></script>
+  </tool>
+
+  <tool name="sop_vertex" label="顶点 - 旧" icon="SOP_vertex">
+    <helpURL>operator:Sop/vertex</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vertex</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vertex')]]></script>
+  </tool>
+
+  <tool name="sop_remesh" label="重布线" icon="SOP_remesh">
+    <helpURL>operator:Sop/remesh</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/remesh</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'remesh')]]></script>
+  </tool>
+
+  <tool name="sop_captureattribpack" label="捕捉属性包" icon="SOP_captureattribpack">
+    <helpURL>operator:Sop/captureattribpack</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/captureattribpack</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'captureattribpack')]]></script>
+  </tool>
+
+  <tool name="sop_groupcopy" label="组复制" icon="SOP_groupcopy">
+    <helpURL>operator:Sop/groupcopy</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/groupcopy</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Group</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'groupcopy')]]></script>
+  </tool>
+
+  <tool name="sop_force" label="力" icon="SOP_force">
+    <helpURL>operator:Sop/force</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/force</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Particle</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'force')]]></script>
+  </tool>
+
+  <tool name="sop_chopnet" label="CHOP 网格" icon="NETWORKS_chop">
+    <helpURL>operator:Sop/chopnet</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/chopnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'chopnet')]]></script>
+  </tool>
+
+  <tool name="sop_resample" label="重采样" icon="SOP_resample">
+    <helpURL>operator:Sop/resample</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/resample</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'resample')]]></script>
+  </tool>
+
+  <tool name="sop_vdbreshapesdf" label="VDB 重塑 SDF" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbreshapesdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbreshapesdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbreshapesdf')]]></script>
+  </tool>
+
+  <tool name="sop_rop_geometry" label="ROP 几何体输出" icon="ROP_geometry">
+    <helpURL>operator:Sop/rop_geometry</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rop_geometry</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rop_geometry')]]></script>
+  </tool>
+
+  <tool name="sop_filament_advect_pos" label="灯丝平流" icon="SOP_filament_advect_pos">
+    <helpURL>operator:Sop/filament_advect_pos</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/filament_advect_pos</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'filament_advect_pos')]]></script>
+  </tool>
+
+  <tool name="sop_volumerasterize" label="体积栅格化" icon="SOP_volumerasterize">
+    <helpURL>operator:Sop/volumerasterize</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumerasterize</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumerasterize')]]></script>
+  </tool>
+
+  <tool name="sop_findshortestpath" label="查找最短路径" icon="SOP_findshortestpath">
+    <helpURL>operator:Sop/findshortestpath</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/findshortestpath</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'findshortestpath')]]></script>
+  </tool>
+
+  <tool name="sop_rop_fbx" label="ROP FBX 输出" icon="ROP_fbx">
+    <helpURL>operator:Sop/rop_fbx</helpURL>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/rop_fbx</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Managers</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'rop_fbx')]]></script>
+  </tool>
+
+  <tool name="sop_groupdelete" label="组删除" icon="SOP_groupdelete">
+    <helpURL>operator:Sop/groupdelete</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/groupdelete</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Group</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'groupdelete')]]></script>
+  </tool>
+
+  <tool name="sop_extracttransform" label="提取转换" icon="SOP_extracttransform">
+    <helpURL>operator:Sop/extracttransform</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/extracttransform</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'extracttransform')]]></script>
+  </tool>
+
+  <tool name="sop_polyreduce" label="多重缩小" icon="SOP_polyreduce">
+    <helpURL>operator:Sop/polyreduce</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyreduce</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyreduce')]]></script>
+  </tool>
+
+  <tool name="sop_lopimport" label="LOP 导入" icon="SOP_lopimport">
+    <helpURL>operator:Sop/lopimport</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/lopimport</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'lopimport')]]></script>
+  </tool>
+
+  <tool name="sop_attribvop" label="属性 VOP" icon="SOP_attribvop">
+    <helpURL>operator:Sop/attribvop</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribvop</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribvop')]]></script>
+  </tool>
+
+  <tool name="sop_alembicgroup" label="净化器组" icon="SOP_alembic">
+    <helpURL>operator:Sop/alembicgroup</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/alembicgroup</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <toolSubmenu>Pack</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'alembicgroup')]]></script>
+  </tool>
+
+  <tool name="sop_subnet" label="子网格" icon="SOP_subnet">
+    <helpURL>operator:Sop/subnet</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/subnet</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'subnet')]]></script>
+  </tool>
+
+  <tool name="sop_ray" label="射线" icon="SOP_ray">
+    <helpURL>operator:Sop/ray</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/ray</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'ray')]]></script>
+  </tool>
+
+  <tool name="sop_file" label="文件" icon="SOP_file">
+    <helpURL>operator:Sop/file</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <toolSubmenu>Export</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'file')]]></script>
+  </tool>
+
+  <tool name="sop_font" label="字体" icon="SOP_font">
+    <helpURL>operator:Sop/font</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+      <contextNetType>LOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'font')]]></script>
+  </tool>
+
+  <tool name="sop_fuse" label="合并" icon="SOP_fuse">
+    <helpURL>operator:Sop/fuse</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/fuse</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'fuse')]]></script>
+  </tool>
+
+  <tool name="sop_fit" label="适合" icon="SOP_fit">
+    <helpURL>operator:Sop/fit</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/fit</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'fit')]]></script>
+  </tool>
+
+  <tool name="sop_gltf" label="GLTF" icon="OBJ_gltf_hierarchy">
+    <helpURL>operator:Sop/gltf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/gltf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Import</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'gltf')]]></script>
+  </tool>
+
+  <tool name="sop_isooffset" label="等值偏移" icon="SOP_isooffset">
+    <helpURL>operator:Sop/isooffset</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/isooffset</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'isooffset')]]></script>
+  </tool>
+
+  <tool name="sop_box" label="盒子" icon="SOP_box">
+    <helpURL>operator:Sop/box</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Primitive</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'box')]]></script>
+  </tool>
+
+  <tool name="sop_bonelink" label="骨骼链接" icon="SOP_bonelink">
+    <helpURL>operator:Sop/bonelink</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/bonelink</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'bonelink')]]></script>
+  </tool>
+
+  <tool name="sop_attribreorient" label="属性重定向" icon="SOP_attribreorient">
+    <helpURL>operator:Sop/attribreorient</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribreorient</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribreorient')]]></script>
+  </tool>
+
+  <tool name="sop_vdbocclusionmask" label="VDB 闭塞遮罩" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbocclusionmask</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbocclusionmask</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbocclusionmask')]]></script>
+  </tool>
+
+  <tool name="sop_invoke" label="调用编译限制" icon="SOP_invoke">
+    <helpURL>operator:Sop/invoke</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/invoke</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'invoke')]]></script>
+  </tool>
+
+  <tool name="sop_captureproximity" label="骨骼捕捉邻近性" icon="SOP_captureproximity">
+    <helpURL>operator:Sop/captureproximity</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/captureproximity</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'captureproximity')]]></script>
+  </tool>
+
+  <tool name="sop_output" label="输出" icon="SOP_output">
+    <helpURL>operator:Sop/output</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/output</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'output')]]></script>
+  </tool>
+
+  <tool name="sop_add" label="添加" icon="SOP_add">
+    <helpURL>operator:Sop/add</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/add</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'add')]]></script>
+  </tool>
+
+  <tool name="sop_dissolve::2.0" label="分解" icon="SOP_dissolve-2.0">
+    <helpURL>operator:Sop/dissolve?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/dissolve::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'dissolve::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_material" label="材质" icon="SOP_material">
+    <helpURL>operator:Sop/material</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/material</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Material</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'material')]]></script>
+  </tool>
+
+  <tool name="sop_cregion" label="捕捉区域" icon="SOP_cregion">
+    <helpURL>operator:Sop/cregion</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/cregion</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Rigging</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'cregion')]]></script>
+  </tool>
+
+  <tool name="sop_attribcreate::2.0" label="属性创建" icon="SOP_attribcreate-2.0">
+    <helpURL>operator:Sop/attribcreate?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribcreate::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribcreate::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_sblend::2.0" label="序列混合" icon="SOP_sblend-2.0">
+    <helpURL>operator:Sop/sblend?version=2.0</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/sblend::2.0</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'sblend::2.0')]]></script>
+  </tool>
+
+  <tool name="sop_cache" label="缓存" icon="SOP_cache">
+    <helpURL>operator:Sop/cache</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/cache</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'cache')]]></script>
+  </tool>
+
+  <tool name="sop_volumeopticalflow" label="体积视觉流失" icon="SOP_volumeopticalflow">
+    <helpURL>operator:Sop/volumeopticalflow</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumeopticalflow</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumeopticalflow')]]></script>
+  </tool>
+
+  <tool name="sop_uvquickshade" label="UV 快速投影" icon="SOP_uvquickshade">
+    <helpURL>operator:Sop/uvquickshade</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/uvquickshade</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Material</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'uvquickshade', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_block_begin" label="限制开始" icon="SOP_block_begin">
+    <helpURL>operator:Sop/block_begin</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/block_begin</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'block_begin')]]></script>
+  </tool>
+
+  <tool name="sop_volumevop" label="体积 VOP" icon="SOP_volumevop">
+    <helpURL>operator:Sop/volumevop</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumevop</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumevop')]]></script>
+  </tool>
+
+  <tool name="sop_volumefromattrib" label="来自属性的体积" icon="SOP_volumefromattrib">
+    <helpURL>operator:Sop/volumefromattrib</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/volumefromattrib</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'volumefromattrib')]]></script>
+  </tool>
+
+  <tool name="sop_convert" label="转换" icon="SOP_convert">
+    <helpURL>operator:Sop/convert</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/convert</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'convert', allow_obj_sel=False)]]></script>
+  </tool>
+
+  <tool name="sop_convexdecomposition" label="凸面分解" icon="SOP_convexdecomposition">
+    <helpURL>operator:Sop/convexdecomposition</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/convexdecomposition</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'convexdecomposition')]]></script>
+  </tool>
+
+  <tool name="sop_partition" label="分割" icon="SOP_partition">
+    <helpURL>operator:Sop/partition</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/partition</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'partition')]]></script>
+  </tool>
+
+  <tool name="sop_polyloft" label="宿舍楼" icon="SOP_polyloft">
+    <helpURL>operator:Sop/polyloft</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/polyloft</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Polygon</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'polyloft')]]></script>
+  </tool>
+
+  <tool name="sop_visibility" label="能见度" icon="SOP_visibility">
+    <helpURL>operator:Sop/visibility</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/visibility</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'visibility')]]></script>
+  </tool>
+
+  <tool name="sop_convertvolume" label="转化体积" icon="SOP_convertvolume">
+    <helpURL>operator:Sop/convertvolume</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/convertvolume</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Volume</toolSubmenu>
+    <toolSubmenu>Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'convertvolume')]]></script>
+  </tool>
+
+  <tool name="sop_uvlayout" label="UV 分布" icon="SOP_uvlayout">
+    <helpURL>operator:Sop/uvlayout</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/uvlayout</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Material</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'uvlayout')]]></script>
+  </tool>
+
+  <tool name="sop_softpeak" label="柔性顶点" icon="SOP_softpeak">
+    <helpURL>operator:Sop/softpeak</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/softpeak</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Manipulate</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'softpeak')]]></script>
+  </tool>
+
+  <tool name="sop_vdbvectorsplit" label="VDB 矢量拆分" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbvectorsplit</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbvectorsplit</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbvectorsplit')]]></script>
+  </tool>
+
+  <tool name="sop_attribcreate" label="属性创建" icon="SOP_attribcreate">
+    <helpURL>operator:Sop/attribcreate</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/attribcreate</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>Attribute</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'attribcreate')]]></script>
+  </tool>
+
+  <tool name="sop_vdbtopologytosdf" label="VDB 拓扑到 SDF" icon="SOP_OpenVDB">
+    <helpURL>operator:Sop/vdbtopologytosdf</helpURL>
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextOpType>Sop/vdbtopologytosdf</contextOpType>
+    </toolMenuContext>
+    <toolSubmenu>VDB</toolSubmenu>
+    <script scriptType="python"><![CDATA[import soptoolutils
+
+soptoolutils.genericTool(kwargs, 'vdbtopologytosdf')]]></script>
+  </tool>
+</shelfDocument>

@@ -1,0 +1,1681 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the menu items when right-clicking over nodes in
+    Houdini.
+
+    Files named the same (ie. OPmenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+
+    Note that the id's correspond to their hotkeys with the h.pane.wsheet.
+    prefix (where available). For example, the item with id,
+    "opmenu.flag_display", refers to the action in the hotkeys manager as
+    "h.pane.wsheet.opmenu.flag_display".
+
+    Also note that you can specify which context a particular menu item shows
+    up in. To do this, add a context property:
+        <context>
+            <networkCategory>Object</networkCategory>
+        </context>
+    Or, for multiple contexts, a comma-separated list:
+        <context>
+            <networkCategory>Object,Sop,Dop</networkCategory>
+        </context>
+    Or use an expression to determine if the menu item appears in the current
+    context.  For example, to make the menu item appear only if the node is an
+    Object node:
+	<context>
+	    <expression>kwargs["node"].type().category().name() == "Object"</expression>
+	</context>
+
+    For context expressions and menu scripts, a 'kwargs' python dictionary is
+    provided with the following values:
+	'node'	    :   The node that the menu was opened for.
+	'toolname'  :	The menu item's hotkey id (ie. the element's id
+			prefixed with h.pane.parms.)
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+         implicitly "root_menu"
+      -->
+    <menu>
+
+        <!-- This item appears at the top of the menu when you right-click an
+        "example" subnet -->
+        <scriptItem>
+            <label>正在保存节点示例...</label>
+            <context>
+                <expression>kwargs['node'].userData("__example_for") is not None</expression>
+            </context>
+            <scriptCode><![CDATA[
+from houdinihelp import examples
+examples.save_node_example(kwargs['node'])
+]]></scriptCode>
+        </scriptItem>
+
+	<!-- Node flags submenu. -->
+	<subMenu id="opmenu.flags_menu">
+	    <label>标志</label>
+
+	    <actionItem id="opmenu.flag_display">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Display'
+if node.isGenericFlagSet(hou.nodeFlag.Display):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <expression>kwargs["node"].type().category().name() in ("Object", "Sop", "Chop", "Top") and kwargs["node"].isFlagWritable(hou.nodeFlag.Display)</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_select">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Selectable'
+if node.isGenericFlagSet(hou.nodeFlag.Selectable):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Object</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_origin">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Display Origin'
+if node.isGenericFlagSet(hou.nodeFlag.Origin):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Object" and not kwargs["node"].isSubNetwork()</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_xray">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'X-Ray'
+if node.isGenericFlagSet(hou.nodeFlag.XRay):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Object" and not kwargs["node"].isSubNetwork()</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_render">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Render'
+if node.isGenericFlagSet(hou.nodeFlag.Render):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Sop" and kwargs["node"].isFlagWritable(hou.nodeFlag.Render)</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_output">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Output'
+node_type = node.type().category().name() 
+flag_type = hou.nodeFlag.Display
+if node_type == "Dop":
+    flag_type = hou.nodeFlag.Display
+if node_type == "Chop":
+    flag_type = hou.nodeFlag.Audio
+if node_type == "Cop2":
+    flag_type = hou.nodeFlag.Render
+if node.isGenericFlagSet(flag_type):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+node_type = node.type().category().name() 
+if (node_type == "Dop" and node.isFlagWritable(hou.nodeFlag.Display)) \
+    or (node_type == "Chop" and node.isFlagWritable(hou.nodeFlag.Audio)) \
+    or (node_type == "Cop2" and node.isFlagWritable(hou.nodeFlag.Render)):
+    return True
+
+return False
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_template">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Template'
+if node.isGenericFlagSet(hou.nodeFlag.Template):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Sop</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_footprint">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Selectable Template'
+if node.isGenericFlagSet(hou.nodeFlag.Footprint):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Sop</networkCategory>
+		</context>
+	    </actionItem>
+
+	    <subMenu id="opmenu.flags_outputforview_menu">
+		<label>输出视图...</label>
+
+		<context>
+		    <expression>kwargs['node'].type().category().name() == "Sop"</expression>
+		</context>
+
+		<actionItem id="opmenu.flag_outputforview_0">
+		    <labelExpression><![CDATA[
+node = kwargs['node']
+result = node.outputLabels()[0]
+if node.outputForViewFlag() == 0:
+    result = u"\u2713 " + result
+return result
+		    ]]></labelExpression>
+		    <context>
+			<expression>len(kwargs["node"].outputLabels()) > 0</expression>
+		    </context>
+		</actionItem>
+		<actionItem id="opmenu.flag_outputforview_1">
+		    <labelExpression><![CDATA[
+node = kwargs['node']
+result = node.outputLabels()[1]
+if node.outputForViewFlag() == 1:
+    result = u"\u2713 " + result
+return result
+		    ]]></labelExpression>
+		    <context>
+			<expression>len(kwargs["node"].outputLabels()) > 1</expression>
+		    </context>
+		</actionItem>
+		<actionItem id="opmenu.flag_outputforview_2">
+		    <labelExpression><![CDATA[
+node = kwargs['node']
+result = node.outputLabels()[2]
+if node.outputForViewFlag() == 2:
+    result = u"\u2713 " + result
+return result
+		    ]]></labelExpression>
+		    <context>
+			<expression>len(kwargs["node"].outputLabels()) > 2</expression>
+		    </context>
+		</actionItem>
+		<actionItem id="opmenu.flag_outputforview_3">
+		    <labelExpression><![CDATA[
+node = kwargs['node']
+result = node.outputLabels()[3]
+if node.outputForViewFlag() == 3:
+    result = u"\u2713 " + result
+return result
+		    ]]></labelExpression>
+		    <context>
+			<expression>len(kwargs["node"].outputLabels()) > 3</expression>
+		    </context>
+		</actionItem>
+	    </subMenu>
+
+	    <actionItem id="opmenu.flag_highlight">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Highlight'
+if node.isGenericFlagSet(hou.nodeFlag.Highlight):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Sop</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_unload">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Unload'
+if node.isGenericFlagSet(hou.nodeFlag.Unload):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Sop</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_export">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Export'
+if node.isGenericFlagSet(hou.nodeFlag.Export):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Chop</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_lock">
+		<label>锁定/解锁</label>
+		<context>
+		    <networkCategory>Sop,Chop,Driver</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_thumbnail">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Thumbnail'
+if not node.isGenericFlagSet(hou.nodeFlag.Compress):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Cop2</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_bypass">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Bypass'
+if node.isGenericFlagSet(hou.nodeFlag.Bypass):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <expression>kwargs["node"].type().category().name() in ("Sop", "Cop2", "Chop", "Driver", "Top") and kwargs["node"].isFlagWritable(hou.nodeFlag.Bypass)</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_hidden">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Hide Geometry'
+if node.isGenericFlagSet(hou.nodeFlag.Template):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+		<context>
+		    <networkCategory>Dop</networkCategory>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_displaydescriptivename">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Display Descriptive Parameter'
+if node.isGenericFlagSet(hou.nodeFlag.DisplayDescriptiveName):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_displaycomment">
+		<labelExpression><![CDATA[
+node = kwargs['node']
+result = 'Display Comment'
+if node.isGenericFlagSet(hou.nodeFlag.DisplayComment):
+    result = u"\u2713 " + result
+return result
+		]]></labelExpression>
+	    </actionItem>
+	    <actionItem id="opmenu.flag_expose">
+		<label>隐藏节点</label>
+	    </actionItem>
+
+	    <separatorItem/>
+
+	    <actionItem id="opmenu.takedisplay">
+		<label>在流程中使用显示编辑器</label>
+		<context>
+		    <expression>hou.takes.currentTake() != hou.takes.rootTake() and kwargs["node"].type().category().name() in ("Object", "Sop", "Chop")</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.takeoutput">
+		<label>在流程中使用输出编辑器</label>
+		<context>
+		    <expression>hou.takes.currentTake() != hou.takes.rootTake() and kwargs["node"].type().category().name() in ("Dop", "Cop2")</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.takebypass">
+		<label>在流程中使用分流编辑器</label>
+		<context>
+		    <expression>hou.takes.currentTake() != hou.takes.rootTake() and kwargs["node"].type().category().name() in ("Sop", "Cop2", "Chop")</expression>
+		</context>
+	    </actionItem>
+	</subMenu>
+
+	<!-- Actions submenu. -->
+	<subMenu id="opmenu.actions_menu">
+	    <label>操作</label>
+	    <actionItem id="opmenu.select_node">
+		<label>选择</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().isManager(False):
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.use_default_color">
+		<label>使用默认颜色</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().isManager(False):
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.use_default_shape">
+		<label>使用默认形状</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().isManager(False):
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+            <actionItem id="collapse">
+                <label>折叠到子网格</label>
+                <context>
+                    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if not kwargs["commonparent"]:
+    return False
+
+return True
+]]></expression>
+                </context>
+            </actionItem>
+            <actionItem id="collapse_to_material">
+                <label>折叠到材质生成器</label>
+                <context>
+                    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if node.type().category() != hou.vopNodeTypeCategory():
+    return False
+
+if not node.parent().type().isManager():
+    return False
+
+if not kwargs["commonparent"]:
+    return False
+
+return True
+]]></expression>
+                </context>
+            </actionItem>
+	    <actionItem id="opmenu.extract">
+		<label>提取内容</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if not node.isSubNetwork():
+    return False
+
+if node.type().isManager():
+    return False
+
+if not node.type().isReadable():
+    return False
+
+if not node.type().areContentsViewable():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.refcopy">
+		<label>创建参考副本</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().isManager(False):
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.change_type">
+		<label>更改类型...</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if node.type().isManager():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <actionItem id="delete">
+		<label>删除</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().isManager(False):
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <scriptItem>
+		<label>（没有可用的操作）</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().isManager(False) or (node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA()):
+    return True
+
+return False
+]]></expression>
+		</context>
+		<scriptCode>pass</scriptCode>
+	    </scriptItem>
+	</subMenu>
+        <!-- End actions submenu -->
+
+        <!-- LOP actions submenu. -->
+    <subMenu id="opmenu.lop_options_menu">
+        <label>LOP 操作</label>
+        <context>
+        <expression>kwargs["node"].type().category().name() == "Lop"</expression>
+        </context>
+        <scriptItem id="opmenu.select_modified_prims">
+        <label>选择修改的基元</label>
+        <scriptCode>
+            <![CDATA[
+import loputils
+loputils.selectModifiedPrims(kwargs["node"])
+]]></scriptCode>
+        </scriptItem>
+        <scriptItem id="opmenu.inspect_stage">
+        <label>检查平滑段</label>
+        <scriptCode>
+            <![CDATA[
+import husd.textviewer
+husd.textviewer.viewStage(kwargs["node"])
+]]></scriptCode>
+        </scriptItem>
+        <scriptItem id="opmenu.inspect_active_layer">
+        <label>检查活动层</label>
+        <scriptCode>
+            <![CDATA[
+import husd.textviewer
+husd.textviewer.viewActiveLayer(kwargs["node"])
+]]></scriptCode>
+        </scriptItem>
+        <scriptItem id="opmenu.inspect_layers">
+        <label>检查层</label>
+        <scriptCode>
+            <![CDATA[
+from scenegraphlayers import panelutils
+panelutils.openPanelForNode(kwargs["node"])
+]]></scriptCode>
+        </scriptItem>
+    </subMenu>
+    <!-- End LOP actions menu -->
+
+        <!-- Asset examples submenu -->
+        <subMenu id="opmenu.examples_menu">
+            <label>示例</label>
+            <context>
+                <expression><![CDATA[
+from houdinihelp import examples
+return (
+    examples.has_examples(kwargs['node']) or
+    examples.can_have_example(kwargs['node'])
+)
+]]></expression>
+            </context>
+
+            <scriptItem id="h.panes.wsheet.addnodeexample">
+                <label>为此节点创建示例</label>
+                <context>
+                    <expression><![CDATA[
+from houdinihelp import examples
+return examples.can_have_example(kwargs['node'])
+]]></expression>
+                </context>
+                <scriptCode><![CDATA[
+from houdinihelp import examples
+examples.start_node_example(kwargs['node'], alt=kwargs['altclick'])
+]]></scriptCode>
+            </scriptItem>
+
+            <separatorItem/>
+
+            <scriptMenuStripDynamic>
+                <contentsScriptCode><![CDATA[
+from houdinihelp import examples
+return examples.examples_menu(kwargs['node'])
+]]></contentsScriptCode>
+                <scriptCode><![CDATA[
+from houdinihelp import examples
+examples.load_token(kwargs['selectedtoken'], kwargs['node'], shift=kwargs['shiftclick'], alt=kwargs['altclick'])
+]]></scriptCode>
+            </scriptMenuStripDynamic>
+        </subMenu>
+        <!-- End examples submenu -->
+
+
+	<actionItem id="jump">
+	    <label>探查网格</label>
+	    <context>
+		<expression>kwargs["node"].childTypeCategory() is not None</expression>
+	    </context>
+	</actionItem>
+
+	<separatorItem/>
+
+	<subMenu id="opmenu.preview_menu">
+	    <label>预览</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+	    </context>
+	    <actionItem id="opmenu.preview_icon">
+		<label>图标尺寸</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.preview_quarter">
+		<label>1/4 尺寸</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.preview_half">
+		<label>1/2 尺寸</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.preview_full">
+		<label>全尺寸</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+		</context>
+	    </actionItem>
+	</subMenu>
+	<actionItem id="opmenu.flipbook">
+	    <label>图像序列视图...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+	    </context>
+	</actionItem>
+
+	<scriptItem id="opmenu.generate_static">
+	    <label>生成静态工作项</label>
+	    <context>
+		<expression><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+return topui.isTOPNetwork(node) and not topui.isRemoteNode(node)
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+topui.generateStatic(node)
+]]></scriptCode>
+	</scriptItem>
+	<scriptItem id="opmenu.cook_output_node">
+	    <label>规划输出节点</label>
+	    <context>
+		<expression><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+return topui.isTOPNetwork(node) and not topui.isRemoteNode(node)
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+topui.cookOutputNode(node)
+]]></scriptCode>
+	</scriptItem>
+	<scriptItem id="opmenu.dirty_all">
+	    <label>浑浊所有</label>
+	    <context>
+		<expression><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+return topui.isTOPNetwork(node) and not topui.isRemoteNode(node)
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+topui.dirtyAll(node, False)
+]]></scriptCode>
+	</scriptItem>
+	<scriptItem id="opmenu.cancel_cook">
+	    <label>取消规划</label>
+	    <context>
+		<expression><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+return topui.isTOPNetwork(node) and not topui.isRemoteNode(node)
+]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+topui.cancelCook(node)
+]]></scriptCode>
+	</scriptItem>
+	<scriptItem id="opmenu.generate_node">
+	    <label>生成节点</label>
+	    <context>
+		<expression>
+  <![CDATA[
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+if node.type().category().name() == "Top" and type(node) == hou.TopNode and not topui.isRemoteNode(node):
+    return node.isProcessor() or node.isPartitioner()
+return False]]></expression>
+	    </context>
+	    <scriptCode><![CDATA[
+node = kwargs["node"]
+node.executeGraph(True, False, True)
+]]></scriptCode>
+	</scriptItem>
+  <scriptItem id="cook_selected_node">
+      <label>规划选定节点</label>
+      <context>
+          <expression>
+            <![CDATA[
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+if node.type().category().name() == "Top" and type(node) == hou.TopNode and not topui.isRemoteNode(node):
+    return node.isProcessor() or node.isPartitioner()
+return False]]>
+          </expression>
+      </context>
+      <scriptCode>
+          <![CDATA[
+import pdg
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+topui.cookNode(node)
+
+]]>
+      </scriptCode>
+  </scriptItem>
+  <separatorItem/>
+	<scriptItem id="dirty_node">
+		<label>浑浊此节点</label>
+		<context>
+		    <expression>
+  <![CDATA[
+import nodegraphtopui as topui
+  
+node = kwargs["node"]
+if node.type().category().name() == "Top" and type(node) == hou.TopNode and kwargs["node"].getPDGNodeName() != "" and not topui.isRemoteNode(node):
+    return node.isProcessor() or node.isPartitioner()
+return False]]></expression>
+		</context>
+		<scriptCode><![CDATA[
+import pdg
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+topui.dirtyNode(node, False)
+
+]]></scriptCode>
+	</scriptItem>
+  <scriptItem id="dirty_cook_selected_node">
+		<label>浑浊和规划此节点</label>
+		<context>
+		    <expression>
+  <![CDATA[
+import nodegraphtopui as topui
+  
+node = kwargs["node"]
+if node.type().category().name() == "Top" and type(node) == hou.TopNode and not topui.isRemoteNode(node):
+    return node.isProcessor() or node.isPartitioner()
+return False]]></expression>
+		</context>
+		<scriptCode><![CDATA[
+import pdg
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+topui.dirtyCookNode(node)
+
+]]></scriptCode>
+  </scriptItem>
+  <scriptItem id="dirty_clean_node">
+    <label>从磁盘中删除此节点的结果</label>
+    <context>
+        <expression>
+            <![CDATA[
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+if node.type().category().name() == "Top" and type(node) == hou.TopNode and kwargs["node"].getPDGNodeName() != "" and not topui.isRemoteNode(node):
+    return node.isProcessor() or node.isPartitioner()
+return False]]>
+        </expression>
+    </context>
+    <scriptCode>
+          <![CDATA[
+import pdg
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+topui.dirtyNode(node, True)
+
+]]>
+    </scriptCode>
+  </scriptItem>
+  <scriptItem id="clean_temp_dir">
+		<label>删除临时目录</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+if node.type().category().name() == "Top" and type(node) == hou.TopNode:
+    return node.isScheduler()
+return False]]></expression>
+		</context>
+		<scriptCode><![CDATA[
+import pdg
+import nodegraphtopui as topui
+
+node = kwargs["node"]
+topui.schedulerCleanTempDirectory(node)
+
+]]></scriptCode>
+  </scriptItem>
+  <separatorItem/>
+	<scriptItem id="opmenu.open_task_graph_table">
+		<label>正在打开任务图形表...</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+if node.type().category().name() == "Top" and type(node) == hou.TopNode:
+    return node.isProcessor() or node.isPartitioner()
+return False]]></expression>
+		</context>
+		<scriptCode><![CDATA[
+import nodegraphtopui as topui
+node = kwargs["node"]
+topui.openTaskGraphTableWindow(node)
+]]></scriptCode>
+	</scriptItem>
+<separatorItem/>
+	<subMenu id="opmenu.parms_and_channels_menu">
+	    <label>参数和通道</label>
+	    <actionItem id="opmenu.parameters">
+		<label>参数...</label>
+		<context>
+		    <expression>not kwargs["node"].type().isManager(False)</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.promotematerial">
+		<label>提升材质参数</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().isManager(False):
+    return False
+
+if node.type().category().name() != "Shop":
+    return False
+
+if node.shaderType() != hou.shaderType.Material:
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <actionItem id="opmenu.create_channel_groups">
+		<label>创建嵌套通道组</label>
+		<context>
+		    <expression>not kwargs["node"].type().isManager(False)</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.scope_channels">
+		<label>添加到通道列表对话框...</label>
+		<context>
+		    <expression>not kwargs["node"].type().isManager(False)</expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <scriptItem id="opmenu.create_lop_activationparm">
+		<label>创建激活参数</label>
+		<context>
+		    <expression>__import__("loputils").canCreateActivationParms(kwargs['items'])</expression>
+		</context>
+
+		<scriptCode>
+		    <![CDATA[
+import loputils
+loputils.createActivationParms(kwargs['items'])
+]]></scriptCode>
+	    </scriptItem>
+	    <scriptItem id="opmenu.remove_lop_activationparm">
+		<label>删除激活参数</label>
+		<context>
+		    <expression>__import__("loputils").canRemoveActivationParms(kwargs['items'])</expression>
+		</context>
+
+		<scriptCode>
+		    <![CDATA[
+import loputils
+loputils.removeActivationParms(kwargs['items'])
+]]></scriptCode>
+	    </scriptItem>
+	    <separatorItem/>
+	    <!-- 
+		Please do not move Edit Parameter Interface... above Type
+		Properties...  This was done twice in the past and each time we
+		found the location to be problematic so we moved it back to the
+		middle of the menu.
+	    -->
+	    <actionItem id="opmenu.spareparms">
+		<label>编辑参数界面...</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	</subMenu>
+
+	<!-- VOP options submenu. -->
+	<subMenu id="opmenu.vop_options_menu">
+	    <labelExpression><![CDATA[
+node = kwargs["node"]
+if node.canGenerateCookCode(True):
+    code_language = kwargs["node"].cookCodeGeneratorNode().cookCodeLanguage()
+    label = "%s/VOP Options" % code_language
+else:
+    label = "VOP Options"
+return label
+]]></labelExpression>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Vop" or kwargs["node"].canGenerateCookCode(True) or kwargs["node"].type().sourceNetwork() is not None</expression>
+	    </context>
+	    <actionItem id="opmenu.vn_view_code">
+		<labelExpression><![CDATA[
+code_language = kwargs["node"].cookCodeGeneratorNode().cookCodeLanguage()
+label = "View %s Code..." % code_language
+return label
+]]></labelExpression>
+		<context>
+		    <expression>kwargs["node"].canGenerateCookCode(True)</expression>
+		</context>
+	    </actionItem>
+	<actionItem id="opmenu.edit_vop_network">
+	    <label>编辑 VOP 网络...</label>
+	    <context>
+		<expression>kwargs["node"] != hou.node("/") and kwargs["node"].type().sourceNetwork() is not None</expression>
+	    </context>
+	</actionItem>
+	    <actionItem id="opmenu.creator">
+		<label>创建 VOP 网络</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Vop"</expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <actionItem id="opmenu.vn_create_shop">
+		<label>创建此类型的新 SHOP</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+if node.type().category().name() != "VopNet":
+    return False
+    
+context = node.vexContext()
+if context is None:
+    return False
+    
+if context.shaderType() not in (
+    hou.shaderType.Surface, 
+    hou.shaderType.Displacement, 
+    hou.shaderType.Light, 
+    hou.shaderType.SurfaceShadow, 
+    hou.shaderType.Atmosphere, 
+    hou.shaderType.Image3D):
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.vn_save_context_op">
+		<labelExpression><![CDATA[
+node = kwargs["node"].cookCodeGeneratorNode()
+is_vop_net = (node.type().category().name() == "VopNet")
+
+code_language = node.cookCodeLanguage()
+type_category = (node.definedType().category().name() 
+    if is_vop_net else node.type().category().name())
+
+label = "Compile %s Code to %s Type..." % (code_language, type_category.upper())
+return label
+]]></labelExpression>
+		<context>
+		    <expression>kwargs["node"].canGenerateCookCode(True) and kwargs["node"].type().name() != "attribvop"</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.vn_create_vop_type">
+		<labelExpression><![CDATA[
+code_language = kwargs["node"].cookCodeGeneratorNode().cookCodeLanguage()
+label = "Compile %s Code to VOP Type..." % code_language
+return label
+]]></labelExpression>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+if not node.canGenerateCookCode(True):
+    return False
+
+if node.type().name() == "attribvop":
+    return False    # attribvop can't be converted to a SOP HDA yet
+
+node = node.cookCodeGeneratorNode()
+if node.cookCodeLanguage() != "VEX":
+    return False
+    
+if node.supportsMultiCookCodeContexts():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.vn_convert_to_type">
+		<labelExpression><![CDATA[
+node = kwargs["node"]
+code_language = node.cookCodeGeneratorNode().cookCodeLanguage()
+label = "Convert to VOP %s Type..." % node.type().category().name().upper()
+return label
+]]></labelExpression>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+if not node.canGenerateCookCode(True):
+    return False
+
+if node.type().name() == "attribvop":
+    return False    # There is no 'vopcvextype' nor 'attribvoptype' SOP type
+
+node = node.cookCodeGeneratorNode()
+if node.type().category().name() == "VopNet":
+    return False
+    
+if node.supportsMultiCookCodeContexts():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <actionItem id="opmenu.parm_definer">
+		<label>跳转到参数定义器</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+if node.parmDefinerNode() is None or node.parmDefinerNode() == node:
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <subMenu id="opmenu.lod_menu">
+		<label>集成到磁贴 LOD</label>
+		<context>
+		    <networkCategory>Vop</networkCategory>
+		</context>
+		<actionItem id="opmenu.flag_lodlow">
+		    <label>低</label>
+		</actionItem>
+		<actionItem id="opmenu.flag_lodmed">
+		    <label>中</label>
+		</actionItem>
+		<actionItem id="opmenu.flag_lodhigh">
+		    <label>高</label>
+		</actionItem>
+	    </subMenu>
+	    <actionItem id="opmenu.collapse_input_groups">
+		<label>折叠所有输入组</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+group_names = node.inputGroupNames()
+if not group_names or (len(group_names) == 1 and group_names[0] == ''):
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.expand_input_groups">
+		<label>展开所有输入组</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+group_names = node.inputGroupNames()
+if not group_names or (len(group_names) == 1 and group_names[0] == ''):
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <actionItem id="opmenu.create_parms">
+		<label>创建输入参数</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+if len(node.inputNames()) <= len(node.inputConnections()):
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.create_subnet_inputs">
+		<label>创建子网格输入</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+if len(node.inputNames()) <= len(node.inputConnections()):
+    return False
+
+parent = node.parent()
+
+if parent is None:
+    return False
+
+if parent.type().category().name() != "Vop":
+    return False
+
+if not parent.isSubNetwork():
+    return False
+
+if parent.isLockedHDA():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.create_consts">
+		<label>创建输入常量</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+if len(node.inputNames()) <= len(node.inputConnections()):
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <separatorItem/>
+	    <actionItem id="opmenu.create_output_bindings">
+		<label>创建输出绑定</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+if len(node.outputNames()) <= 0:
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.create_subnet_outputs">
+		<label>创建子网格输出</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if node.type().category().name() != "Vop":
+    return False
+
+if len(node.outputNames()) <= 0:
+    return False
+
+parent = node.parent()
+
+if parent is None:
+    return False
+
+if parent.type().category().name() != "Vop":
+    return False
+
+if not parent.isSubNetwork():
+    return False
+
+if parent.type().definition() is None:
+    return False
+
+if parent.matchesCurrentDefinition():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	</subMenu>
+
+	<actionItem id="opmenu.preview">
+	    <label>预览窗口...</label>
+	    <context>
+		<expression><![CDATA[
+node = kwargs["node"]
+if (node.type().category().name() == "Object" and not kwargs["node"].isSubNetwork()) \
+    or node.type().category().name() == "Sop" \
+    or node.type().category().name() == "Lop":
+    return True
+
+return False
+]]></expression>
+	    </context>
+	</actionItem>
+	<actionItem id="opmenu.spreadsheet">
+	    <label>电子表格...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() in ("Sop", "Dop")</expression>
+	    </context>
+	</actionItem>
+	<scriptItem id="opmenu.extended_info">
+	    <label>显示节点信息...</label>
+	    <scriptCode>
+		<![CDATA[
+import nodegraphui
+nodegraphui.createInfoWindow(kwargs['node'], True, False, False)
+]]></scriptCode>
+	</scriptItem>
+	<actionItem id="opmenu.view_deps">
+	    <label>查看依赖项...</label>
+	</actionItem>
+	<actionItem id="opmenu.edit_comment">
+	    <label>编辑注释...</label>
+	    <context>
+		<expression><![CDATA[
+node = kwargs["node"]
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+return True
+]]></expression>
+	    </context>
+	</actionItem>
+
+	<!-- Save options. -->
+	<subMenu id="opmenu.save_menu">
+	    <label>保存</label>
+	<actionItem id="opmenu.save_geometry">
+	    <label>几何体...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Sop"</expression>
+	    </context>
+	</actionItem>
+	<scriptItem id="opmenu.save_stage">
+	    <label>扁平化状态...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Lop"</expression>
+	    </context>
+	    <scriptCode>
+		<![CDATA[
+filepath = hou.ui.selectFile(chooser_mode = hou.fileChooserMode.Write)
+if filepath:
+    kwargs["node"].stage().Export(hou.expandString(filepath))
+]]></scriptCode>
+	</scriptItem>
+	<scriptItem id="opmenu.save_active_layer">
+	    <label>活动层...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Lop"</expression>
+	    </context>
+	    <scriptCode>
+		<![CDATA[
+if kwargs["node"].activeLayer() is None:
+    hou.ui.displayMessage('The selected node does not have an active layer.',
+        severity = hou.severityType.Warning)
+else:
+    filepath = hou.ui.selectFile(chooser_mode = hou.fileChooserMode.Write)
+    if filepath:
+        kwargs["node"].activeLayer().Export(hou.expandString(filepath))
+]]></scriptCode>
+	</scriptItem>
+	<actionItem id="opmenu.vn_save_code">
+	    <labelExpression><![CDATA[
+code_language = kwargs["node"].cookCodeGeneratorNode().cookCodeLanguage()
+label = "Save %s Code to File..." % code_language
+return label
+]]></labelExpression>
+	    <context>
+		<expression>kwargs["node"].canGenerateCookCode(True)</expression>
+	    </context>
+	</actionItem>
+	<actionItem id="opmenu.save_texture">
+	    <label>纹理 UV 到图像...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Sop"</expression>
+	    </context>
+	</actionItem>
+	<actionItem id="opmenu.save_image">
+	    <label>图像...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+	    </context>
+	</actionItem>
+	<actionItem id="opmenu.save_lut">
+	    <label>亮度...</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Cop2"</expression>
+	    </context>
+	</actionItem>
+	    <actionItem id="opmenu.save_data">
+		<label>数据通道...</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Chop"</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.edit_data">
+		<label>编辑数据通道...</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Chop"</expression>
+		</context>
+	    </actionItem>
+	<actionItem id="opmenu.save_to_gallery">
+	    <label>到展开...</label>
+	    <context>
+		<expression>kwargs["node"] != hou.node("/")</expression>
+	    </context>
+	</actionItem>
+	</subMenu>
+
+	<separatorItem/>
+
+	<!-- Chop options. -->
+	    <actionItem id="opmenu.set_scope">
+		<label>导出器 - 集成到范围...</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Chop"</expression>
+		</context>
+	    </actionItem>
+	    <actionItem id="opmenu.add_to_scope">
+		<label>导出器 - 添加到范围...</label>
+		<context>
+		    <expression>kwargs["node"].type().category().name() == "Chop"</expression>
+		</context>
+	    </actionItem>
+
+	<separatorItem/>
+
+	<!-- Input and output option submenus. -->
+	<subMenu id="opmenu.inputs_menu">
+	    <label>输入</label>
+	    <context>
+		<expression>len(kwargs["node"].inputs()) > 0</expression>
+	    </context>
+	    <actionItem id="opmenu.hide_inputs">
+		<label>隐藏输入</label>
+	    </actionItem>
+	    <actionItem id="opmenu.expose_inputs">
+		<label>取消隐藏输入</label>
+	    </actionItem>
+	    <actionItem id="opmenu.select_inputs">
+		<label>选择输入</label>
+	    </actionItem>
+	    <scriptItem id="opmenu.select_input_parameters">
+		<label>选择输入参数</label>
+		<scriptCode>
+		    <![CDATA[
+parm_node_types = [hou.nodeType(hou.vopNodeTypeCategory(), 'parameter'),
+		   hou.nodeType(hou.vopNodeTypeCategory(), 'rampparm')]
+parm_nodes = []
+for item in kwargs['items']:
+    if isinstance(item, hou.VopNode):
+	parm_nodes.extend([n for n in item.inputs()
+		      if n is not None
+		      and n.type() in parm_node_types])
+
+for i, parm_node in enumerate(parm_nodes):
+    do_clear = True if i == 0 else False
+    parm_node.setSelected(True, clear_all_selected=do_clear)
+]]></scriptCode>
+	    </scriptItem>
+	</subMenu>
+	<subMenu id="opmenu.outputs_menu">
+	    <label>输出</label>
+	    <context>
+		<expression>len(kwargs["node"].outputs()) > 0</expression>
+	    </context>
+	    <actionItem id="opmenu.hide_outputs">
+		<label>隐藏输出</label>
+	    </actionItem>
+	    <actionItem id="opmenu.expose_outputs">
+		<label>取消隐藏输出</label>
+	    </actionItem>
+	    <actionItem id="opmenu.select_outputs">
+		<label>选择输出</label>
+	    </actionItem>
+	    <actionItem id="opmenu.collapse_outputs">
+		<label>折叠输出</label>
+		<context>
+		    <expression><![CDATA[
+node = kwargs["node"]
+
+if len(node.outputs()) == 0:
+    return False
+
+if not node.type().category().hasSubNetworkType():
+    return False
+
+return True
+]]></expression>
+		</context>
+	    </actionItem>
+	</subMenu>
+
+	<separatorItem/>
+
+	<subMenu id="opmenu.character_tools_menu">
+	    <label>字符工具</label>
+	    <context>
+		<expression>kwargs["node"].type().category().name() == "Object" and kwargs["node"].type().definition() is not None</expression>
+	    </context>
+	    <actionItem id="opmenu.charpicker">
+		<label>字符选取器...</label>
+	    </actionItem>
+	    <actionItem id="opmenu.poselibrary">
+		<label>姿势库...</label>
+	    </actionItem>
+	</subMenu>
+
+	<separatorItem/>
+
+	<actionItem id="opmenu.help">
+	    <label>帮助...</label>
+	</actionItem>
+
+	<separatorItem/>
+
+	<!-- Operator type and asset options. -->
+	<actionItem id="opmenu.create_hda">
+	    <label>创建数字资产...</label>
+	    <context>
+		<expression>kwargs["node"].canCreateDigitalAsset()</expression>
+	    </context>
+	</actionItem>
+	<actionItem id="opmenu.unsynchronize">
+	    <label>允许编辑内容</label>
+	    <context>
+		<expression><![CDATA[
+node = kwargs["node"]
+
+if not node.matchesCurrentDefinition():
+    return False
+
+if not node.isNetwork():
+    return False
+
+hda_def = node.type().definition()
+
+if not hda_def:
+    return False
+    
+options = hda_def.options()
+
+if not options.lockContents():
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if hou.hda.safeguardHDAs():
+    return False
+
+if not node.type().areContentsViewable():
+    return False
+
+return True
+]]></expression>
+	    </context>
+	</actionItem>
+	<actionItem id="opmenu.synchronize">
+	    <label>匹配当前定义</label>
+	    <context>
+		<expression><![CDATA[
+node = kwargs["node"]
+
+if node.matchesCurrentDefinition():
+    return False
+
+if not node.isNetwork():
+    return False
+
+hda_def = node.type().definition()
+
+if not hda_def:
+    return False
+    
+options = hda_def.options()
+
+if not options.lockContents():
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if hou.hda.safeguardHDAs():
+    return False
+
+if not node.type().isWritable():
+    return False
+
+if not node.type().areContentsViewable():
+    return False
+
+return True
+]]></expression>
+	    </context>
+	</actionItem>
+
+	<actionItem id="opmenu.diff">
+	    <label>显示更改...</label>
+	    <context>
+		<expression><![CDATA[
+if hou.licenseCategory() != hou.licenseCategoryType.Commercial:
+    return False
+
+node = kwargs["node"]
+
+hda_def = node.type().definition()
+
+if not hda_def:
+    return False
+
+if not hda_def.hasSection("Contents") \
+    and not hda_def.hasSection("Contents.gz") \
+    and not hda_def.hasSection("Contents.sc"):
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if not node.type().areContentsViewable():
+    return False
+
+return True
+]]></expression>
+	    </context>
+	</actionItem>
+
+	<actionItem id="opmenu.saveoptype">
+	    <label>保存节点类型</label>
+	    <context>
+		<expression><![CDATA[
+node = kwargs["node"]
+
+if node.matchesCurrentDefinition():
+    return False
+
+if not node.isNetwork():
+    return False
+
+hda_def = node.type().definition()
+
+if not hda_def:
+    return False
+    
+options = hda_def.options()
+
+if not options.lockContents():
+    return False
+
+if node.isInsideLockedHDA() and not node.isEditableInsideLockedHDA():
+    return False
+
+if hou.hda.safeguardHDAs():
+    return False
+
+return True
+]]></expression>
+	    </context>
+	</actionItem>
+
+	<separatorItem/>
+
+	<actionItem id="opmenu.optypemanager">
+	    <label>在资产管理中显示...</label>
+	    <context>
+		<expression>kwargs["node"] != hou.node("/")</expression>
+	    </context>
+	</actionItem>
+	<actionItem id="opmenu.properties">
+	    <label>类型属性...</label>
+	    <context>
+		<expression>kwargs["node"].type().sourceNetwork() is None and kwargs["node"].type().isReadable() and kwargs["node"].type().areContentsViewable()</expression>
+	    </context>
+	</actionItem>
+
+	<!-- For backwards compatibility. -->
+	<!-- Contains custom hscript commands defined by old OPmenu file. -->
+        <menuStripDynamic id="custom_hscript">
+          <value>opmenu_custom_hscript_menu</value>
+        </menuStripDynamic>
+
+    </menu>
+</menuDocument>

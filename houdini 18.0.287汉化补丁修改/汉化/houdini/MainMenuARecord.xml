@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file.menu">
+    <label>文件</label>
+
+      <actionItem id="arecord.save">
+        <label>保存</label>
+	<value>save</value>
+      </actionItem>
+
+      <actionItem id="arecord.quit">
+        <label>退出</label>
+	<value>AP_QuitRequested</value>
+      </actionItem>
+    </subMenu>
+
+    <!-- ======================== Edit Menu =========================== -->
+    <subMenu id="edit.menu">
+    <label>编辑</label>
+ 
+    <actionItem id="arecord.play">
+	<label>播放</label>
+	<value>play</value>
+    </actionItem>
+    
+    <actionItem id="arecord.record">
+	<label>记录</label>
+	<value>record</value>
+    </actionItem>
+    </subMenu>
+    
+    <!-- ======================== Source Menu =========================== -->
+    
+    <subMenu id="src.menu">
+    <label>源码</label>
+    
+    <menuStripRadio id = "source">
+	<value>source</value>
+	<radioItem><label>麦克风</label></radioItem>
+	<radioItem><label>行中</label></radioItem>
+	<radioItem><label>数字化</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+    
+    <!-- ======================== Bits Menu =========================== -->
+    
+    <subMenu id="bps.menu">
+    <label>位</label>
+    
+    <menuStripRadio id="bps">
+	<value>bps</value>
+	<radioItem><label>8个基点</label></radioItem>
+	<radioItem><label>16个基点</label></radioItem>
+	<radioItem><label>24个基点</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+    
+    <!-- ======================== Rate Menu =========================== -->
+    
+    <subMenu id="rate.menu">
+    <label>率</label>
+    
+    <menuStripRadio id="rate">
+	<value>rate</value>
+	<radioItem><label>8 千赫</label></radioItem>
+	<radioItem><label>11 千赫</label></radioItem>
+	<radioItem><label>22 千赫</label></radioItem>
+	<radioItem><label>32 千赫</label></radioItem>
+	<radioItem><label>44.1 千赫 （CD）</label></radioItem>
+	<radioItem><label>48 千赫（DAT）</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+
+    <!-- ======================== Mode Menu =========================== -->
+    
+    <subMenu id="mode.menu">
+    <label>模式</label>
+    
+    <menuStripRadio id="stereo">
+	<value>stereo</value>
+	<radioItem><label>单声道</label></radioItem>
+	<radioItem><label>立体</label></radioItem>
+     </menuStripRadio>
+    
+    </subMenu>
+
+  </menuBar>
+</mainMenu>

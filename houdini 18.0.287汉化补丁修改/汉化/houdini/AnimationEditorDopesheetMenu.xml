@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    This file defines the menu items on the Animation Editor Dopesheet Menu.
+
+    Files named the same (ie. AnimationEditorDopesheetMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuCommon.xml
+
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with chedit. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<mainMenu>
+<menuBar>
+<subMenu id="edit_menu">
+
+    <actionItem id="h.pane.chedit.dope.clearsel">
+        <label>取消选择全部</label>
+    </actionItem>
+    <subMenu id="edit_adjust_sel_menu">
+        <label>调整选择</label>
+        <actionItem id="h.pane.chedit.dope.growcol">
+            <label>选择整列</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.growrow">
+            <label>选择整行</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.snap">
+            <label>将当前选择捕捉到键值</label>
+        </actionItem>
+    </subMenu>
+    <separatorItem id="edit_sep_1"/>
+    <actionItem id="h.pane.chedit.dope.addkey">
+        <label>键值选择</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.del">
+        <label>删除键值</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.disable">
+        <label>禁用键值</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.enable">
+        <label>启用键值</label>
+    </actionItem>
+    <separatorItem id="edit_sep_2"/>
+    <actionItem id="h.cut">
+        <label>剪切</label>
+    </actionItem>
+    <actionItem id="h.copy">
+        <label>复制</label>
+    </actionItem>
+    <actionItem id="h.paste">
+        <label>粘贴</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.sreplace">
+        <label>替换</label>
+    </actionItem>
+    <separatorItem id="edit_sep_3"/>
+
+    <subMenu id="edit_paste_special_menu">
+        <label>粘贴特殊</label>
+        <actionItem id="h.pane.chedit.dope.vpaste">
+            <label>视觉粘贴</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.vreplace">
+            <label>视觉替换</label>
+        </actionItem>
+        <separatorItem id="edit_sep_4"/>
+        <actionItem id="h.pane.chedit.dope.vstretch">
+            <label>视觉拉伸</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.vcycle">
+            <label>视觉循环</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.vcycleoffset">
+            <label>带偏移的视觉循环</label>
+        </actionItem>
+        <separatorItem id="edit_sep_5"/>
+        <actionItem id="h.pane.chedit.dope.sstretch">
+            <label>在区域选择处拉伸</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.scycle">
+            <label>区域选择循环</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.dope.scycleoffset">
+            <label>区域选择时带偏移的循环</label>
+        </actionItem>
+    </subMenu>
+    <separatorItem id="edit_sep_5"/>
+    <actionItem id="h.pane.chedit.dope.snapmarks">
+        <label>将所选键值对齐到近期的帧</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="settings_menu">
+    <toggleItem>
+        <label>在粘贴选择边界处添加键值</label>
+        <value>forceKeysOn</value>
+    </toggleItem>
+    <toggleItem>
+        <label>始终将选择对齐到键值</label>
+        <value>autoSnapOn</value>
+    </toggleItem>
+    <separatorItem id="settings_dope_sep_1"/>
+    <toggleItem id="h.pane.chedit.dope.fnames">
+        <label>显示完整通道路径名称</label>
+        <value>dopeFullNames</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.dope.cnames">
+        <label>显示通道颜色</label>
+        <value>dopeColorNames</value>
+    </toggleItem>
+    <separatorItem id="settings_dope_sep_2"/>
+    <toggleItem>
+        <label>将缩放键值对齐到近期的帧</label>
+        <value>autosnap_after_stretch</value>
+    </toggleItem>
+    <separatorItem id="settings_dope_sep_3"/>
+
+</subMenu>
+<subMenu id="view_menu">
+<label>视图</label>
+    <actionItem id="h.pane.chedit.home_all">
+        <label>返回所有通道</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_frange">
+        <label>返回播放范围</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_range">
+        <label>返回全局范围</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.frame">
+        <label>帧选择</label>
+    </actionItem>
+    <separatorItem id="view_sep_1"/>
+    <actionItem id="h.pane.chedit.dope.collapse">
+        <label>每组一行</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.dope.expand">
+        <label>每通道一行</label>
+    </actionItem>
+    <toggleItem id="h.pane.chedit.dope.show_ac_row">
+        <label>显示全部通道行</label>
+        <value>showAllChansRow</value>
+    </toggleItem>
+
+</subMenu>
+<subMenu id="tools_menu">
+    <toggleItem id="h.pane.chedit.graph.show_tool_bar">
+        <label>右侧工具栏</label>
+        <value>includeVtools</value>
+    </toggleItem>
+</subMenu>
+</menuBar>
+
+<modifyItem id="h.pane.chedit.resetsettings">
+    <insertAfter>settings_dope_sep_3</insertAfter>
+</modifyItem>
+
+<modifyItem id="view_menu">
+    <insertAfter>edit_menu</insertAfter>
+</modifyItem>
+
+</mainMenu>
+
+

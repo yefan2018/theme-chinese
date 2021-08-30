@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items when clicking over the playbar
+    keying mode in Houdini.
+
+    Files named the same (ie. KeyframesMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+    <!-- menuDocument can only contain 1 menu element, whose id is 
+         implicitly "root_menu"
+      -->
+    <menu>
+
+	<toggleItem id="auto_select_channels">
+	    <label>Auto-Update Channel List</label>
+	    <value>autoScopeSelectedValue</value>
+	</toggleItem>
+
+	<toggleItem id="keep_channel_selection">
+	    <label>Keep Channel List Selections</label>
+	    <value>keepChannelSelectionValue</value>
+	</toggleItem>
+
+	<actionItem id="h.clear_channels">
+	    <label>Clear Channel List</label>
+	</actionItem>
+
+        <separatorItem id="channellist_sep_1"/>
+
+	<actionItem id="h.channellist">
+	    <label>Channel List</label>
+	</actionItem>
+
+	<actionItem id="h.channelgroups">
+	    <label>Channel Groups</label>
+	</actionItem>
+
+	<actionItem id="h.animationlayers">
+	    <label>Animation Layers</label>
+	</actionItem>
+
+
+    </menu>
+</menuDocument>
+
+
+

@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    This file defines the menu items on the Animation Editor Graph Menu.
+
+    Files named the same (ie. AnimationEditorGraphMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuCommon.xml
+
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with chedit. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+<mainMenu>
+<menuBar>
+
+<subMenu id="channels_menu">
+    <actionItem id="h.pane.chedit.graph.isolate">
+        <label>Isolate Channels (Only Display Selected Channels)</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.unisolate">
+        <label>Revert Isolate Channels</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="edit_menu">
+    <actionItem id="h.cut">
+        <label>Cut</label>
+    </actionItem>
+
+    <actionItem id="h.copy">
+        <label>Copy</label>
+    </actionItem>
+
+    <actionItem id="h.paste">
+        <label>Paste</label>
+    </actionItem>
+
+    <subMenu id="paste_settings_menu">
+    <label>Paste Settings</label>
+
+	<menuStripRadio id="pasteusing_radio">
+            <value>pasteUsing</value>
+
+	    <radioItem id="h.pane.chedit.graph.paste.name">
+                <label>Using Channel Names</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.fullpath">
+                <label>Using Full Paths</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.roworder">
+                <label>Using Row Order</label>
+            </radioItem>
+	</menuStripRadio>
+
+        <separatorItem id="paste_settings_sep_1"/>
+
+	<menuStripRadio id="pasteat_radio">
+            <value>pasteAt</value>
+
+	    <radioItem id="h.pane.chedit.graph.paste.atcurrent">
+                <label>At Current Time</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.atorginal">
+                <label>At Original Time</label>
+            </radioItem>
+	</menuStripRadio>
+
+        <separatorItem id="paste_settings_sep_2"/>
+
+	<menuStripRadio id="pasteon_radio">
+            <value>pasteOn</value>
+
+	    <radioItem id="h.pane.chedit.graph.paste.onexisting">
+                <label>On Parameters with Existing Channels</label>
+            </radioItem>
+
+	    <radioItem id="h.pane.chedit.graph.paste.onall">
+                <label>On All Parameters</label>
+            </radioItem>
+	</menuStripRadio>
+
+    </subMenu>
+
+    <actionItem id="h.paste">
+        <label>Paste</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.del">
+        <label>Delete</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.selectall">
+        <label>Select All Handles</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.selectno">
+        <label>Select No Handles</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.invertselection">
+        <label>Invert Handle Selection</label>
+    </actionItem>
+    <separatorItem id="edit_graph_sep_1"/>
+    <actionItem id="h.pane.chedit.graph.snapmarks">
+        <label>Snap Selected Keys to Nearest Frame</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.ties">
+        <label>Tie/Untie</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.settodefault">
+        <label>Set Selection to Default Values</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.zeroslope">
+        <label>Set Selected Slopes To Zero</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.manualslope">
+        <label>Set Selected Slopes To Manual</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.autoslope">
+        <label>Set Selected Slopes To Automatic</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.linearslope">
+        <label>Set Selected Slopes To Linear</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.toggleslope">
+        <label>Toggle Selected Slopes Mode</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.smoothslope">
+        <label>Smooth Selected Slopes</label>
+    </actionItem>
+    <separatorItem id="edit_graph_sep_2"/>
+
+    <subMenu id="set_selected_segments_menu">
+    <label>Set Selected Segments to...</label>
+        <actionItem id="h.pane.chedit.graph.segconst">
+            <label>Constant</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.seglinear">
+            <label>Straight</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segbezier">
+            <label>Bezier</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segcubic">
+            <label>Cubic</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segeaseio">
+            <label>Ease In and Out</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segeasei">
+            <label>Ease In</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segeaseo">
+            <label>Ease Out</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segmatchio">
+            <label>Match In and Out Tangents</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segmatchi">
+            <label>Match In Tangents</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segmatcho">
+            <label>Match Out Tangents</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segspline">
+            <label>Spline</label>
+        </actionItem>
+        <actionItem id="h.pane.chedit.graph.segqlinear">
+            <label>Quaternion Linear</label>
+        </actionItem>
+    </subMenu>
+
+    <separatorItem id="edit_graph_sep_3"/>
+
+    <actionItem id="h.pane.chedit.graph.eulerfilter">
+        <label>Filter Euler Rotations of Selected Channels</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.matchkeys">
+        <label>Match Keyframes of Selected Timemarks</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.refit">
+        <label>Bake Keyframes of Selected Segments</label>
+    </actionItem>
+
+    <separatorItem id="edit_graph_sep_4"/>
+
+</subMenu>
+
+<subMenu id="tools_menu">
+
+    <toggleItem id="h.pane.chedit.graph.show_func_bar">
+        <label>Bottom Values Toolbar</label>
+        <value>includeGraphValues</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.show_top_timeline">
+        <label>Top Timeline</label>
+        <value>includegraphtimebar</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.show_tool_bar">
+        <label>Right Toolbar</label>
+        <value>includeVtools</value>
+    </toggleItem>
+
+</subMenu>
+
+<subMenu id="settings_menu">
+    <toggleItem id="audioTemplate">
+        <label>Show Audio in Timeline</label>
+        <value>audioTemplate</value>
+    </toggleItem>
+
+    <toggleItem id="syncFromScoped">
+        <label>Synchronize Group Selection From Channel List</label>
+        <value>syncFromScoped</value>
+    </toggleItem>
+
+    <separatorItem id="settings_graph_sep_1"/>
+
+    <subMenu id="grid_density_menu">
+        <label>Grid Line Density</label>
+	<menuStripRadio id="grid_density">
+            <value>gridOn</value>
+	    <radioItem> <label>Off</label> </radioItem>
+	    <radioItem> <label>Low</label> </radioItem>
+	    <radioItem> <label>Medium</label> </radioItem>
+	    <radioItem> <label>High</label> </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="slope_handle_length_menu">
+        <label>Slope Handle Length</label>
+	<menuStripRadio id="handle_length">
+            <value>handleLength</value>
+	    <radioItem> <label>Short</label> </radioItem>
+	    <radioItem> <label>Medium</label> </radioItem>
+	    <radioItem> <label>Long</label> </radioItem>
+	    <radioItem> <label>Custom...</label> </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="curve_quality_menu">
+        <label>Curve Quality</label>
+	<menuStripRadio id="curve_quality">
+            <value>graphLOD</value>
+	    <radioItem> <label>High</label> </radioItem>
+	    <radioItem> <label>Medium</label> </radioItem>
+	    <radioItem> <label>Low</label> </radioItem>
+	    <radioItem> <label>Straight Lines</label> </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="add_keys_menu">
+        <label>Add Keys</label>
+	<menuStripRadio id="add_keys">
+            <value>preserveShape</value>
+	    <radioItem id="h.pane.chedit.graph.addkeys_mouse_click_position">
+                <label>At Mouse Click Position</label>
+            </radioItem>
+	    <radioItem id="h.pane.chedit.graph.addkeys_curve_value">
+	        <label>At Curve Value</label>
+            </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <subMenu id="channel_colors_menu">
+        <label>Channel Colors</label>
+	<menuStripRadio id="channel_colors">
+            <value>colors.menu</value>
+	    <radioItem>
+                <label>Default</label>
+            </radioItem>
+	</menuStripRadio>
+    </subMenu>
+
+    <actionItem id="h.pane.chedit.graph.togglenewslope">
+        <label>Toggle Auto-Slope Mode Preference</label>
+    </actionItem>
+
+    <separatorItem id="settings_graph_sep_2"/>
+
+    <toggleItem id="h.pane.chedit.graph.snap_moved_keys">
+        <label>Snap Moved Keys to Nearest Frame</label>
+        <value>snapToFrame</value>
+    </toggleItem>
+
+    <toggleItem id="autosnap_after_stretch">
+        <label>Snap Scaled Keys to Nearest Frame</label>
+        <value>autosnap_after_stretch</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.bold_non_int_keys">
+        <label>Bold Non-Integer Keys</label>
+        <value>boldNonIntKeys</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.keep_accel_ratios">
+        <label>Keep Acceleration Ratios</label>
+        <value>keepAccelRatios</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.mixed_value_time_mark_handles">
+        <label>Value/Time Handles</label>
+        <value>mixedValueTimeMarkHandles</value>
+    </toggleItem>
+
+    <separatorItem id="settings_graph_sep_3"/>
+
+</subMenu>
+
+
+<subMenu id="snapshots_menu">
+<label>Snapshots</label>
+
+    <toggleItem id="h.pane.chedit.graph.enablesnapshots">
+        <label>Enable Channel Snapshots</label>
+        <value>snapshotHandles</value>
+    </toggleItem>
+
+    <toggleItem id="h.pane.chedit.graph.persitentsnapshots">
+        <label>Persistent Channel Snapshots</label>
+        <value>snapshotPersistent</value>
+    </toggleItem>
+
+    <separatorItem id="snapshots_sep_1"/>
+
+    <actionItem id="h.pane.chedit.graph.loadsnapshots">
+        <label>Revert Active Channels to Snapshots</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.swapsnapshots">
+        <label>Swap Active Channels and Snapshots</label>
+    </actionItem>
+
+    <separatorItem id="snapshots_sep_2"/>
+
+    <actionItem id="h.pane.chedit.graph.clearsnapshots">
+        <label>Clear Channel Snapshots</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="timegroup_menu">
+<label>Time Group</label>
+    <actionItem id="h.pane.chedit.graph.creategroup">
+        <label>Create Time Group from Selected Keys</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.attach">
+        <label>Attach/Detach Selected Keys to/from Time Group</label>
+    </actionItem>
+
+    <actionItem id="h.pane.chedit.graph.scope">
+        <label>Add Time Group Channels to Channel List</label>
+    </actionItem>
+</subMenu>
+
+<subMenu id="view_menu">
+<label>View</label>
+    <actionItem id="h.pane.chedit.home">
+        <label>Home Channels (Current Graph)</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all">
+        <label>Home Channels (All Graphs)</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_frange">
+        <label>Home Playback Range (All Graphs)</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.home_all_range">
+        <label>Home Global Range (All Graphs)</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.frame">
+        <label>Frame Selection</label>
+    </actionItem>
+    <separatorItem id="view_sep_1"/>
+    <toggleItem id="h.pane.chedit.graph.hadapt">
+        <label>Horizontal Adapt</label>
+        <value>hAdapt</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.vadapt">
+        <label>Vertical Adapt</label>
+        <value>adaptOn</value>
+    </toggleItem>
+    <separatorItem id="view_sep_2"/>
+    <toggleItem id="h.pane.chedit.handle">
+        <label>Show Box Handle</label>
+        <value>scaleHandle</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.pivot">
+        <label>Show Box Pivot</label>
+        <value>pivotHandle</value>
+    </toggleItem>
+    <separatorItem id="view_sep_3"/>
+    <subMenu id="show_handles_mode_menu">
+        <label>Show Handles</label>
+	<menuStripRadio id="show_handles_mode">
+            <value>showHandleMode</value>
+	    <radioItem id="h.pane.chedit.graph.hide_all_handles">
+                <label>None</label>
+            </radioItem>
+	    <radioItem id="h.pane.chedit.graph.show_all_handles">
+	        <label>All</label>
+            </radioItem>
+	    <radioItem id="h.pane.chedit.graph.show_near_handles">
+	        <label>Selected</label>
+            </radioItem>
+	</menuStripRadio>
+    </subMenu>
+    <separatorItem id="view_sep_4"/>
+    <toggleItem id="h.pane.chedit.graph.show_value_handles">
+        <label>Show Values</label>
+        <value>valueHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_time_mark_handles">
+        <label>Show Time Marks</label>
+        <value>markHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_slope_handles">
+        <label>Show Slopes and Acceleration</label>
+        <value>slopeHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_segment_handles">
+        <label>Show Functions</label>
+        <value>segmentHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_time_group_handles">
+        <label>Show Time Groups</label>
+        <value>groupHandles</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_time_bar">
+        <label>Show Time Bar</label>
+        <value>timeBar</value>
+    </toggleItem>
+    <separatorItem id="view_sep_5"/>
+    <toggleItem id="h.pane.chedit.graph.lnames">
+        <label>Show Full Channel Names</label>
+        <value>longNames</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.snames">
+        <label>Show Channel Names</label>
+        <value>showNames</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_times">
+        <label>Show Times for Selected Marks</label>
+        <value>showTimes</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.show_values">
+        <label>Show Values for Selected Keys</label>
+        <value>showValues</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.sattached">
+        <label>Show Only Attached Time Groups</label>
+        <value>showAttached</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.drawpastends">
+        <label>Draw Past Channel Ends</label>
+        <value>drawPastEnds</value>
+    </toggleItem>
+    <toggleItem id="h.pane.chedit.graph.drawchops">
+        <label>Draw CHOP exports</label>
+        <value>showChops</value>
+    </toggleItem>
+</subMenu>
+
+</menuBar>
+
+<modifyItem id="h.pane.chedit.resetsettings">
+    <insertAfter>settings_graph_sep_3</insertAfter>
+</modifyItem>
+
+<modifyItem id="snapshots_menu">
+    <insertAfter>tools_menu</insertAfter>
+</modifyItem>
+
+<modifyItem id="timegroup_menu">
+    <insertAfter>snapshots_menu</insertAfter>
+</modifyItem>
+
+<modifyItem id="view_menu">
+    <insertAfter>edit_menu</insertAfter>
+</modifyItem>
+
+</mainMenu>

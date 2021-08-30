@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Please note, that the files defining the main menu (ie, MainMenuCommon,
+     MainMenuMaster, and MainMenuEscape)
+     can exist in $HOME/houdiniX.Y/ directory and will supplement 
+     the original definitions found in $HFS/houdini/ -->
+
+<!-- Please see ExampleMenu.xml for examples that customise the main menu. -->
+<!-- Please see menu.xsd for the menu validation schema. -->
+<mainMenu>
+  <menuBar>
+    <!-- ======================== File Menu ============================== -->
+    <subMenu id="file_menu">
+    <label>File</label>
+
+      <actionItem id="h.new">
+        <label>New</label>
+      </actionItem>
+
+      <actionItem id="h.open">
+        <label>Open...</label>
+      </actionItem>
+
+      <subMenu id="recent_files">
+      <label>Open Recent Files</label>
+        <menuStripDynamic id="file_history_strip">
+          <value>file.history.menu</value>
+        </menuStripDynamic>
+      </subMenu>
+
+      <separatorItem id="file_menu_sep_1"/>
+
+      <actionItem id="h.save">
+        <label>Save</label>
+      </actionItem>
+
+      <actionItem id="h.save_as">
+        <label>Save As...</label>
+      </actionItem>
+
+      <menuStripDynamic id="saveastype_strip">
+        <value>saveastype.menu</value>
+      </menuStripDynamic>
+
+      <separatorItem id="file_menu_sep_quit"/>
+
+      <actionItem id="h.quit">
+        <label>Quit Application</label>
+      </actionItem>
+    </subMenu>
+
+    <!-- ============================ EditMenu =========================== -->
+    <subMenu id="edit_menu">
+    <label>Edit</label>
+
+      <menuStripDynamic id="undo_strip">
+        <value>undo.menu</value>
+      </menuStripDynamic>
+
+      <actionItem id="h.undo_mgr">
+        <label>Undo History...</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_1"/>
+
+      <actionItem id="h.cut">
+        <label>Cut</label>
+      </actionItem>
+
+      <actionItem id="h.copy">
+        <label>Copy</label>
+      </actionItem>
+
+      <actionItem id="h.paste">
+        <label>Paste</label>
+      </actionItem>
+
+      <separatorItem id="edit_menu_sep_2"/>
+
+      <actionItem id="h.prefs_ui">
+        <label>Preferences...</label>
+      </actionItem>
+
+      <actionItem id="h.hotkey_mgr">
+        <label>Hotkeys...</label>
+      </actionItem>
+
+      <actionItem id="h.colorsettings">
+        <label>Color Settings...</label>
+      </actionItem>
+
+      <actionItem id="h.aliases">
+        <label>Aliases and Variables...</label>
+      </actionItem>
+
+    </subMenu>
+
+    <!-- ============================ Assets Menu =========================== -->
+    <subMenu id = "assets_menu">
+    <label>Assets</label>
+
+    <actionItem id="h.createotl">
+      <label>New Digital Asset From Selection...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_1"/>
+
+    <subMenu id="unlock_asset">
+      <label>Unlock Asset</label>
+        <menuStripDynamic id="unlock_asset_strip">
+          <value>unlock.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="lock_asset">
+      <label>Lock Asset</label>
+        <menuStripDynamic id="lock_asset_strip">
+          <value>lock.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="save_asset">
+      <label>Save Asset</label>
+        <menuStripDynamic id="save_asset_strip">
+          <value>save.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <subMenu id="edit_asset">
+      <label>Edit Asset Properties...</label>
+        <menuStripDynamic id="edit_asset_strip">
+          <value>edit.asset.menu</value>
+        </menuStripDynamic>
+    </subMenu>
+
+    <separatorItem id="assets_menu_sep_2"/>
+    
+    <actionItem id="h.openotl">
+      <label>Install Asset Library...</label>
+    </actionItem>
+
+    <actionItem id="h.manageotl">
+      <label>Asset Manager...</label>
+    </actionItem>
+
+    <actionItem id="h.refreshotl">
+      <label>Refresh Asset Libraries</label>
+    </actionItem>
+
+    <actionItem id="h.blackboxotl">
+      <label>Create Black Boxed Asset from Selection...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_3"/>
+    
+    <actionItem id="h.help_orbolt">
+      <label>Orbolt Asset Store...</label>
+    </actionItem>
+
+    <actionItem id="h.asset_browser">
+      <label>Orbolt Asset Browser...</label>
+    </actionItem>
+
+    <actionItem id="h.uploadotl">
+      <label>Upload to Orbolt Asset Store...</label>
+    </actionItem>
+
+    <separatorItem id="assets_menu_sep_4"/>
+
+    <subMenu id="other_asset_tools_submenu">
+    <label>Other Asset Tools</label>
+      <actionItem id="h.encapsulate_asset">
+        <label>Encapsulate Asset</label>
+      </actionItem>
+
+      <actionItem id="h.compile_embed_material">
+        <label>Compile and Embed Material</label>
+      </actionItem>
+
+      <actionItem id="h.embed_internal_assets">
+        <label>Embed Internal Assets</label>
+      </actionItem>
+    </subMenu>
+
+    </subMenu>
+
+
+    <!-- ========================= Window Menu ========================= -->
+
+    <subMenu id="windows_menu">
+    <label>Windows</label>
+      <separatorItem id="windows_menu_sep_0"/>
+
+      <toggleItem id="h.keep_float_windows_on_top" platform="mbsd">
+        <label>Keep Floating Windows on Top</label>
+	<value>keepFloatWindowsOnTop</value>
+      </toggleItem>
+
+      <separatorItem id="windows_menu_sep_1" platform="mbsd"/>
+
+      <actionItem id="h.floatpanel">
+        <label>New Floating Panel</label>
+      </actionItem>
+
+      <actionItem id="h.textport">
+        <label>Hscript Textport</label>
+      </actionItem>
+
+      <actionItem id="h.python_shell">
+        <label>Python Shell</label>
+      </actionItem>
+
+      <actionItem id="h.python_source_editor">
+        <label>Python Source Editor</label>
+      </actionItem>
+
+      <actionItem id="h.open_parmspreadsheet">
+        <label>Parameter Spreadsheet</label>
+      </actionItem>
+
+      <actionItem id="h.open_treeview">
+        <label>Tree View</label>
+      </actionItem>
+      
+      <actionItem id="h.engine_debugger">
+        <label>Houdini Engine Debugger</label>
+      </actionItem>
+
+      <separatorItem id="windows_menu_sep_2"/>
+
+      <actionItem id="h.optype_mgr">
+        <label>Asset Manager</label>
+      </actionItem>
+
+      <separatorItem id="windows_menu_sep_3"/>
+
+      <actionItem id="h.perf_monitor">
+        <label>Performance Monitor</label>
+      </actionItem>
+
+      <scriptItem id="h.taskgraphtable_py">
+        <label>Task Graph Table</label>
+        <scriptCode><![CDATA[
+panetab = hou.ui.curDesktop().createFloatingPaneTab(
+    hou.paneTabType.PythonPanel,
+    position=(),
+    size=(),
+)
+panetab.setLinkGroup(hou.paneLinkType.FollowSelection)
+panetab.setActiveInterface(hou.pypanel.interfaces()["taskgraphtable"])
+        ]]>
+        </scriptCode>
+      </scriptItem>
+
+      <scriptItem id="h.pdgstateserver_py">
+        <label>Task Graph Table</label>
+        <scriptCode><![CDATA[
+panetab = hou.ui.curDesktop().createFloatingPaneTab(
+    hou.paneTabType.PythonPanel,
+    position=(),
+    size=(),
+)
+panetab.setLinkGroup(hou.paneLinkType.FollowSelection)
+panetab.setActiveInterface(hou.pypanel.interfaces()["pdgstateserver"])
+        ]]>
+        </scriptCode>
+      </scriptItem>
+
+      <actionItem id="h.shell">
+        <label>Shell</label>
+        <value>openShell</value>
+      </actionItem>
+
+
+    </subMenu>
+
+    <!-- ========================= HELP Menu ========================= -->
+    <subMenu id = "help_menu">
+    <label>Help</label>
+
+      <actionItem id="h.startuphelp">
+        <label>Start Here</label>
+      </actionItem>
+      
+      <actionItem id="h.helpcontents">
+        <label>Contents</label>
+      </actionItem>
+
+      <actionItem id="h.help_examples">
+        <label>Example Files</label>
+      </actionItem>
+
+      <menuStripDynamic id="side_help_strip">
+        <value>side_help.val</value>
+      </menuStripDynamic>
+
+      <separatorItem id="help_menu_sep_1"/>
+
+      <actionItem id="h.help_sesi">
+        <label>Sidefx.com</label>
+      </actionItem>
+
+      <actionItem id="h.help_tutorials_online">
+        <label>Online Tutorials</label>
+      </actionItem>
+
+      <actionItem id="h.help_forum">
+        <label>Houdini Forum</label>
+      </actionItem>
+
+      <separatorItem id="help_menu_sep_2"/>
+
+      <actionItem id="h.help_support_online">
+        <label>Online Support</label>
+      </actionItem>
+
+      <actionItem id="h.help_updates">
+        <label>Updates</label>
+      </actionItem>
+
+      <separatorItem id="help_menu_sep_3"/>
+
+      <toggleItem id="h.help_tags">
+        <label>Tooltip Help</label>
+	<value>helpTags</value>
+      </toggleItem>
+
+      <toggleItem id="h.toggle_help_on_startup">
+        <label>Open "Start Here" Pane at Startup</label>
+	<value>startupPage</value>
+      </toggleItem>
+
+      <separatorItem id="help_menu_sep_4"/>
+
+      <actionItem id="h.version">
+      <!-- TODO: bring up the splash screen in window with [OK] buton -->
+        <label>About Houdini</label>
+      </actionItem>
+
+    </subMenu>
+
+
+  </menuBar>
+</mainMenu>
+

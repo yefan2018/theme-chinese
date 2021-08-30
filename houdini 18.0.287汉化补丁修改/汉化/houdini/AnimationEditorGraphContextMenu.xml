@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    This file defines the menu items when clicking over the playbar
+    keying mode in Houdini.
+
+    Files named the same (ie. KeyframesMenu.xml) can exist in $HOME/houdiniX.Y/
+    directory and will supplement the original definitions found in
+    $HFS/houdini/ (aka $HH).
+
+    The format in this file is similar to the format in $HH/MainMenuMaster
+    except that it uses the <menuDocument> and <menu> tags instead of 
+    <mainMenu> and <menuBar>. See the comments in that file for more advanced
+    customization abilities.
+    
+    Note that the id's correspond to their hotkeys with the h. prefix. Please
+    use ids that begin with playbar. when adding new items.
+
+    For scriptItem elements, a 'kwargs' python dictionary is provided with the
+    following values:
+	'parms'	    :	A list of hou.Parm objects which the script was invoked
+			upon.
+	'toolname'  :	The menu item's hotkey id 
+	'altclick'  :	True if the Alt key was also pressed, False otherwise
+	'ctrlclick'  :	True if the Ctrl key was also pressed, False otherwise
+	'shiftclick'  :	True if the Shift key was also pressed, False otherwise
+	'cmdclick'  :	True if the Option key was also pressed, False
+			otherwise. Note that this can only be true on OSX.
+-->
+
+<menuDocument>
+<menu>
+
+<actionItem id="h.pane.chedit.keycurrent">
+    <label>把当前时间集成到关键帧</label>
+</actionItem>
+
+<actionItem id="h.pane.chedit.samplecurrent">
+    <label>把当前时间转为示例值</label>
+</actionItem>
+
+<actionItem id="h.pane.chedit.pastesample">
+    <label>把当前时间插入采样值</label>
+</actionItem>
+
+<separatorItem id="graph_rmb_sep_1"/>
+
+<actionItem id="h.cut">
+    <label>剪切</label>
+</actionItem>
+
+<actionItem id="h.copy">
+    <label>复制</label>
+</actionItem>
+
+<actionItem id="h.paste">
+    <label>粘贴</label>
+</actionItem>
+
+<subMenu id="paste_settings_menu">
+<label>粘贴设置</label>
+
+    <menuStripRadio id="pasteusing_radio">
+        <value>pasteUsing</value>
+
+        <radioItem id="h.pane.chedit.graph.paste.name">
+            <label>使用通道名称</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.fullpath">
+            <label>使用完整路径</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.roworder">
+            <label>使用行顺序</label>
+        </radioItem>
+    </menuStripRadio>
+
+    <separatorItem id="paste_settings_sep_1"/>
+
+    <menuStripRadio id="pasteat_radio">
+        <value>pasteAt</value>
+
+        <radioItem id="h.pane.chedit.graph.paste.atcurrent">
+            <label>在当前时间</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.atorginal">
+            <label>在原始时间</label>
+        </radioItem>
+    </menuStripRadio>
+
+    <separatorItem id="paste_settings_sep_2"/>
+
+    <menuStripRadio id="pasteon_radio">
+        <value>pasteOn</value>
+
+        <radioItem id="h.pane.chedit.graph.paste.onexisting">
+            <label>使用现有通道的参数</label>
+        </radioItem>
+
+        <radioItem id="h.pane.chedit.graph.paste.onall">
+            <label>在所有参数上</label>
+        </radioItem>
+    </menuStripRadio>
+
+</subMenu>
+
+<actionItem id="h.pane.chedit.del">
+    <label>删除</label>
+</actionItem>
+
+<separatorItem id="graph_rmb_sep_2"/>
+
+<actionItem id="h.pane.chedit.graph.selectall">
+    <label>选择所有句柄</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.selectno">
+    <label>选择无效句柄</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.invertselection">
+    <label>反转控点选择</label>
+</actionItem>
+
+<separatorItem id="graph_rmb_sep_3"/>
+<actionItem id="h.pane.chedit.graph.loadsnapshots">
+    <label>将活动通道还原为快照</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.swapsnapshots">
+    <label>交换活动通道和快照</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.clearsnapshots">
+    <label>清除通道快照</label>
+</actionItem>
+<separatorItem id="graph_rmb_sep_4"/>
+<actionItem id="h.pane.chedit.graph.snapmarks">
+    <label>将所选键值对齐到近期的帧</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.ties">
+    <label>关联/解除</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.settodefault">
+    <label>将选定项设置为默认值</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.zeroslope">
+    <label>将所选斜角设置为零</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.manualslope">
+    <label>将选定斜角设置为手动</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.autoslope">
+    <label>将所选斜角设置为自动</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.linearslope">
+    <label>将所选斜角设置为线性</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.toggleslope">
+    <label>切换选定的斜角模式</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.smoothslope">
+    <label>平滑所选斜角</label>
+</actionItem>
+<separatorItem id="graph_rmb_sep_5"/>
+<subMenu id="set_selected_segments_menu">
+<label>选定段集成到...</label>
+    <actionItem id="h.pane.chedit.graph.segconst">
+        <label>常量</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.seglinear">
+        <label>直线</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segbezier">
+        <label>贝塞尔</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segcubic">
+        <label>立方</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segeaseio">
+        <label>缓入缓出</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segeasei">
+        <label>缓入</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segeaseo">
+        <label>缓出</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segmatchio">
+        <label>匹配进出切线</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segmatchi">
+        <label>在切线中匹配</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segmatcho">
+        <label>匹配切线</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segspline">
+        <label>样条</label>
+    </actionItem>
+    <actionItem id="h.pane.chedit.graph.segqlinear">
+        <label>四元线性</label>
+    </actionItem>
+</subMenu>
+<separatorItem id="graph_rmb_sep_6"/>
+<actionItem id="h.pane.chedit.graph.eulerfilter">
+    <label>筛选所选通道的欧拉轮换</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.matchkeys">
+    <label>匹配选定时间标记的关键帧</label>
+</actionItem>
+<actionItem id="h.pane.chedit.graph.refit">
+    <label>烘焙选定段的关键帧</label>
+</actionItem>
+
+</menu>
+</menuDocument>
+

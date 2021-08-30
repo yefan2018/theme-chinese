@@ -1,0 +1,31 @@
+##############################################################################
+# USE OF THIS FILE IS NOW DEPRECATED!
+# PLEASE USE CHGmenu.xml FOR ALL NEW USAGES.
+##############################################################################
+#
+# This file allows you to add menu items to the RMB popup menu for various
+# channel groups. Each line consists of four entries:
+#	1. The channel group path. This can include wildcards.
+#	2. The hotkey name. This should be a single unique word.
+#	3. The menu item text.
+#	4. The path to the script to run when the menu item is chosen.
+# The script path can be specified relative to the CHGmenu file.
+# When the script is run, the full path of the channel group for which the
+# menu item was chosen is passed as the first argument.
+#
+# The first argument can also start with the keyword "Expr:". If so, the rest
+# of the first argument is treated as an expression that gets evaluated when
+# the menu is brought up. If the expression evaluates to the string "1", then
+# the menu item will appear. The local variable $chgmenu_chgname is defined
+# when executing this expression as the full path of the channel group.
+
+# You can use "chgls $chgmenu_chgname" to find the group, or
+# "chgls $chgmenu_chgname/*" to find all of its subgroups.
+
+# The following line adds a script called "killkids.cmd" to all channel groups:
+# *	killkids	"Kill All Child Groups"	./scripts/killkids.cmd
+# The following adds the script "specific.cmd" to the group "group/subgroup":
+# group/subgroup	specific	"Specific Command"	./specific.cmd
+# The following line adds a script only to a group named "group":
+# 'Expr: strcmp($chgmenu_chgname, "group") == 0' group "Group" /tmp/foo.cmd
+
